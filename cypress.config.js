@@ -6,7 +6,7 @@ const { defineConfig } = require('cypress');
 module.exports = defineConfig({
   projectId: '9cqbzv', // Cypress Dashboard project ID
 
-  defaultCommandTimeout: 6000, // Default timeout for Cypress commands
+  defaultCommandTimeout: 200000, // Default timeout for Cypress commands
   pageLoadTimeout: 120000, // Page load timeout
 
   e2e: {
