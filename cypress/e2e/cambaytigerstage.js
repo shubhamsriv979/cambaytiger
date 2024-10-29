@@ -95,11 +95,11 @@ describe('template spec', () => {
 
   it('task loop', () => {
     const locations = [
-      'Mumbai',
-      'Bangalore',        
       'Juhu',
       'delhi airport',
-      'Bandra kurla'
+      'Bandra kurla',
+      'Mumbai',
+      'Bangalore'  
     ];
     // const products = [
     //   'Mutton', //single product
@@ -107,7 +107,7 @@ describe('template spec', () => {
     // ];
     
     const product_urls = [
-      'https://cambaytigerstage-nh.farziengineer.co/product/mutton-curry-cut',  //single product
+      // 'https://cambaytigerstage-nh.farziengineer.co/product/mutton-curry-cut',  //single product
       'https://cambaytigerstage-nh.farziengineer.co/product/chicken-prawns-combo',      //combo product
       'https://cambaytigerstage-nh.farziengineer.co/fresh-pomfret-medium',                //multi variant
       'https://cambaytigerstage-nh.farziengineer.co/Goan-Cafreal-Curry',      //not available in any location
@@ -119,23 +119,25 @@ describe('template spec', () => {
     // select location 
     cy.get(':nth-child(1) > #header > .scss_mainNavContainerWrapper__m_O_A > .scss_mainNavContainer__UDVhL > .scss_logoSearchContainer__ca6MR > :nth-child(3) > .scss_GGLocation__cfABD > .scss_GGLocation__topCont__oRucC > :nth-child(5) > .GGLocation__input > input', { timeout: 100000 }).type("Bangalore", { timeout: 100000 });
     cy.get('.AdressCont__inside > :nth-child(1) > div', { timeout: 100000 }).click();
-    cy.get("div[class='footerContainer'] div:nth-child(4) p:nth-child(1)",{ timeout: 100000 }).click({ timeout: 100000 });
+    
 
     //Login
     cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div div[class='GG_dropDown_button sc-bryTEL fIJmHu'] span", { timeout: 100000 }).click();
-    cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div button[class='user-register']", { timeout: 100000 }).click();      
-    cy.get("input[placeholder='Enter Phone number']", { timeout: 100000 }).type("6388789049", { timeout: 100000 });
+    cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div button[class='user-register']", { timeout: 100000 }).click();            
+    cy.wait(5000);
+    cy.get("input[placeholder='Enter Phone number']", { timeout: 100000 }).click({ timeout: 100000 }).type("6388789049", { delay: 100, force: true, timeout: 100000 });
     cy.get('.scss_loginRegCont__m2Dae > button').click();
     cy.get("#otp-0", { timeout: 100000 }).type("123456", { timeout: 100000 });
     cy.get('.scss_loginRegCont__m2Dae > button').click();
-    cy.wait(5000);
-    cy.reload({ timeout: 100000 });
-    cy.get("div[class='footerContainer'] div:nth-child(4) p:nth-child(1)",{ timeout: 100000 }).click({ timeout: 100000 });
-    
+    cy.wait(5000);      
+        
 
     locations.forEach((location) => {
       context(`Testing food ordering at ${location}`, () => {
         cy.get(':nth-child(1) > #header > .scss_mainNavContainerWrapper__m_O_A > .scss_mainNavContainer__UDVhL > .scss_logoSearchContainer__ca6MR > [data-test="menuCartOverlayLink"] > .GG-main-menu__icon__LocationStateCity > p', { timeout: 100000 }).click({ force: true });
+        cy.wait(10000);        
+        cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div[class='scss_logoSearchContainer__ca6MR'] div div[class='scss_GGLocation__cfABD'] div[class='scss_GGLocation__topCont__oRucC'] div input[placeholder='Please enter delivery location...']", { timeout: 100000 })
+        .click({ timeout: 100000 });          
         cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div[class='scss_logoSearchContainer__ca6MR'] div div[class='scss_GGLocation__cfABD'] div[class='scss_GGLocation__topCont__oRucC'] div input[placeholder='Please enter delivery location...']", { timeout: 100000 })
           .eq(0).type(location, { timeout: 100000 });  // targets the first element (index starts from 0)    
         cy.wait(10000);
@@ -173,23 +175,23 @@ describe('template spec', () => {
                       });
                     }
                     cy.wait(5000);             
-                    cy.get('.payment_button__text__busIX',{timeout:100000}).click({timeout:100000});
-                    cy.wait(10000);          
-                    cy.url().should('include', 'order-placed', { timeout: 100000 });
-                    // submit();
-                    // function submit() {
-                    //   const initialUrl = Cypress.config("baseUrl"); // Store the initial URL
+                    // cy.get('.payment_button__text__busIX',{timeout:100000}).click({timeout:100000});
                     
-                    //   cy.get('.payment_button__text__busIX',{timeout:100000}).click({ force: true });
+                    submit();
+                    function submit() {
+                      const initialUrl = Cypress.config("baseUrl"); // Store the initial URL
                     
-                    //   // Wait and check if the URL has changed
-                    //   cy.url().then((currentUrl) => {
-                    //     if (currentUrl === initialUrl) {
-                    //       submit(); // Recursively call the function if the URL hasn't changed
-                    //     }
-                    //   });
-                    // }
-                    //     cy.wait(10000);             
+                      cy.get('.payment_button__text__busIX',{timeout:100000}).click({ force: true });
+                    
+                      // Wait and check if the URL has changed
+                      cy.url().then((currentUrl) => {
+                        if (currentUrl === initialUrl) {
+                          submit(); // Recursively call the function if the URL hasn't changed
+                        }
+                      });
+                    }
+                    cy.wait(1000);          
+                    cy.url().should('include', 'order-placed', { timeout: 100000 });      
                     
                     
 
