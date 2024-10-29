@@ -7,7 +7,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
-                    git url: "git@github.com:deathping1994/e2e-testsuite.git", branch: 'main'
+                    git url: "git@github.com:shubhamsriv979/cambaytiger.git", branch: 'main'
                 }
             }
         }
