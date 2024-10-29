@@ -190,7 +190,7 @@ describe('template spec', () => {
                         }
                       });
                     }
-                    cy.wait(1000);          
+                    
                     cy.url().should('include', 'order-placed', { timeout: 100000 });      
                     
                     
