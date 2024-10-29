@@ -1,73 +1,48 @@
 pipeline {
     agent any
-
     environment {
-        NODE_VERSION = '16'
+        GITHUB_TOKEN = credentials('c1828ff3-b81e-4981-82e8-a8215dd0309c')  // Ensure the credential ID matches
     }
-
     stages {
-        stage('Install Node.js via nvm') {
-            steps {
-                script {
-                    // Install and use the specified Node.js version
-                    sh '''
-                        . ~/.nvm/nvm.sh
-                        
-                        # Install the specific Node.js version if not already installed
-                        nvm install $NODE_VERSION
-                        
-                        # Use the installed Node.js version
-                        nvm use $NODE_VERSION
-                        
-                        # Export the path to make Node.js globally available
-                        export PATH=$(nvm which $NODE_VERSION | xargs dirname):$PATH
-                        
-                        # Verify Node.js and npm versions
-                        node -v
-                        npm -v
-                    '''
-                }
-            }
-        }
-
         stage('Checkout') {
             steps {
                 script {
-                    git url: "git@github.com:shubhamsriv979/cambaytiger.git", branch: 'main'
+                    git url: "git@github.com:deathping1994/e2e-testsuite.git", branch: 'main'
                 }
             }
         }
-
         stage('Install Dependencies') {
             steps {
                 script {
-                    // Re-source nvm and use the correct Node.js version
-                    sh '''
-                        . ~/.nvm/nvm.sh
-                        nvm use $NODE_VERSION
-                        npm install
-                    '''
+                    if (isUnix()) {
+                        sh 'npm install'  // Use shell command for Linux/Unix agents
+                    } else {
+                        bat 'npm install'  // Use bat for Windows agents
+                    }
                 }
             }
         }
-
         stage('Run Cypress Tests') {
             steps {
                 script {
-                    // Re-source nvm and use the correct Node.js version
-                    sh '''
-                        . ~/.nvm/nvm.sh
-                        nvm use $NODE_VERSION
-                        npx cypress run
-                    '''
+                    if (isUnix()) {
+                        sh 'npx cypress run'  // Run Cypress tests on Linux/Unix agents
+                    } else {
+                        bat 'npx cypress run'  // Run Cypress tests on Windows agents
+                    }
                 }
             }
         }
     }
-
     post {
         always {
-            cleanWs()
+            echo "Pipeline completed."
+        }
+        success {
+            echo 'The pipeline completed successfully!'
+        }
+        failure {
+            echo 'The pipeline failed. Check the logs!'
         }
     }
 }
