@@ -1,13 +1,7 @@
 pipeline {
     agent any
 
-    parameters {
-        choice(
-            name: 'ENVIRONMENT',
-            choices: ['stage', 'prod'],
-            description: 'Choose the environment to run tests against'
-        )
-    }
+    
 
     environment {
         NODE_VERSION = '16.20.2'
