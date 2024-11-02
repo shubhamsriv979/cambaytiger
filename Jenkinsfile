@@ -25,13 +25,7 @@ pipeline {
         stage('Run Cypress Tests') {
             steps {
                 script {
-                    if (isUnix()) {
-                        sh 'npx cypress run --headed --browser chrome'  // Run Cypress tests on Linux/Unix agents
-                    } else {
-                        bat 'npx cypress run --headed --browser chrome'  // Run Cypress tests on Windows agents
-                        
-
-                    }
+                    bat 'npx cypress run --headed --browser chrome'  // Run Cypress tests on Windows agents
                 }
             }
         }
