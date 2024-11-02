@@ -66,16 +66,5 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            // Publish the HTML report
-            publishHTML(target: [
-                allowMissing: false,
-                keepAll: true,
-                reportDir: 'cypress/reports',  // Directory where the report is generated
-                reportFiles: 'index.html',      // Name of the HTML report file
-                reportName: 'Cypress Test Report'
-            ])
-        }
-    }
+    
 }
