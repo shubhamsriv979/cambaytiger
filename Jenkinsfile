@@ -1,5 +1,12 @@
 pipeline {
     agent any
+    parameters {
+        choice(
+            name: 'ENVIRONMENT',
+            choices: ['stage', 'prod'],
+            description: 'Choose the environment to run tests against'
+        )
+    }
     environment {
         GITHUB_TOKEN = credentials('c1828ff3-b81e-4981-82e8-a8215dd0309c')  // Ensure the credential ID matches
     }
