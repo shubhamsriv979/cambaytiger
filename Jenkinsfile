@@ -21,7 +21,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
-                    git url: git@github.com:shubhamsriv979/cambaytiger.git", branch: 'main'
+                    git url: "git@github.com:shubhamsriv979/cambaytiger.git", branch: 'main'
                 }
             }
         }
