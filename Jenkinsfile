@@ -34,14 +34,8 @@ pipeline {
                 script {
                     // Select test specifications based on the environment parameter
                     def testSpec = (params.ENVIRONMENT == 'stage') 
-                        ? "
-                        cypress/e2e/stage/cambaytigerstage.js,                        
-                        cypress/e2e/stage/cambaytigerstage1.js
-                        " 
-                        : "
-                        cypress/e2e/prod/cambaytigerprod.js,
-                        cypress/e2e/prod/cambaytigerprod1.js
-                        "
+                        ? "cypress/e2e/stage/cambaytigerstage.js,cypress/e2e/stage/cambaytigerstage1.js" 
+                        : "cypress/e2e/prod/cambaytigerprod.js,cypress/e2e/prod/cambaytigerprod1.js"
                     
                     // Run Cypress tests with the selected specifications
                     if (isUnix()) {
