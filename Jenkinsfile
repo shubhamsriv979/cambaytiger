@@ -32,7 +32,7 @@ pipeline {
         stage('Run Cypress Tests') {
             steps {
                 script {
-                    bat 'npx cypress run --headed --browser chrome --spec "cypress/e2e/cambaytigerstage.js"'  // Run Cypress tests on Windows agents
+                    // bat 'npx cypress run --headed --browser chrome --spec "cypress/e2e/cambaytigerstage.js"'  // Run Cypress tests on Windows agents
 
                     def testSpec = (params.ENVIRONMENT == 'stage') 
                         ? "cypress/e2e/cambaytigerstage.js" 
