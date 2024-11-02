@@ -28,8 +28,8 @@ pipeline {
                     if (isUnix()) {
                         sh 'npx cypress run --headed --browser chrome'  // Run Cypress tests on Linux/Unix agents
                     } else {
-                        // bat 'npx cypress run --headed --browser chrome'  // Run Cypress tests on Windows agents
-                        bat npx cypress run --spec "cypress/e2e/Cambaytiger/cambaytigerstage.js"
+                        bat 'npx cypress run --headed --browser chrome'  // Run Cypress tests on Windows agents
+                        
 
                     }
                 }
