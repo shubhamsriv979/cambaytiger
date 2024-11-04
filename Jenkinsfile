@@ -34,8 +34,8 @@ pipeline {
                 script {
                     // Select test specifications based on the environment parameter
                     def testSpec = (params.ENVIRONMENT == 'stage') 
-                        ? "cypress/e2e/Cambaytiger/stage/Booking.js,cypress/e2e/Cambaytiger/stage/Search.js,cypress/e2e/Plixlife/stage/Booking.js,cypress/e2e/Plixlife/stage/Search.js" 
-                        : "cypress/e2e/Cambaytiger/prod/Booking.js,cypress/e2e/Cambaytiger/prod/Search.js,cypress/e2e/Plixlife/prod/Booking.js,cypress/e2e/Plixlife/prod/Search.js" 
+                        ? "cypress/e2e/Plixlife/stage/Booking.js,cypress/e2e/Plixlife/stage/Search.js,cypress/e2e/Cambaytiger/stage/Booking.js,cypress/e2e/Cambaytiger/stage/Search.js" 
+                        : "cypress/e2e/Plixlife/prod/Booking.js,cypress/e2e/Plixlife/prod/Search.js,cypress/e2e/Cambaytiger/prod/Booking.js,cypress/e2e/Cambaytiger/prod/Search.js" 
                     
                     // Run Cypress tests with the selected specifications
                     if (isUnix()) {
