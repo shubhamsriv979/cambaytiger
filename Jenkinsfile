@@ -39,9 +39,9 @@ pipeline {
                     
                     // Run Cypress tests with the selected specifications
                     if (isUnix()) {
-                        sh "npx cypress run --headed --browser chrome --spec '${testSpec}'"
+                        sh "npx cypress run --headed --spec '${testSpec}'"
                     } else {
-                        bat "npx cypress run --headed --browser chrome --spec \"${testSpec}\""
+                        bat "npx cypress run --headed --spec \"${testSpec}\""
                     }
                 }
             }
