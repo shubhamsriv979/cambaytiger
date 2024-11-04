@@ -9,6 +9,7 @@ describe('Booking flow', () => {
 
   it('Booking flow', () => {
     cy.visit('https://www.plixlife.com/')
+    cy.wait(5000);
     cy.visit('https://www.plixlife.com/')
     cy.xpath("//div[@class='slick-slide slick-active']//div//p[@class='productCard__name sc-dNLxif clgulF'][normalize-space()='Weight Loss Plan']").click();
     cy.get('.desktopAddToCartPdp__mainText.sc-dfVpRl.hAsLhk')
