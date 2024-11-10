@@ -1,30 +1,9 @@
 version: 2.1
-
 orbs:
   cypress: cypress-io/cypress@3.1.2
-
-parameters:
-  environment:
-    type: enum
-    description: "Select environment"
-    default: "stage"  # Default value is "stage"
-    enum:
-      - stage
-      - prod
-
 workflows:
-  version: 2
   build:
     jobs:
-      - cypress/run:
-          name: Run Cypress Tests
-          parameters:
-            environment: << parameters.environment >>  # Pass the environment parameter
-          cypress-command: |
-            if [ "<< parameters.environment >>" == "stage" ]; then
-              echo "Running stage tests"
-              npx cypress run --headed --spec "cypress/e2e/Cambaytiger/stage/*.js"
-            else
-              echo "Running prod tests"
-              npx cypress run --headed --spec "cypress/e2e/Cambaytiger/prod/*.js"
-            fi
+      - cypress/run:          
+          cypress-command: npx cypress run --headed --spec "cypress/e2e/Cambaytiger/stage/Search.js"
+
