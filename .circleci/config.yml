@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   install-dependencies:
     docker:
-      - image: cypress/  # Use Node.js 16 to ensure compatibility with Cypress dependencies
+      - image: cypress
     steps:
       - checkout
       - run:
