@@ -4,6 +4,5 @@ orbs:
 workflows:
   build:
     jobs:
-      - cypress/run:
-          start-command: npm start
+      - cypress/run:          
           cypress-command: npx cypress run --headed --spec "cypress/e2e/Cambaytiger/stage/Search.js"
