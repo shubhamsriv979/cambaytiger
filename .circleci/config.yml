@@ -16,16 +16,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Set test specifications
-          # command: |
-          #   if [ "${CIRCLE_BRANCH}" == "stage" ]; then
-          #     export TEST_SPEC="cypress/e2e/Plixlife/stage/Search.js,cypress/e2e/Plixlife/stage/Booking.js,cypress/e2e/Cambaytiger/stage/Search.js,cypress/e2e/Cambaytiger/stage/Booking.js"
-          #   else
-          #     export TEST_SPEC="cypress/e2e/Plixlife/prod/Search.js,cypress/e2e/Plixlife/prod/Booking.js,cypress/e2e/Cambaytiger/prod/Search.js,cypress/e2e/Cambaytiger/prod/Booking.js"
-          #   fi
-      - run:
           name: Run Cypress Tests
-          # command: npx cypress run --headed --spec "${TEST_SPEC}"
           command: npx cypress run --headed --spec "cypress/e2e/Cambaytiger/stage/Search.js"
           
 
