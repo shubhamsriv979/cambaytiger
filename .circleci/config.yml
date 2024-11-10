@@ -3,9 +3,14 @@ version: 2.1
 jobs:
   install-dependencies:
     docker:
-      - image: node:19  # Node.js 19 image
+      - image: node:19  # Use Node.js 19 image
     steps:
       - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            apt-get update
+            apt-get install -y xvfb libgtk2.0-0 libgtk-3-0 libgbm-dev libnss3 libasound2 libxss1 libxtst6
       - run:
           name: Install Cypress
           command: npm install cypress@latest
@@ -19,7 +24,12 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Start Xvfb
+          command: Xvfb :99 -ac &
+      - run:
           name: Run Cypress Tests
+          environment:
+            DISPLAY: :99  # Use the Xvfb display
           command: npx cypress run --headed --spec "cypress/e2e/Cambaytiger/stage/Search.js"
 
 workflows:
