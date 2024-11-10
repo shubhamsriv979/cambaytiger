@@ -1,22 +1,9 @@
 version: 2.1
-
 orbs:
-  cypress: cypress-io/cypress@1
-
-jobs:
-  cypress_run:
-    docker:
-      - image: cypress/included:12.8.0 # or any other compatible Cypress image
-    steps:
-      - checkout
-      - run:
-          name: Install dependencies
-          command: yarn install
-      - cypress/run:
-          yarn: true
-
+  cypress: cypress-io/cypress@3.1.2
 workflows:
-  version: 2
   build:
     jobs:
-      - cypress_run
+      - cypress/run:
+          start-command: npm start
+          cypress-command: npx cypress run --headed --spec "cypress/e2e/Cambaytiger/stage/Search.js"
