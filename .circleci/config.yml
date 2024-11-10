@@ -7,7 +7,7 @@ parameters:
   environment:
     type: enum
     description: "Select environment"
-    default: "stage"
+    default: "stage"  # Default value is "stage"
     enum:
       - stage
       - prod
@@ -17,12 +17,14 @@ workflows:
   build:
     jobs:
       - cypress/run:
-          name: Cypress Tests
+          name: Run Cypress Tests
           parameters:
-            environment: << parameters.environment >>
+            environment: << parameters.environment >>  # Pass the environment parameter
           cypress-command: |
             if [ "<< parameters.environment >>" == "stage" ]; then
+              echo "Running stage tests"
               npx cypress run --headed --spec "cypress/e2e/Cambaytiger/stage/*.js"
             else
+              echo "Running prod tests"
               npx cypress run --headed --spec "cypress/e2e/Cambaytiger/prod/*.js"
             fi
