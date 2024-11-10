@@ -9,7 +9,6 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 
     it('Search functionality check', () => {
       cy.visit('https://plixlifefcstage-nh.farziengineer.co/')
-      cy.wait(5000);
       cy.visit('https://plixlifefcstage-nh.farziengineer.co/')
       cy.get("li[class='plixlife-main-menu__searchInput'] div div[class='SearchSuggestionBar_wrapper__1Uc5K']").type("ACV");      
       cy.get(':nth-child(1) > .productCardContainer > .sc-fYiAbW > .undefined__cardInfo > a > .productCard__name').click();      

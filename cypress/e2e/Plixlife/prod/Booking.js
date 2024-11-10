@@ -1,4 +1,4 @@
-
+import 'cypress-iframe'
 Cypress.on('uncaught:exception', (err, runnable) => {
   // returning false here prevents Cypress from
   // failing the test due to the uncaught exception
@@ -9,8 +9,11 @@ describe('Booking flow', () => {
 
   it('Booking flow', () => {
     cy.visit('https://www.plixlife.com/')
-    cy.wait(5000);
-    cy.visit('https://www.plixlife.com/')
+    cy.frameLoaded("[id='wiz-iframe-intent']");
+         // Step 3: Interact with elements inside the iframe
+         cy.iframe("[id='wiz-iframe-intent']").within(() => {
+          cy.get("#ct-content-wrapper > span",{timeout:5000}).click();
+      });  
     cy.xpath("//div[@class='slick-slide slick-active']//div//p[@class='productCard__name sc-dNLxif clgulF'][normalize-space()='Weight Loss Plan']").click();
     cy.get('.desktopAddToCartPdp__mainText.sc-dfVpRl.hAsLhk')
       .should('be.visible') // Check that the button is visible
