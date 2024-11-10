@@ -1,8 +1,31 @@
 version: 2.1
+
 orbs:
   cypress: cypress-io/cypress@3.1.2
+
+parameters:
+  environment:
+    type: enum
+    description: "Select environment"
+    default: "stage"
+    enum:
+      - stage
+      - prod
+
 workflows:
+  version: 2
   build:
     jobs:
-      - cypress/run:          
-          cypress-command: npx cypress run --headed --spec "cypress/e2e/Cambaytiger/stage/Search.js"
+      - cypress/run:
+          name: Cypress Tests
+          filters:
+            branches:
+              only: main
+          context: "CI"
+          environment: << parameters.environment >>
+          cypress-command: |
+            if [ "<< parameters.environment >>" == "stage" ]; then
+              npx cypress run --headed --spec "cypress/e2e/Cambaytiger/stage/*.js"
+            else
+              npx cypress run --headed --spec "cypress/e2e/Cambaytiger/prod/*.js"
+            fi
