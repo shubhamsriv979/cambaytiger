@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   install-dependencies:
     docker:
-      - image: cypress/base:14  # Use Node.js 14 or higher for optional chaining compatibility
+      - image: cypress/base:16  # Use Node.js 16 to ensure compatibility with Cypress dependencies
     steps:
       - checkout
       - run:
@@ -12,7 +12,7 @@ jobs:
 
   run-tests:
     docker:
-      - image: cypress/base:14
+      - image: cypress/base:16
     steps:
       - checkout
       - run:
