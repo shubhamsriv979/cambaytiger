@@ -3,22 +3,25 @@ version: 2.1
 jobs:
   install-dependencies:
     docker:
-      - image: cypress/base:16  # Use Node.js 16 to ensure compatibility with Cypress dependencies
+      - image: node:19  # Node.js 19 image
     steps:
       - checkout
       - run:
-          name: Install npm dependencies
-          command: npm install
+          name: Install Cypress
+          command: npm install cypress@latest
+      - run:
+          name: Verify Cypress Installation
+          command: npx cypress verify
 
   run-tests:
     docker:
-      - image: cypress/base:16
+      - image: node:19
     steps:
       - checkout
       - run:
           name: Run Cypress Tests
           command: npx cypress run --headed --spec "cypress/e2e/Cambaytiger/stage/Search.js"
-          
+
 workflows:
   version: 2
   test-workflow:
