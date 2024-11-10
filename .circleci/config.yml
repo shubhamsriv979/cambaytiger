@@ -1,29 +1,22 @@
 version: 2.1
 
-jobs:
-  install-dependencies:
-    docker:
-      - image: cypress/base:latest
-    steps:
-      - checkout
-      - run:
-          name: Install npm dependencies
-          command: npm install cypress@13.15.2  # Ensure Cypress is installed
+orbs:
+  cypress: cypress-io/cypress@1
 
-  run-tests:
+jobs:
+  cypress_run:
     docker:
-      - image: cypress/base:latest
+      - image: cypress/included:12.8.0 # or any other compatible Cypress image
     steps:
       - checkout
       - run:
-          name: Run Cypress Tests
-          command: npx cypress run --headed --spec "cypress/e2e/Cambaytiger/stage/Search.js"
-          
+          name: Install dependencies
+          command: yarn install
+      - cypress/run:
+          yarn: true
+
 workflows:
   version: 2
-  test-workflow:
+  build:
     jobs:
-      - install-dependencies
-      - run-tests:
-          requires:
-            - install-dependencies
+      - cypress_run
