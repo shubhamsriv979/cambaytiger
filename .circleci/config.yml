@@ -18,11 +18,8 @@ workflows:
     jobs:
       - cypress/run:
           name: Cypress Tests
-          filters:
-            branches:
-              only: main
-          context: "CI"
-          environment: << parameters.environment >>
+          parameters:
+            environment: << parameters.environment >>
           cypress-command: |
             if [ "<< parameters.environment >>" == "stage" ]; then
               npx cypress run --headed --spec "cypress/e2e/Cambaytiger/stage/*.js"
