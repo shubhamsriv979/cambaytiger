@@ -3,35 +3,22 @@ version: 2.1
 jobs:
   install-dependencies:
     docker:
-      - image: node:19  # Use Node.js 19 image
+      - image: cypress/  # Use Node.js 16 to ensure compatibility with Cypress dependencies
     steps:
       - checkout
       - run:
-          name: Install dependencies
-          command: |
-            apt-get update
-            apt-get install -y xvfb libgtk2.0-0 libgtk-3-0 libgbm-dev libnss3 libasound2 libxss1 libxtst6
-      - run:
-          name: Install Cypress
-          command: npm install cypress@latest
-      - run:
-          name: Verify Cypress Installation
-          command: npx cypress verify
+          name: Install npm dependencies
+          command: npm install
 
   run-tests:
     docker:
-      - image: node:19
+      - image: cypress
     steps:
       - checkout
       - run:
-          name: Start Xvfb
-          command: Xvfb :99 -ac &
-      - run:
           name: Run Cypress Tests
-          environment:
-            DISPLAY: :99  # Use the Xvfb display
           command: npx cypress run --headed --spec "cypress/e2e/Cambaytiger/stage/Search.js"
-
+          
 workflows:
   version: 2
   test-workflow:
