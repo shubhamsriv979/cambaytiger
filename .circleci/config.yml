@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   install-dependencies:
     docker:
-      - image: cypress
+      - image: cypress/base:latest
     steps:
       - checkout
       - run:
@@ -12,7 +12,7 @@ jobs:
 
   run-tests:
     docker:
-      - image: cypress
+      - image: cypress/base:latest
     steps:
       - checkout
       - run:
