@@ -17,7 +17,7 @@ describe('Search functionality', () => {
     cy.get('.AdressCont__inside > :nth-child(1) > div').click();
     cy.wait(5000);
 
-    cy.xpath("//div[@class='showOnDesktop']//input[@placeholder='Search for seafood, chicken & more']").type("But");
+    cy.get("div[class='showOnDesktop'] input[placeholder='Search for seafood, chicken & more']").type("But");
     cy.get("body > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > a:nth-child(1) > p:nth-child(1)").click();
     cy.get("div[class='showOnDesktop'] li[class='breadcrumbs__active'] a").should('contain', "Mutton Curry Cut");
 

@@ -5,5 +5,5 @@ workflows:
   build:
     jobs:
       - cypress/run:          
-          cypress-command: npx cypress run --spec "cypress/e2e/Plixlife/prod/Search.js"
+          cypress-command: npx cypress run --spec "cypress/e2e/Cambaytiger/stage/Booking.js,cypress/e2e/Cambaytiger/stage/Search.js"
 
