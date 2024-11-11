@@ -19,7 +19,7 @@ describe('Search functionality check', () => {
     // Click on the product
     cy.get(':nth-child(1) > .productCardContainer > .sc-fYiAbW > .undefined__cardInfo > a > .productCard__name').click();
     // Verify the product title in PDP  
-    cy.get(".addToCartSectionPlixlife__productName.sc-iKpIOp.YLfm").should('have.contain', 'Apple Cider Vinegar Effervescent with mother for weight loss');
+    cy.get('[data-test="productName"]').should('have.contain', 'Apple Cider Vinegar Effervescent with mother for weight loss');
   })
 
 })

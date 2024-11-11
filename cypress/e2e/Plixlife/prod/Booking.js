@@ -15,7 +15,7 @@ describe('Booking flow', () => {
           cy.get("#ct-content-wrapper > span",{timeout:5000}).click();
       });  
     cy.xpath("//div[@class='slick-slide slick-active']//div//p[@class='productCard__name sc-dNLxif clgulF'][normalize-space()='Weight Loss Plan']").click();
-    cy.get('.desktopAddToCartPdp__mainText.sc-dfVpRl.hAsLhk')
+    cy.get('.desktopAddToCartPdp__mainText')
       .should('be.visible') // Check that the button is visible
       .click(); // Click the button
     cy.contains("Weight Loss Plan").should('be.visible');    
