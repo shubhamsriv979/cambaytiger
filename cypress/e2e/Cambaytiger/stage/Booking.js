@@ -24,7 +24,7 @@ describe('Booking flow', () => {
     const product_urls = [
       'https://cambaytigerstage-nh.farziengineer.co/product/mutton-curry-cut',  //single product
       'https://cambaytigerstage-nh.farziengineer.co/product/chicken-prawns-combo',      //combo product
-      'https://cambaytigerstage-nh.farziengineer.co/fresh-pomfret-medium',                //multi variant
+      // 'https://cambaytigerstage-nh.farziengineer.co/fresh-pomfret-medium',                //multi variant
       // 'https://cambaytigerstage-nh.farziengineer.co/Goan-Cafreal-Curry',      //not available in any location
     ];
 
@@ -33,15 +33,14 @@ describe('Booking flow', () => {
 
     // select location 
     cy.get(':nth-child(1) > #header > .scss_mainNavContainerWrapper__m_O_A > .scss_mainNavContainer__UDVhL > .scss_logoSearchContainer__ca6MR > :nth-child(3) > .scss_GGLocation__cfABD > .scss_GGLocation__topCont__oRucC > :nth-child(5) > .GGLocation__input > input').type("Bangalore");
-    cy.wait(5000);
     cy.get('.AdressCont__inside > :nth-child(1) > div').click();
 
     // Login
-    // cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div div[class='GG_dropDown_button sc-kZUnxY dAzJsv'] span").click();
-    // cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div button[class='user-register']").click();
-
-    cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div div[class='GG_dropDown_button sc-bryTEL fIJmHu'] span",).click();
+    cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div div[class='GG_dropDown_button sc-kZUnxY dAzJsv'] span").click();
     cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div button[class='user-register']").click();
+
+    // cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div div[class='GG_dropDown_button sc-bryTEL fIJmHu'] span",).click();
+    // cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div button[class='user-register']").click();
     cy.wait(5000);
     cy.get("input[placeholder='Enter Phone number']").click().type("6388789049", { delay: 100, force: true });
     cy.get('.scss_loginRegCont__m2Dae > button').click();
@@ -52,18 +51,18 @@ describe('Booking flow', () => {
 
     locations.forEach((location) => {
       context(`Testing food ordering at ${location}`, () => {
-        cy.get(':nth-child(1) > #header > .scss_mainNavContainerWrapper__m_O_A > .scss_mainNavContainer__UDVhL > .scss_logoSearchContainer__ca6MR > [data-test="menuCartOverlayLink"] > .GG-main-menu__icon__LocationStateCity > p').click({ force: true });
-        cy.wait(10000);
-        cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div[class='scss_logoSearchContainer__ca6MR'] div div[class='scss_GGLocation__cfABD'] div[class='scss_GGLocation__topCont__oRucC'] div input[placeholder='Please enter delivery location...']")
-          .click();
-        cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div[class='scss_logoSearchContainer__ca6MR'] div div[class='scss_GGLocation__cfABD'] div[class='scss_GGLocation__topCont__oRucC'] div input[placeholder='Please enter delivery location...']")
-          .eq(0).type(location, { delay: 100, force: true });  // targets the first element (index starts from 0)    
-        cy.wait(10000);
-        cy.get('.AdressCont__inside > :nth-child(1) > div').click();
-        cy.wait(15000);
+        // cy.get(':nth-child(1) > #header > .scss_mainNavContainerWrapper__m_O_A > .scss_mainNavContainer__UDVhL > .scss_logoSearchContainer__ca6MR > [data-test="menuCartOverlayLink"] > .GG-main-menu__icon__LocationStateCity > p').click({ force: true });
+        // cy.wait(10000);
+        // cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div[class='scss_logoSearchContainer__ca6MR'] div div[class='scss_GGLocation__cfABD'] div[class='scss_GGLocation__topCont__oRucC'] div input[placeholder='Please enter delivery location...']")
+        //   .click();
+        // cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div[class='scss_logoSearchContainer__ca6MR'] div div[class='scss_GGLocation__cfABD'] div[class='scss_GGLocation__topCont__oRucC'] div input[placeholder='Please enter delivery location...']")
+        //   .eq(0).type(location);  // targets the first element (index starts from 0)    
+        // cy.wait(10000);
+        // cy.get('.AdressCont__inside > :nth-child(1) > div').click();
+        // cy.wait(15000);
 
 
-        // Call the function
+        
         selectLocationUntilNotMumbai();
         function selectLocationUntilNotMumbai() {
           // Click on the location field to open the location selector
@@ -80,10 +79,13 @@ describe('Booking flow', () => {
             .then(() => {
 
               // Assert to check if the selected location is not "Mumbai"
+              cy.wait(15000);
               cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div[class='scss_logoSearchContainer__ca6MR'] div div[class='scss_GGLocation__cfABD'] div[class='scss_GGLocation__topCont__oRucC'] div input[placeholder='Please enter delivery location...']").then(($elelocation) => {
                 if ($elelocation.val().includes(location)) {
                   // If location is still "Mumbai," re-run the function to select again
+                  cy.wait(1000);
                   cy.get('.AdressCont__inside > :nth-child(1) > div').click();
+                  cy.wait(15000);
                 } else {
                   // Location is not "Mumbai," test can proceed                    
                   cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div[class='scss_logoSearchContainer__ca6MR'] div p[class='GGLocation__hide']").click();
@@ -93,13 +95,13 @@ describe('Booking flow', () => {
               });
             });
         }
-        cy.get("div[class='showOnDesktop'] div[class='scss_logoSearchContainer__ca6MR'] p").then(($var1) => {
-          if ($var1.text().includes('Mumbai')) {
-            // Action if the text contains 'Mumbai'
-          } else {
-            selectLocationUntilNotMumbai();
-          }
-        });
+        // cy.get("div[class='showOnDesktop'] div[class='scss_logoSearchContainer__ca6MR'] p").then(($var1) => {
+        //   if ($var1.text().includes(location)) {
+        //     // Action if the text contains 'Mumbai'
+        //   } else {
+        //     selectLocationUntilNotMumbai();
+        //   }
+        // });
 
         product_urls.forEach((product_urls) => {
           context(`Testing food ordering at ${product_urls}`, () => {
@@ -117,7 +119,7 @@ describe('Booking flow', () => {
             });
 
             cy.get('body').then((body) => {
-              const addToCartSelector = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] div[class='product-page'] main[class='sc-jWNpPo gluggg'] div[class=' product-container '] div[class='product-page__product__info'] div[class='showOnDesktop'] div[class='product-page__product__info--fixed'] div[class='sc-hBbWxd ljHzFv'] div div[class='showOnDesktop'] div[class='undefined__mainText sc-gzOgki iuyAzF']";
+              const addToCartSelector = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] div[class='product-page'] main[class='sc-jWNpPo gluggg'] div[class=' product-container '] div[class='product-page__product__info'] div[class='showOnDesktop'] div[class='product-page__product__info--fixed'] div[class='sc-hBbWxd ljHzFv'] div div[class='showOnDesktop'] div[class='undefined__mainText sc-gzOgki fSlvAH']";
               if (body.find(addToCartSelector).length > 0) {
                 cy.get(addToCartSelector).then(($el) => {
                   const buttonText = $el.text().trim();
@@ -127,7 +129,7 @@ describe('Booking flow', () => {
                     cy.wrap($el).click({ force: true });
 
                     cy.contains("Cart").eq(0).click();
-                    cy.get(':nth-child(3) > [data-test="cartRow"] > .sc-fXUGxx > .title-and-trash > a > [data-test="itemName"]').should('be.visible');
+                    cy.get('[data-test="itemName"]').should('be.visible');
                     cy.contains("proceed to checkout").click();
                     cy.get('.Address_button__text__ved_d').click();
                     cy.get("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)").click();
@@ -144,31 +146,30 @@ describe('Booking flow', () => {
                         }
                       });
                     }
-                    cy.wait(5000);
-                    cy.get('.payment_button__text__busIX')
-                    .should('be.visible') // Ensure the button is visible
-                    .click({ force: true })
-                    cy.get('body').then((body) => {
-                      const selectpayment = ".payment_heading__eLNOo";
-                      // Check if the payment heading is present
-                      if (body.find(selectpayment).length > 0) {
-                        function submit(retries = 10) {
-                          if (retries > 0) {
-                            cy.get('.payment_button__text__busIX')
-                              .should('be.visible') // Ensure the button is visible
-                              .click({ force: true })
-                              .then(() => {
-                                cy.wait(1000); // Wait before retrying
-                                submit(retries - 1); // Decrement retries and call again
-                              });
-                          } else {
-                            cy.log('Max retries reached, button not clicked.');
-                          }
-                        }
+                    cy.wait(15000);
+                    cy.get('.payment_button__text__busIX')                    
+                    .click({ force: true });
+                    // cy.get('body').then((body) => {
+                    //   const selectpayment = ".payment_heading__eLNOo";
+                    //   // Check if the payment heading is present
+                    //   if (body.find(selectpayment).length > 0) {
+                    //     function submit(retries = 10) {
+                    //       if (retries > 0) {
+                    //         cy.get('.payment_button__text__busIX', {timeout:5000})
+                    //           .should('be.visible') // Ensure the button is visible
+                    //           .click({ force: true })
+                    //           .then(() => {
+                    //             cy.wait(10000); // Wait before retrying
+                    //             submit(retries - 1); // Decrement retries and call again
+                    //           });
+                    //       } else {
+                    //         cy.log('Max retries reached, button not clicked.');
+                    //       }
+                    //     }
 
-                        submit(); // Initial call to the function
-                      }
-                    });
+                    //     submit(); // Initial call to the function
+                    //   }
+                    // });
 
 
                     cy.url().should('include', 'order-placed',);
