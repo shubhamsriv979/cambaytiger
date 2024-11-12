@@ -4,6 +4,9 @@ orbs:
 workflows:
   build:
     jobs:
-      - cypress/run:           
-          cypress-command: npx cypress run --headed --browser electron --spec "cypress/e2e/Cambaytiger/stage/Search.js"
-
+      - cypress/run:
+          browser: electron
+          spec: "cypress/e2e/Cambaytiger/stage/Search.js"
+          record: false
+          config: "video=true"
+          headless: false  # This should enforce headed mode
