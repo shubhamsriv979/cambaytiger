@@ -6,6 +6,4 @@ workflows:
   build:
     jobs:
       - cypress/run:
-          cypress-command: |
-            Xvfb :99 -ac &
-            DISPLAY=:99 npx cypress run --headed --browser chrome --no-sandbox --spec "cypress/e2e/Cambaytiger/stage/Search.js"
+          cypress-command: npx cypress run --headed --browser chrome --spec "cypress/e2e/Cambaytiger/stage/Search.js"
