@@ -1,19 +1,8 @@
 version: 2.1
-
 orbs:
   cypress: cypress-io/cypress@3.1.2
-
-jobs:
-  custom-cypress-run:
-    docker:
-      - image: cypress/included:12.0.0  # Adjust the Cypress version if needed
-    steps:
-      - checkout
-      - run:
-          name: Run Cypress in headed mode
-          command: npx cypress run --headed --browser electron --spec "cypress/e2e/Cambaytiger/stage/Search.js"
-
 workflows:
   build:
     jobs:
-      - custom-cypress-run
+      - cypress/run:           
+          cypress-command: npx cypress run --headed --spec "cypress/e2e/Cambaytiger/stage/Search.js"
