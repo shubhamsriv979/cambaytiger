@@ -9,12 +9,14 @@ describe('Booking flow', () => {
 
   it('Booking flow', () => {
     cy.visit('https://www.plixlife.com/')
-    cy.frameLoaded("[id='wiz-iframe-intent']");
-         // Step 3: Interact with elements inside the iframe
-         cy.iframe("[id='wiz-iframe-intent']").within(() => {
-          cy.get("#ct-content-wrapper > span",{timeout:5000}).click();
-      });  
-    cy.xpath("//div[@class='slick-slide slick-active']//div//p[@class='productCard__name sc-dNLxif clgulF'][normalize-space()='Weight Loss Plan']").click();
+    
+    // Access the iframe and wait for it to load
+    cy.get("#wiz-iframe-intent").then((iframedata) => {
+      // Access the iframe's document
+      iframedata.contents().find('body')      
+    })
+    cy.reload();
+    cy.get("body > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(4) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(7) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > a:nth-child(1) > p:nth-child(1)").click();
     cy.get('.desktopAddToCartPdp__mainText')
       .should('be.visible') // Check that the button is visible
       .click(); // Click the button
@@ -23,6 +25,13 @@ describe('Booking flow', () => {
     cy.get("li[class='plixlife-main-menu__searchInput'] div div[class='SearchSuggestionBar_wrapper__1Uc5K']").type("ACV");
     cy.get(':nth-child(2) > .productCardContainer > .sc-fYiAbW > .undefined__buttonContainer > [data-test="addProductToCartButton"]').click();
     cy.contains("Fit & Slim").should('be.visible');
+    cy.get('.new-place-button').click();
+    cy.get("#gokwik-iframe").then((iframedata) => {
+      // Access the iframe's document
+      iframedata.contents().find('body')
+      
+    })
+    
     cy.visit('https://www.plixlife.com/checkout/address');
     cy.get(':nth-child(1) > .CheckoutV3_row__B8iYl > .CheckoutV3_inputErroDiv__Mnt0N > .Input_inputContainer1___hB1t > .Input_inputContainer1__input__nFgYI').type("6388789049");
     cy.get('.CheckoutV3_formFieldsContainer__oslV0 > :nth-child(5) > .CheckoutV3_row__B8iYl > :nth-child(1) > .Input_inputContainer1___hB1t > .Input_inputContainer1__input__nFgYI').type("Shubham");
