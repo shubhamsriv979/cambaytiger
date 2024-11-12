@@ -2,7 +2,10 @@ version: 2.1
 orbs:
   cypress: cypress-io/cypress@3.1.2
 workflows:
+  version: 2
   build:
     jobs:
-      - cypress/run:           
-          cypress-command: npx cypress run --headed --spec "cypress/e2e/Cambaytiger/stage/Search.js"
+      - cypress/run:
+          cypress-command: |
+            Xvfb :99 -ac &
+            DISPLAY=:99 npx cypress run --headed --browser chrome --no-sandbox --spec "cypress/e2e/Cambaytiger/stage/Search.js"
