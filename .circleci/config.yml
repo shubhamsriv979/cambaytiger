@@ -1,12 +1,18 @@
+# to use orbs, must use version >= 2.1
 version: 2.1
 orbs:
-  cypress: cypress-io/cypress@3.1.2
-
+  # import Cypress orb by specifying an exact version x.y.z
+  # or the latest version 1.x.x using "@1" syntax
+  cypress: cypress-io/cypress@1
 workflows:
-  version: 2
   build:
     jobs:
+      # "cypress" is the name of the imported orb
+      # "run" is the name of the job defined in Cypress orb
       - cypress/run:
-          cypress-command: npx cypress run --spec "cypress/e2e/Cambaytiger/stage/Booking.js"
-
-
+          command: npm run pretest && npm run test
+          # always store any test screenshots and videos
+          store_artifacts: true
+          post-steps:
+            - store_test_results:
+                path: cypress/reports
