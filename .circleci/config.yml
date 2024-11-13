@@ -15,4 +15,4 @@ workflows:
           store_artifacts: true
           post-steps:
             - store_test_results:
-                path: cypress/reports
+                path: cypress/reports/new
