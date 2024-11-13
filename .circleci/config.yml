@@ -1,9 +1,13 @@
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@3.1.2
+
 workflows:
   version: 2
   build:
     jobs:
       - cypress/run:
           cypress-command: npx cypress run --spec "cypress/e2e/Cambaytiger/prod/Booking.js"
+          store_artifacts: true     # Store artifacts, including videos
+          store_screenshots: true    # Save screenshots on failure
+          store_videos: true         # Save videos on failure
