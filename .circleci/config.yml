@@ -8,6 +8,18 @@ workflows:
     jobs:
       - cypress/run:
           cypress-command: npx cypress run --spec "cypress/e2e/Cambaytiger/prod/Booking.js"
-          store_artifacts: true     # Store artifacts, including videos
-          store_screenshots: true    # Save screenshots on failure
-          store_videos: true         # Save videos on failure
+
+jobs:
+  persist-artifacts:
+    docker:
+      - image: cypress/base:latest
+    steps:
+      - run:
+          name: Run Cypress Tests
+          command: npx cypress run --spec "cypress/e2e/Cambaytiger/prod/Booking.js"
+      - store_artifacts:
+          path: cypress/screenshots
+          destination: screenshots
+      - store_artifacts:
+          path: cypress/videos
+          destination: videos
