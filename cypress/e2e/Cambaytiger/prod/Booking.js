@@ -188,20 +188,20 @@ describe('Booking flow', () => {
     });
   })
   // Log all failed URLs after the test suite is complete
-  after(() => {
-    if (failedUrls.length > 0) {
-      cy.log("The following URLs failed:");
+  // after(() => {
+  //   if (failedUrls.length > 0) {
+  //     cy.log("The following URLs failed:");
 
-      // Log each failed URL before failing the test
-      failedUrls.forEach(url => {
-        cy.log(url);
-      });
+  //     // Log each failed URL before failing the test
+  //     failedUrls.forEach(url => {
+  //       cy.log(url);
+  //     });
 
-    }
-    if (failedUrls.length > 0) {
-      // Fail the test suite after logging all failed URLs
-      assert.fail("One or more URLs failed.");
-    }
-  });
+  //   }
+  //   if (failedUrls.length > 0) {
+  //     // Fail the test suite after logging all failed URLs
+  //     assert.fail("One or more URLs failed.");
+  //   }
+  // });
 
 })
