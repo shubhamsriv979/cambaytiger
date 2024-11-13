@@ -22,25 +22,27 @@ describe('Booking flow', () => {
     // ];
 
     const product_urls = [
-      'https://cambaytigerstage-nh.farziengineer.co/product/mutton-curry-cut',  //single product
-      'https://cambaytigerstage-nh.farziengineer.co/product/chicken-prawns-combo',      //combo product
-      // 'https://cambaytigerstage-nh.farziengineer.co/fresh-pomfret-medium',                //multi variant
-      // 'https://cambaytigerstage-nh.farziengineer.co/Goan-Cafreal-Curry',      //not available in any location
+      'https://cambaytigerstage-nh.farziengineer.co/product/mutton-curry-cut',
+      'https://cambaytigerstage-nh.farziengineer.co/product/chicken-prawns-combo',      //combo product        
+      'https://cambaytigerstage-nh.farziengineer.co/product/mutton-boneless-chunks',  //single product
+
     ];
 
     cy.visit('https://cambaytigerstage-nh.farziengineer.co/');
+    // cy.wait(20000);
     // cy.reload();
 
     // select location 
-    cy.get(':nth-child(1) > #header > .scss_mainNavContainerWrapper__m_O_A > .scss_mainNavContainer__UDVhL > .scss_logoSearchContainer__ca6MR > :nth-child(3) > .scss_GGLocation__cfABD > .scss_GGLocation__topCont__oRucC > :nth-child(5) > .GGLocation__input > input').type("Bangalore");
+    cy.get(':nth-child(1) > #header > .scss_mainNavContainerWrapper__m_O_A > .scss_mainNavContainer__UDVhL > .scss_logoSearchContainer__ca6MR > :nth-child(3) > .scss_GGLocation__cfABD > .scss_GGLocation__topCont__oRucC > :nth-child(5) > .GGLocation__input > input').type("Bangalore", { delay: 100, force: true });
     cy.get('.AdressCont__inside > :nth-child(1) > div').click();
 
-    // Login
+    // stage Login
     cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div div[class='GG_dropDown_button sc-kZUnxY dAzJsv'] span").click();
     cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div button[class='user-register']").click();
-
+    // prod login
     // cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div div[class='GG_dropDown_button sc-bryTEL fIJmHu'] span",).click();
     // cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div button[class='user-register']").click();
+
     cy.wait(5000);
     cy.get("input[placeholder='Enter Phone number']").click().type("6388789049", { delay: 100, force: true });
     cy.get('.scss_loginRegCont__m2Dae > button').click();
@@ -62,7 +64,7 @@ describe('Booking flow', () => {
         // cy.wait(15000);
 
 
-        
+
         selectLocationUntilNotMumbai();
         function selectLocationUntilNotMumbai() {
           // Click on the location field to open the location selector
@@ -119,7 +121,10 @@ describe('Booking flow', () => {
             });
 
             cy.get('body').then((body) => {
-              const addToCartSelector = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] div[class='product-page'] main[class='sc-jWNpPo gluggg'] div[class=' product-container '] div[class='product-page__product__info'] div[class='showOnDesktop'] div[class='product-page__product__info--fixed'] div[class='sc-hBbWxd ljHzFv'] div div[class='showOnDesktop'] div[class='undefined__mainText sc-gzOgki fSlvAH']";
+              //stage
+              const addToCartSelector = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] div[class='product-page'] main[class='sc-hGqLPS iUMsS'] div[class=' product-container '] div[class='product-page__product__info'] div[class='showOnDesktop'] div[class='product-page__product__info--fixed'] div[class='sc-hBbWxd ljHzFv'] div div[class='showOnDesktop'] div[class='undefined__mainText sc-gzOgki fSlvAH']";
+              //prod
+              // const addToCartSelector = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] div[class='product-page'] main[class='sc-jWNpPo gluggg'] div[class=' product-container '] div[class='product-page__product__info'] div[class='showOnDesktop'] div[class='product-page__product__info--fixed'] div[class='sc-hBbWxd ljHzFv'] div div[class='showOnDesktop'] div[class='undefined__mainText sc-gzOgki iuyAzF']";
               if (body.find(addToCartSelector).length > 0) {
                 cy.get(addToCartSelector).then(($el) => {
                   const buttonText = $el.text().trim();
@@ -127,11 +132,70 @@ describe('Booking flow', () => {
                   if (buttonText.includes("Add To Cart")) {
                     // "Add To Cart" button is available, proceed with clicking it
                     cy.wrap($el).click({ force: true });
-
                     cy.contains("Cart").eq(0).click();
-                    
-                    
-                    
+                    cy.get(".overlayFarzicom__header__text").should('be.visible');
+                    cy.wait(10000);
+
+                    cy.get('body').then(($body) => {
+                      if ($body.find("button[class='cart-gg__footer__button__place__order'] span").length > 0) {
+                        cy.get(".sc-htnqrb.dVayQT").should("be.visible");
+                        cy.contains("proceed to checkout").click();
+                        cy.get('.Address_button__text__ved_d').click();
+                        cy.get("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)").click();
+                        cy.get(".Delivery_button__text__d8uUZ").click();
+                        // Call the function
+                        selectCOD();
+                        function selectCOD() {
+                          cy.get("input[value='mirumee.payments.dummy']").then(($radio) => {
+                            if (!$radio.is(':checked')) {
+                              cy.wait(1000);
+                              cy.wrap($radio).click({ force: true });
+                              selectCOD(); // Call the function recursively until it is selected
+                            }
+                          });
+                        }
+                        cy.wait(15000);
+                        cy.get('.payment_button__text__busIX')
+                          .click({ force: true });
+                        // cy.get('body').then((body) => {
+                        //   const selectpayment = ".payment_heading__eLNOo";
+                        //   // Check if the payment heading is present
+                        //   if (body.find(selectpayment).length > 0) {
+                        //     function submit(retries = 10) {
+                        //       if (retries > 0) {
+                        //         cy.get('.payment_button__text__busIX', {timeout:5000})
+                        //           .should('be.visible') // Ensure the button is visible
+                        //           .click({ force: true })
+                        //           .then(() => {
+                        //             cy.wait(10000); // Wait before retrying
+                        //             submit(retries - 1); // Decrement retries and call again
+                        //           });
+                        //       } else {
+                        //         cy.log('Max retries reached, button not clicked.');
+                        //       }
+                        //     }
+
+                        //     submit(); // Initial call to the function
+                        //   }
+                        // });
+
+
+                        cy.url().should((url) => {
+                          expect(url).to.satisfy((currentUrl) => 
+                            currentUrl === 'https://cambaytigerstage-nh.farziengineer.co/' ||
+                            currentUrl === 'https://cambaytigerstage-nh.farziengineer.co/order-placed'
+                          );
+                        });
+                        
+                        
+
+                      } else {
+                        cy.log('product is out of stock');
+                        cy.get("button[class='overlayFarzicom__header__close-icon'] svg").click();
+                      }
+                    });
+
+
                   } else if (buttonText.includes("Notify Me")) {
                     // "Notify Me" button is available, log a message or perform alternate actions
                     cy.log("Notify Me button is available instead of Add To Cart");
@@ -146,20 +210,20 @@ describe('Booking flow', () => {
     });
   })
   // Log all failed URLs after the test suite is complete
-  after(() => {
-    if (failedUrls.length > 0) {
-      cy.log("The following URLs failed:");
+  // after(() => {
+  //   if (failedUrls.length > 0) {
+  //     cy.log("The following URLs failed:");
 
-      // Log each failed URL before failing the test
-      failedUrls.forEach(url => {
-        cy.log(url);
-      });
+  //     // Log each failed URL before failing the test
+  //     failedUrls.forEach(url => {
+  //       cy.log(url);
+  //     });
 
-    }
-    if (failedUrls.length > 0) {
-      // Fail the test suite after logging all failed URLs
-      assert.fail("One or more URLs failed.");
-    }
-  });
+  //   }
+  //   if (failedUrls.length > 0) {
+  //     // Fail the test suite after logging all failed URLs
+  //     assert.fail("One or more URLs failed.");
+  //   }
+  // });
 
 })

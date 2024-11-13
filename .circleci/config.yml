@@ -16,7 +16,7 @@ jobs:
     steps:
       - run:
           name: Run Cypress Tests
-          command: npx cypress run --spec "cypress/e2e/Cambaytiger/prod/Booking.js"
+          command: npx cypress run --spec "cypress/e2e/Cambaytiger/stage/Booking.js"
       - store_artifacts:
           path: cypress/screenshots
           destination: screenshots
