@@ -29,6 +29,7 @@ describe('Booking flow', () => {
     ];
 
     cy.visit('https://cambaytiger.com/');
+    cy.wait(15000);
     cy.reload();
 
     // select location 
