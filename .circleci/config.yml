@@ -7,6 +7,6 @@ workflows:
   build:
     jobs:
       - cypress/run:
-          cypress-command: npx cypress run --env viewportWidth=1000,viewportHeight=660 --headed --spec "cypress/e2e/Cambaytiger/stage/Booking.js"
+          cypress-command: npx cypress run --spec "cypress/e2e/Cambaytiger/stage/Booking.js"
 
 
