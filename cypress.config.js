@@ -5,14 +5,15 @@ const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
   projectId: '9cqbzv', // Cypress Dashboard project ID
-    viewportWidth: 1000,   // Set width here
-    viewportHeight: 660,   // Set height here
+    
     defaultCommandTimeout: 60000, // Default timeout for Cypress commands
     pageLoadTimeout: 500000, // Page load timeout
     chromeWebSecurity: false, // Disable Chrome web security for cross-origin iframes
 
 
   e2e: {
+    viewportWidth: 1000,   // Set width here
+    viewportHeight: 660,   // Set height here
     specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}', // Location of your test files
     setupNodeEvents(on, config) {
       require('cypress-mochawesome-reporter/plugin')(on);
