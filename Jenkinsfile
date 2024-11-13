@@ -43,7 +43,7 @@ pipeline {
                     // } else {
                     //     bat "npx cypress run --headed --spec \"${testSpec}\""
                     // }
-                    bat "npx cypress run --headed --spec "cypress/e2e/Cambaytiger/prod/Booking.js""
+                    bat "npx cypress run --headed --spec 'cypress/e2e/Cambaytiger/prod/Booking.js'"
                 }
             }
         }
