@@ -29,11 +29,11 @@ describe('Booking flow', () => {
     ];
 
     cy.visit('https://cambaytiger.com/');
-    cy.wait(15000);
+    cy.wait(20000);
     cy.reload();
 
     // select location 
-    cy.get(':nth-child(1) > #header > .scss_mainNavContainerWrapper__m_O_A > .scss_mainNavContainer__UDVhL > .scss_logoSearchContainer__ca6MR > :nth-child(3) > .scss_GGLocation__cfABD > .scss_GGLocation__topCont__oRucC > :nth-child(5) > .GGLocation__input > input').type("Bangalore");
+    cy.get(':nth-child(1) > #header > .scss_mainNavContainerWrapper__m_O_A > .scss_mainNavContainer__UDVhL > .scss_logoSearchContainer__ca6MR > :nth-child(3) > .scss_GGLocation__cfABD > .scss_GGLocation__topCont__oRucC > :nth-child(5) > .GGLocation__input > input').type("Bangalore",{delay: 100, force: true });
     cy.get('.AdressCont__inside > :nth-child(1) > div').click();
 
     // Login
