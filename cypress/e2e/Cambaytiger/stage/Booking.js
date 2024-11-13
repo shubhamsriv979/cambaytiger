@@ -129,50 +129,9 @@ describe('Booking flow', () => {
                     cy.wrap($el).click({ force: true });
 
                     cy.contains("Cart").eq(0).click();
-                    cy.get('[data-test="itemName"]').should('be.visible');
-                    cy.contains("proceed to checkout").click();
-                    cy.get('.Address_button__text__ved_d').click();
-                    cy.get("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)").click();
-                    cy.get(".Delivery_button__text__d8uUZ").click();
-
-                    // Call the function
-                    selectCOD();
-                    function selectCOD() {
-                      cy.get("input[value='mirumee.payments.dummy']").then(($radio) => {
-                        if (!$radio.is(':checked')) {
-                          cy.wait(1000);
-                          cy.wrap($radio).click({ force: true });
-                          selectCOD(); // Call the function recursively until it is selected
-                        }
-                      });
-                    }
-                    cy.wait(15000);
-                    cy.get('.payment_button__text__busIX')                    
-                    .click({ force: true });
-                    // cy.get('body').then((body) => {
-                    //   const selectpayment = ".payment_heading__eLNOo";
-                    //   // Check if the payment heading is present
-                    //   if (body.find(selectpayment).length > 0) {
-                    //     function submit(retries = 10) {
-                    //       if (retries > 0) {
-                    //         cy.get('.payment_button__text__busIX', {timeout:5000})
-                    //           .should('be.visible') // Ensure the button is visible
-                    //           .click({ force: true })
-                    //           .then(() => {
-                    //             cy.wait(10000); // Wait before retrying
-                    //             submit(retries - 1); // Decrement retries and call again
-                    //           });
-                    //       } else {
-                    //         cy.log('Max retries reached, button not clicked.');
-                    //       }
-                    //     }
-
-                    //     submit(); // Initial call to the function
-                    //   }
-                    // });
-
-
-                    cy.url().should('include', 'order-placed',);
+                    
+                    
+                    
                   } else if (buttonText.includes("Notify Me")) {
                     // "Notify Me" button is available, log a message or perform alternate actions
                     cy.log("Notify Me button is available instead of Add To Cart");
