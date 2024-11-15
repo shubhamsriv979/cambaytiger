@@ -10,22 +10,26 @@ describe('Search functionality check', () => {
   it('Search functionality check', () => {
     cy.visit('https://www.plixlife.com/');
 
-    
-    function clickUntilVisible() {
-      cy.contains("Continue").then(($button) => {
-          if ($button.length && $button.is(':visible')) {
-              // If the button exists and is visible, click it.
-              cy.wrap($button).click({ force: true });
+    function clickUntilIframeDisappears() {
+      cy.get('body').then(($body) => {
+          // Check if the iframe is visible
+          if ($body.find('#wiz-iframe-intent').length > 0) {
+              cy.contains("Continue", { timeout: 10000 }) // Adjust timeout as needed
+                  .should('be.visible')
+                  .click({ force: true });
+              
+              // Wait for a short duration and re-check
+              cy.wait(500);
+              clickUntilIframeDisappears();
           } else {
-              // Retry after a delay.
-              cy.wait(500); // Adjust the delay.
-              clickUntilVisible();
+              // If the iframe is not visible, stop the recursion
+              cy.log('Iframe is no longer visible, stopping the clicks.');
           }
       });
   }
   
   // Call the function
-  clickUntilVisible();
+  clickUntilIframeDisappears();
   
     // cy.reload();
 
