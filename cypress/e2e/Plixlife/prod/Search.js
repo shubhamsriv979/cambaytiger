@@ -12,13 +12,13 @@ describe('Search functionality check', () => {
 
     
     function clickUntilVisible() {
-      cy.contains("Continue").then((button) => {
-          if (Cypress.$(button).is(':visible')) {
-              // If the button is visible, click it.
-              cy.wrap(button).click({ force: true });
+      cy.contains("Continue").then(($button) => {
+          if ($button.length && $button.is(':visible')) {
+              // If the button exists and is visible, click it.
+              cy.wrap($button).click({ force: true });
           } else {
-              // If not visible, retry the function after a short wait.
-              cy.wait(500); // Adjust the wait time as needed.
+              // Retry after a delay.
+              cy.wait(500); // Adjust the delay.
               clickUntilVisible();
           }
       });
