@@ -10,6 +10,7 @@ describe('Search functionality check', () => {
   it('Search functionality check', () => {
     cy.visit('https://www.plixlife.com/');
     cy.contains("Continue").click();
+    cy.reload();
 
     // Access the iframe and wait for it to load
     cy.get("#wiz-iframe-intent").then((iframedata) => {
