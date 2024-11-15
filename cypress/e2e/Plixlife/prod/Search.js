@@ -13,7 +13,7 @@ describe('Search functionality check', () => {
     function clickUntilIframeDisappears() {
       cy.get('body').then(($body) => {
           // Check if the iframe is visible
-          if ($body.find('#wiz-iframe-intent').length > 0) {
+          if ($body.find('#wiz-iframe-intent').length === 0) {
               cy.contains("Continue", { timeout: 10000 }) // Adjust timeout as needed
                   .should('be.visible')
                   .click({ force: true });
