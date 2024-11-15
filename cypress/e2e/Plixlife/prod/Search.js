@@ -10,8 +10,23 @@ describe('Search functionality check', () => {
   it('Search functionality check', () => {
     cy.visit('https://www.plixlife.com/');
 
-    cy.contains("Continue").click({force:true});
-    cy.contains("Continue").click({force:true});
+    
+    function clickUntilVisible() {
+      cy.contains("Continue").then((button) => {
+          if (Cypress.$(button).is(':visible')) {
+              // If the button is visible, click it.
+              cy.wrap(button).click({ force: true });
+          } else {
+              // If not visible, retry the function after a short wait.
+              cy.wait(500); // Adjust the wait time as needed.
+              clickUntilVisible();
+          }
+      });
+  }
+  
+  // Call the function
+  clickUntilVisible();
+  
     // cy.reload();
 
     // Access the iframe and wait for it to load
