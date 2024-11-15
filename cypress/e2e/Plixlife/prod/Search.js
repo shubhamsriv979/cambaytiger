@@ -10,7 +10,7 @@ describe('Search functionality check', () => {
   it('Search functionality check', () => {
     cy.setCookie('popup-dismissed', 'true'); // Replace with the actual cookie name if known
     cy.visit('https://www.plixlife.com/');   
-    cy.contains("Continue").click();
+    // cy.contains("Continue").click();
 
     // // Search the product
     // cy.get("li[class='plixlife-main-menu__searchInput'] div div[class='SearchSuggestionBar_wrapper__1Uc5K']").type("ACV");
