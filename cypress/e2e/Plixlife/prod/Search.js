@@ -10,7 +10,7 @@ describe('Search functionality check', () => {
   it('Search functionality check', () => {
     cy.visit('https://www.plixlife.com/');
 
-    cy.contains("Continue").click();
+    cy.contains("sdfksdjfksdfj").click({force:true});
     // cy.reload();
 
     // Access the iframe and wait for it to load
