@@ -8,9 +8,9 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 describe('Search functionality check', () => {
 
   it('Search functionality check', () => {
-    cy.visit('https://www.plixlife.com/?region=US');
+    cy.visit('https://www.plixlife.com/');
 
-    // cy.contains("Continue").click();
+    cy.contains("Continue").click();
     // cy.reload();
 
     // Access the iframe and wait for it to load
