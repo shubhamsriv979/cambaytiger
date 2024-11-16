@@ -8,6 +8,8 @@ jobs:
     docker:
       - image: cypress/base:latest
     resource_class: large
+    timeout: 30m
+
     steps:
       - checkout
       - run:
@@ -15,7 +17,7 @@ jobs:
           command: npm install
       - run:
           name: Run Cypress tests
-          command: npx cypress run --spec "cypress/e2e/Cambaytiger/stage/404.js"
+          command: npx cypress run --spec "cypress/e2e/Cambaytiger/stage/404.js" --disable-gpu
       - store_artifacts:
           path: cypress/reports
           destination: test-report
