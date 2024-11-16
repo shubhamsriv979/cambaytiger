@@ -6,7 +6,7 @@ orbs:
 jobs:
   custom-cypress-run:
     docker:
-      - image: cypress/included:latest  # Using Cypress official image with Chrome preinstalled
+      - image: cypress/base:latest
     resource_class: large
     steps:
       - checkout
@@ -15,7 +15,7 @@ jobs:
           command: npm install
       - run:
           name: Run Cypress tests
-          command: npx cypress run --spec "cypress/e2e/Cambaytiger/stage/404.js" --disable-gpu
+          command: npx cypress run --spec "cypress/e2e/Cambaytiger/stage/404.js"
       - store_artifacts:
           path: cypress/reports
           destination: test-report
@@ -24,5 +24,4 @@ workflows:
   version: 2
   build:
     jobs:
-      - custom-cypress-run:
-          timeout: 30m  # Set the timeout at the workflow level for this job
+      - custom-cypress-run
