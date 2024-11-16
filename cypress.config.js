@@ -6,6 +6,8 @@ module.exports = defineConfig({
   defaultCommandTimeout: 60000, // Default timeout for Cypress commands
   pageLoadTimeout: 500000, // Page load timeout
   chromeWebSecurity: false, // Disable Chrome web security for cross-origin iframes
+  experimentalMemoryManagement: true, // Enable experimental memory management feature
+
 
 
   e2e: {

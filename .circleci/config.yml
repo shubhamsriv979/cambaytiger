@@ -8,6 +8,7 @@ workflows:
   build:
     jobs:
       - cypress/run:
+          resource_class: large
           cypress-command: npx cypress run --spec "cypress/e2e/Cambaytiger/stage/404.js"
           post-steps:
             - store_artifacts:
