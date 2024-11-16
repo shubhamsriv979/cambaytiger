@@ -6,7 +6,7 @@ orbs:
 jobs:
   custom-cypress-run:
     docker:
-      - image: cypress/base:node14.18.1 # Use a suitable Cypress base image
+      - image: cypress/base:node14.18.1 # Use a Cypress base image
     steps:
       - checkout
       - restore_cache:
@@ -28,5 +28,4 @@ workflows:
   build:
     jobs:
       - custom-cypress-run:
-             no_output_timeout: 20m
-
+          timeout_in_minutes: 30
