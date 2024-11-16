@@ -1,8 +1,9 @@
-let failedUrls = [];
-Cypress.on('uncaught:exception', (err, runnable) => {
-  // returning false here prevents Cypress from
-  // failing the test due to the uncaught exception
-  return false;
+let failedUrls = []; // Array to track failed URLs
+
+Cypress.on('fail', (error, runnable) => {
+  // Add any custom behavior during failure, e.g., logging the error
+  cy.task('log', `Test failed: ${runnable.title}`);
+  throw error; // Re-throw the error to fail the test
 });
 
 describe('Booking flow', () => {
@@ -125,7 +126,7 @@ describe('Booking flow', () => {
 
             cy.get('body').then((body) => {
               //stage
-              const addToCartSelector = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] div[class='product-page'] main[class='sc-hGqLPS iUMsS'] div[class=' product-container '] div[class='product-page__product__info'] div[class='showOnDesktop'] div[class='product-page__product__info--fixed'] div[class='sc-hBbWxd ljHzFv'] div div[class='showOnDesktop'] div[class='undefined__mainText sc-gzOgki fSlvAH']";
+              const addToCartSelector = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] div[class='product-page'] main[class='sc-jWNpPo gluggg'] div[class=' product-container '] div[class='product-page__product__info'] div[class='showOnDesktop'] div[class='product-page__product__info--fixed'] div[class='sc-hBbWxd ljHzFv'] div div[class='showOnDesktop'] div[class='undefined__mainText sc-gzOgki fSlvAH']";
               //prod
               // const addToCartSelector = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] div[class='product-page'] main[class='sc-jWNpPo gluggg'] div[class=' product-container '] div[class='product-page__product__info'] div[class='showOnDesktop'] div[class='product-page__product__info--fixed'] div[class='sc-hBbWxd ljHzFv'] div div[class='showOnDesktop'] div[class='undefined__mainText sc-gzOgki iuyAzF']";
               if (body.find(addToCartSelector).length > 0) {
@@ -213,20 +214,16 @@ describe('Booking flow', () => {
     });
   })
   // Log all failed URLs after the test suite is complete
-  // after(() => {
-  //   if (failedUrls.length > 0) {
-  //     cy.log("The following URLs failed:");
-
-  //     // Log each failed URL before failing the test
-  //     failedUrls.forEach(url => {
-  //       cy.log(url);
-  //     });
-
-  //   }
-  //   if (failedUrls.length > 0) {
-  //     // Fail the test suite after logging all failed URLs
-  //     assert.fail("One or more URLs failed.");
-  //   }
-  // });
+  after(() => {
+    if (failedUrls.length > 0) {
+      // Log failed URLs regardless of the test outcome
+      cy.task('log', "The following URLs failed:");
+      failedUrls.forEach(url => cy.task('log', url));
+      // throw new Error("One or more URLs failed."); // Explicitly fail the test suite
+      cy.get("Some Urls contains 404 page",{timeout:1000});
+    } else {
+      cy.task('log', "All URLs passed successfully."); // Always log success
+    }
+  });
 
 })
