@@ -9,6 +9,7 @@ workflows:
     jobs:
       - cypress/run:
           cypress-command: npx cypress run --spec "cypress/e2e/Cambaytiger/stage/404.js"
+          no_output_timeout: 30m
           post-steps:
             - store_artifacts:
                 path: cypress/reports
