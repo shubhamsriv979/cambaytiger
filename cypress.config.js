@@ -1,14 +1,11 @@
-
-
-
 const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
   projectId: '9cqbzv', // Cypress Dashboard project ID
-    
-    defaultCommandTimeout: 20000, // Default timeout for Cypress commands
-    pageLoadTimeout: 500000, // Page load timeout
-    chromeWebSecurity: false, // Disable Chrome web security for cross-origin iframes
+
+  defaultCommandTimeout: 60000, // Default timeout for Cypress commands
+  pageLoadTimeout: 500000, // Page load timeout
+  chromeWebSecurity: false, // Disable Chrome web security for cross-origin iframes
 
 
   e2e: {
@@ -18,10 +15,17 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       require('cypress-mochawesome-reporter/plugin')(on);
       // Add custom events or plugins here, if needed
+          // Register the `log` task
+          on('task', {
+            log(message) {
+              console.log(message); // Logs the message to the terminal
+              return null; // Must return something or Cypress will fail
+            },
+          });
     },
   },
 
-  video: true, // Disable video recording
+  video: false, // Disable video recording
 
   reporter: 'cypress-mochawesome-reporter', // Use the Mochawesome reporter
   reporterOptions: {
