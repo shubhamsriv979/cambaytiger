@@ -70,7 +70,7 @@ Cypress.on('fail', (error, runnable) => {
         cy.task('log', "The following URLs failed:");
         failedUrls.forEach(url => cy.task('log', url));
         // throw new Error("One or more URLs failed."); // Explicitly fail the test suite
-        cy.get("dfdfdf",{timeout:1000});
+        cy.get("Some Urls contains 404 page",{timeout:1000});
       } else {
         cy.task('log', "All URLs passed successfully."); // Always log success
       }
