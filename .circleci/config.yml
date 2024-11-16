@@ -9,7 +9,9 @@ workflows:
     jobs:
       - cypress/run:
           cypress-command: npx cypress run --spec "cypress/e2e/Cambaytiger/stage/404.js"
-          no_output_timeout: 30m
+          executor:
+            name: cypress/default
+            timeout: 30m # Set job timeout to 30 minutes
           post-steps:
             - store_artifacts:
                 path: cypress/reports
