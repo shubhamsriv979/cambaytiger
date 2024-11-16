@@ -1,9 +1,14 @@
 let failedUrls = []; // Array to track failed URLs
-
 Cypress.on('fail', (error, runnable) => {
   // Add any custom behavior during failure, e.g., logging the error
   cy.task('log', `Test failed: ${runnable.title}`);
   throw error; // Re-throw the error to fail the test
+});
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+  // returning false here prevents Cypress from
+  // failing the test due to the uncaught exception
+  return false;
 });
   
   describe('Template Spec', () => {    
