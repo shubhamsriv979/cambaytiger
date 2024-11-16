@@ -28,4 +28,5 @@ workflows:
   build:
     jobs:
       - custom-cypress-run:
-          timeout: 30 # Set timeout at the workflow level
+             no_output_timeout: 20m
+
