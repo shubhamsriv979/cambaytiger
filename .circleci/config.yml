@@ -3,29 +3,13 @@ version: 2.1
 orbs:
   cypress: cypress-io/cypress@3.1.2
 
-jobs:
-  custom-cypress-run:
-    docker:
-      - image: cypress/base:node14.18.1 # Use a Cypress base image
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v1-deps-{{ checksum "package.json" }}
-            - v1-deps-
-      - run:
-          name: Install dependencies
-          command: npm install
-      - run:
-          name: Run Cypress tests
-          command: npx cypress run --spec "cypress/e2e/Cambaytiger/stage/404.js"
-      - store_artifacts:
-          path: cypress/reports
-          destination: test-report
-
 workflows:
   version: 2
   build:
     jobs:
-      - custom-cypress-run:
-          timeout_in_minutes: 30
+      - cypress/run:
+          cypress-command: npx cypress run --spec "cypress/e2e/Cambaytiger/stage/Booking.js"
+          post-steps:
+            - store_artifacts:
+                path: cypress/reports
+                destination: test-report
