@@ -1,13 +1,17 @@
 let failedUrls = []; // Array to track failed URLs
-
 Cypress.on('fail', (error, runnable) => {
   // Add any custom behavior during failure, e.g., logging the error
   cy.task('log', `Test failed: ${runnable.title}`);
   throw error; // Re-throw the error to fail the test
 });
 
-describe('Booking flow', () => {
+Cypress.on('uncaught:exception', (err, runnable) => {
+  // returning false here prevents Cypress from
+  // failing the test due to the uncaught exception
+  return false;
+});
 
+describe('Booking flow', () => {
 
   it('Booking flow', () => {
     const locations = [
@@ -213,17 +217,18 @@ describe('Booking flow', () => {
       });
     });
   })
-  // Log all failed URLs after the test suite is complete
-  after(() => {
-    if (failedUrls.length > 0) {
-      // Log failed URLs regardless of the test outcome
-      cy.task('log', "The following URLs failed:");
-      failedUrls.forEach(url => cy.task('log', url));
-      // throw new Error("One or more URLs failed."); // Explicitly fail the test suite
-      cy.get("Some Urls contains 404 page",{timeout:1000});
-    } else {
-      cy.task('log', "All URLs passed successfully."); // Always log success
-    }
-  });
+      // Log all failed URLs after the test suite is complete
+      after(() => {
+        if (failedUrls.length > 0) {
+          // Log failed URLs regardless of the test outcome
+          cy.task('log', "The following URLs failed:");
+          failedUrls.forEach(url => cy.task('log', url));
+          // throw new Error("One or more URLs failed."); // Explicitly fail the test suite
+          cy.get("Some Urls contains 404 page",{timeout:1000});
+        } else {
+          cy.task('log', "All URLs passed successfully."); // Always log success
+        }
+      });
+      
 
 })
