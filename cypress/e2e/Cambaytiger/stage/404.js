@@ -11,8 +11,27 @@ Cypress.on('fail', (error, runnable) => {
     it('Task Loop', () => {       
       const product_urls = [
         
-      'https://cambaytigerstage-nh.farziengineer.co/product/chicken-prawns-combo',      //combo product
-      // 'https://cambaytigerstage-nh.farziengineer.co/fresh-pomfret-medium'
+      'https://cambaytigerstage-nh.farziengineer.co/product/party-bites/party-bites',
+'https://cambaytigerstage-nh.farziengineer.co/product/chicken-italian-garlic-sausage/chicken-italian-garlic-sausage',
+'https://cambaytigerstage-nh.farziengineer.co/product/chicken-malai-seekh-kebab/chicken-malai-seekh-kebab',
+'https://cambaytigerstage-nh.farziengineer.co/product/chicken-adraki-seekh-kebab/chicken-adraki-seekh-kebab',
+'https://cambaytigerstage-nh.farziengineer.co/product/chicken-bacon/chicken-bacon',
+'https://cambaytigerstage-nh.farziengineer.co/product/chicken-cheese-and-paprika-sausage/chicken-cheese-paprika-sausage',
+'https://cambaytigerstage-nh.farziengineer.co/product/chicken-pepper-salami/chicken-pepper-salami',
+'https://cambaytigerstage-nh.farziengineer.co/product/chicken-smoked-frankfurter/chicken-smoked-frankfurter',
+'https://cambaytigerstage-nh.farziengineer.co/product/cheesy-chicken-salami/cheesy-chicken-salami',
+'https://cambaytigerstage-nh.farziengineer.co/product/fresh-king-tiger-prawns/fresh-king-tiger-prawns-whole-pack-of-2',
+'https://cambaytigerstage-nh.farziengineer.co/product/fresh-king-tiger-prawns/fresh-king-tiger-prawns-whole-pack-of-5',
+'https://cambaytigerstage-nh.farziengineer.co/product/fresh-king-tiger-prawns/fresh-king-tiger-prawns-whole-pack-of-2',
+'https://cambaytigerstage-nh.farziengineer.co/product/fresh-king-tiger-prawns/fresh-king-tiger-prawns-whole-pack-of-5',
+'https://cambaytigerstage-nh.farziengineer.co/product/fresh-small-prawns/fresh-small-prawns-deveined-cleaned',
+'https://cambaytigerstage-nh.farziengineer.co/product/fresh-small-prawns/fresh-small-prawns-deveined-and-cleaned',
+'https://cambaytigerstage-nh.farziengineer.co/product/fresh-small-prawns/fresh-small-prawns-deveined-cleaned-tail-on',
+'https://cambaytigerstage-nh.farziengineer.co/product/fresh-small-prawns/fresh-small-prawns-deveined-and-cleaned-tail-on',
+'https://cambaytigerstage-nh.farziengineer.co/product/fresh-small-prawns/fresh-small-prawns-whole',
+'https://cambaytigerstage-nh.farziengineer.co/product/fresh-small-prawns/fresh-small-prawns-whole',
+'https://cambaytigerstage-nh.farziengineer.co/product/chef-currated-lemon-pepper-marinade/chef-currated-lemon-pepper-marinade',
+      'https://cambaytigerstage-nh.farziengineer.co/fresh-pomfret-medium'
         
       ];
       
