@@ -15,17 +15,12 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 describe('Booking flow', () => {
 
   it('Booking flow', () => {
-    const locations = [
-      // 'Juhu',
-      'delhi airport',
-      // 'Bandra kurla',
+    const locations = [      
+      'delhi airport',      
       'Mumbai',
       'Bangalore'
     ];
-    // const products = [
-    //   'Mutton', //single product
-    //   'combo'   //combo product
-    // ];
+    
 
     const product_urls = [
       'https://cambaytigerstage-nh.farziengineer.co/product/mutton-curry-cut',
@@ -97,11 +92,11 @@ describe('Booking flow', () => {
         
         product_urls.forEach((product_urls) => {
           context(`Testing food ordering at ${product_urls}`, () => {
-            cy.visit(product_urls, { timeout: 500000, failOnStatusCode: false });
+            cy.visit(product_urls, { timeout: 500000, failOnStatusCode: false });            
+            cy.wait(5000);
             cy.get('body').then((body) => {
               // you-may-also-like heading in valid pdp
-              const locator_heading = "div[class='showOnDesktop'] div[class='you-may-also-like'] h2";
-      
+              const locator_heading = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] li:nth-child(1) a:nth-child(1)";              
               // Check if the 404 error or continue button is present
               if (body.find(locator_heading).length === 0) {
                 // Log error message
@@ -149,9 +144,9 @@ describe('Booking flow', () => {
                           });
                         }
                         cy.wait(15000);
-                        // cy.get('.payment_button__text__busIX')
-                        //   .should("be.visible")
-                        //   .click({ force: true });                      
+                        cy.get('.payment_button__text__busIX')
+                          .should("be.visible")
+                          .click({ force: true });                      
                         
 
                       } else {

@@ -240,7 +240,7 @@ describe('Template Spec', () => {
 
       cy.get('body').then((body) => {
         // you-may-also-like heading in valid pdp
-        const locator_heading = "div[class='showOnDesktop'] div[class='you-may-also-like'] h2";
+        const locator_heading = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] li:nth-child(1) a:nth-child(1)";
 
         // Check if the 404 error or continue button is present
         if (body.find(locator_heading).length === 0) {
