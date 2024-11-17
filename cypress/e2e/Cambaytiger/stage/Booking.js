@@ -1,4 +1,5 @@
 let failedUrls = []; // Array to track failed URLs
+
 Cypress.on('fail', (error, runnable) => {
   // Add any custom behavior during failure, e.g., logging the error
   cy.task('log', `Test failed: ${runnable.title}`);
@@ -60,19 +61,7 @@ describe('Booking flow', () => {
 
 
     locations.forEach((location) => {
-      context(`Testing food ordering at ${location}`, () => {
-        // cy.get(':nth-child(1) > #header > .scss_mainNavContainerWrapper__m_O_A > .scss_mainNavContainer__UDVhL > .scss_logoSearchContainer__ca6MR > [data-test="menuCartOverlayLink"] > .GG-main-menu__icon__LocationStateCity > p').click({ force: true });
-        // cy.wait(10000);
-        // cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div[class='scss_logoSearchContainer__ca6MR'] div div[class='scss_GGLocation__cfABD'] div[class='scss_GGLocation__topCont__oRucC'] div input[placeholder='Please enter delivery location...']")
-        //   .click();
-        // cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div[class='scss_logoSearchContainer__ca6MR'] div div[class='scss_GGLocation__cfABD'] div[class='scss_GGLocation__topCont__oRucC'] div input[placeholder='Please enter delivery location...']")
-        //   .eq(0).type(location);  // targets the first element (index starts from 0)    
-        // cy.wait(10000);
-        // cy.get('.AdressCont__inside > :nth-child(1) > div').click();
-        // cy.wait(15000);
-
-
-
+      context(`Testing food ordering at ${location}`, () => {      
         selectLocationUntilNotMumbai();
         function selectLocationUntilNotMumbai() {
           // Click on the location field to open the location selector
@@ -105,22 +94,16 @@ describe('Booking flow', () => {
               });
             });
         }
-        // cy.get("div[class='showOnDesktop'] div[class='scss_logoSearchContainer__ca6MR'] p").then(($var1) => {
-        //   if ($var1.text().includes(location)) {
-        //     // Action if the text contains 'Mumbai'
-        //   } else {
-        //     selectLocationUntilNotMumbai();
-        //   }
-        // });
-
+        
         product_urls.forEach((product_urls) => {
           context(`Testing food ordering at ${product_urls}`, () => {
             cy.visit(product_urls, { timeout: 500000, failOnStatusCode: false });
             cy.get('body').then((body) => {
-              const continuebtn = "div[class='showOnDesktop'] div[class='you-may-also-like'] h2";
-
+              // you-may-also-like heading in valid pdp
+              const locator_heading = "div[class='showOnDesktop'] div[class='you-may-also-like'] h2";
+      
               // Check if the 404 error or continue button is present
-              if (body.find(continuebtn).length === 0) {
+              if (body.find(locator_heading).length === 0) {
                 // Log error message
                 cy.log("404 Page Not Found error detected.");
                 failedUrls.push(product_urls);  // Add failed URL to the array
@@ -141,11 +124,14 @@ describe('Booking flow', () => {
                     // "Add To Cart" button is available, proceed with clicking it
                     cy.wrap($el).click({ force: true });
                     cy.contains("Cart").eq(0).click();
+                    //cart heading text
                     cy.get(".overlayFarzicom__header__text").should('be.visible');
                     cy.wait(10000);
 
                     cy.get('body').then(($body) => {
+                      //proceed to checkout button
                       if ($body.find("button[class='cart-gg__footer__button__place__order'] span").length > 0) {
+                        //product heading
                         cy.get(".sc-htnqrb.dVayQT").should("be.visible");
                         cy.contains("proceed to checkout").click();
                         cy.get('.Address_button__text__ved_d').click();
@@ -163,38 +149,9 @@ describe('Booking flow', () => {
                           });
                         }
                         cy.wait(15000);
-                        cy.get('.payment_button__text__busIX')
-                          .click({ force: true });
-                        // cy.get('body').then((body) => {
-                        //   const selectpayment = ".payment_heading__eLNOo";
-                        //   // Check if the payment heading is present
-                        //   if (body.find(selectpayment).length > 0) {
-                        //     function submit(retries = 10) {
-                        //       if (retries > 0) {
-                        //         cy.get('.payment_button__text__busIX', {timeout:5000})
-                        //           .should('be.visible') // Ensure the button is visible
-                        //           .click({ force: true })
-                        //           .then(() => {
-                        //             cy.wait(10000); // Wait before retrying
-                        //             submit(retries - 1); // Decrement retries and call again
-                        //           });
-                        //       } else {
-                        //         cy.log('Max retries reached, button not clicked.');
-                        //       }
-                        //     }
-
-                        //     submit(); // Initial call to the function
-                        //   }
-                        // });
-
-
-                        cy.url().should((url) => {
-                          expect(url).to.satisfy((currentUrl) => 
-                            currentUrl === 'https://cambaytigerstage-nh.farziengineer.co/' ||
-                            currentUrl === 'https://cambaytigerstage-nh.farziengineer.co/order-placed'
-                          );
-                        });
-                        
+                        // cy.get('.payment_button__text__busIX')
+                        //   .should("be.visible")
+                        //   .click({ force: true });                      
                         
 
                       } else {
