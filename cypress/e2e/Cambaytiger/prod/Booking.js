@@ -144,9 +144,9 @@ describe('Booking flow', () => {
                           });
                         }
                         cy.wait(15000);
-                        // cy.get('.payment_button__text__busIX')
-                        //   .should("be.visible")
-                        //   .click({ force: true });                      
+                        cy.get('.payment_button__text__busIX')
+                          .should("be.visible")
+                          .click({ force: true });                      
                         
 
                       } else {
