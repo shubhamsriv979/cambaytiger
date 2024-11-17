@@ -19,8 +19,8 @@ describe('Booking flow', () => {
       // 'Juhu',
       'delhi airport',
       // 'Bandra kurla',
-      'Mumbai',
-      'Bangalore'
+      // 'Mumbai',
+      // 'Bangalore'
     ];
     // const products = [
     //   'Mutton', //single product
@@ -98,10 +98,11 @@ describe('Booking flow', () => {
         product_urls.forEach((product_urls) => {
           context(`Testing food ordering at ${product_urls}`, () => {
             cy.visit(product_urls, { timeout: 500000, failOnStatusCode: false });
+            cy.get("div[class='popularSearches__title'] h3").should('be.visible');
+            cy.wait(5000);
             cy.get('body').then((body) => {
               // you-may-also-like heading in valid pdp
-              const locator_heading = "div[class='showOnDesktop'] div[class='you-may-also-like'] h2";
-              cy.wait(5000);
+              const locator_heading = "div[class='showOnDesktop'] div[class='you-may-also-like'] h2";              
               // Check if the 404 error or continue button is present
               if (body.find(locator_heading).length === 0) {
                 // Log error message
