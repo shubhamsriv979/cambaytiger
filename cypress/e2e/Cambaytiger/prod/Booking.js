@@ -97,12 +97,11 @@ describe('Booking flow', () => {
         
         product_urls.forEach((product_urls) => {
           context(`Testing food ordering at ${product_urls}`, () => {
-            cy.visit(product_urls, { timeout: 500000, failOnStatusCode: false });
-            cy.contains("Popular Searches").click();
+            cy.visit(product_urls, { timeout: 500000, failOnStatusCode: false });            
             cy.wait(5000);
             cy.get('body').then((body) => {
               // you-may-also-like heading in valid pdp
-              const locator_heading = "div[class='showOnDesktop'] div[class='you-may-also-like'] h2";              
+              const locator_heading = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] li:nth-child(1) a:nth-child(1)";              
               // Check if the 404 error or continue button is present
               if (body.find(locator_heading).length === 0) {
                 // Log error message
