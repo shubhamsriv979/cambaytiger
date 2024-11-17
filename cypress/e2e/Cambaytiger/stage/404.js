@@ -291,10 +291,11 @@ describe('Template Spec', () => {
       cy.visit(product_url, { timeout: 500000, failOnStatusCode: false });
 
       cy.get('body').then((body) => {
-        const continuebtn = "div[class='showOnDesktop'] div[class='you-may-also-like'] h2";
+        // you-may-also-like heading in valid pdp
+        const locator_heading = "div[class='showOnDesktop'] div[class='you-may-also-like'] h2";
 
         // Check if the 404 error or continue button is present
-        if (body.find(continuebtn).length === 0) {
+        if (body.find(locator_heading).length === 0) {
           // Log error message
           cy.log("404 Page Not Found error detected.");
           failedUrls.push(product_url);  // Add failed URL to the array
