@@ -111,64 +111,64 @@ describe('Booking flow', () => {
               }
             });
 
-            cy.get('body').then((body) => {
-              //stage
-              // const addToCartSelector = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] div[class='product-page'] main[class='sc-jWNpPo gluggg'] div[class=' product-container '] div[class='product-page__product__info'] div[class='showOnDesktop'] div[class='product-page__product__info--fixed'] div[class='sc-hBbWxd ljHzFv'] div div[class='showOnDesktop'] div[class='undefined__mainText sc-gzOgki fSlvAH']";
-              //prod
-              const addToCartSelector = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] div[class='product-page'] main[class='sc-jWNpPo gluggg'] div[class=' product-container '] div[class='product-page__product__info'] div[class='showOnDesktop'] div[class='product-page__product__info--fixed'] div[class='sc-hBbWxd ljHzFv'] div div[class='showOnDesktop'] div[class='undefined__mainText sc-gzOgki iuyAzF']";
-              if (body.find(addToCartSelector).length > 0) {
-                cy.get(addToCartSelector).then(($el) => {
-                  const buttonText = $el.text().trim();
+            // cy.get('body').then((body) => {
+            //   //stage
+            //   // const addToCartSelector = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] div[class='product-page'] main[class='sc-jWNpPo gluggg'] div[class=' product-container '] div[class='product-page__product__info'] div[class='showOnDesktop'] div[class='product-page__product__info--fixed'] div[class='sc-hBbWxd ljHzFv'] div div[class='showOnDesktop'] div[class='undefined__mainText sc-gzOgki fSlvAH']";
+            //   //prod
+            //   const addToCartSelector = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] div[class='product-page'] main[class='sc-jWNpPo gluggg'] div[class=' product-container '] div[class='product-page__product__info'] div[class='showOnDesktop'] div[class='product-page__product__info--fixed'] div[class='sc-hBbWxd ljHzFv'] div div[class='showOnDesktop'] div[class='undefined__mainText sc-gzOgki iuyAzF']";
+            //   if (body.find(addToCartSelector).length > 0) {
+            //     cy.get(addToCartSelector).then(($el) => {
+            //       const buttonText = $el.text().trim();
 
-                  if (buttonText.includes("Add To Cart")) {
-                    // "Add To Cart" button is available, proceed with clicking it
-                    cy.wrap($el).click({ force: true });
-                    cy.contains("Cart").eq(0).click();
-                    //cart heading text
-                    cy.get(".overlayFarzicom__header__text").should('be.visible');
-                    cy.wait(10000);
+            //       if (buttonText.includes("Add To Cart")) {
+            //         // "Add To Cart" button is available, proceed with clicking it
+            //         cy.wrap($el).click({ force: true });
+            //         cy.contains("Cart").eq(0).click();
+            //         //cart heading text
+            //         cy.get(".overlayFarzicom__header__text").should('be.visible');
+            //         cy.wait(10000);
 
-                    cy.get('body').then(($body) => {
-                      //proceed to checkout button
-                      if ($body.find("button[class='cart-gg__footer__button__place__order'] span").length > 0) {
-                        //product heading
-                        cy.get(".sc-htnqrb.dVayQT").should("be.visible");
-                        cy.contains("proceed to checkout").click();
-                        cy.get('.Address_button__text__ved_d').click();
-                        cy.get("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)").click();
-                        cy.get(".Delivery_button__text__d8uUZ").click();
-                        // Call the function
-                        selectCOD();
-                        function selectCOD() {
-                          cy.get("input[value='mirumee.payments.dummy']").then(($radio) => {
-                            if (!$radio.is(':checked')) {
-                              cy.wait(1000);
-                              cy.wrap($radio).click({ force: true });
-                              selectCOD(); // Call the function recursively until it is selected
-                            }
-                          });
-                        }
-                        cy.wait(15000);
-                        // cy.get('.payment_button__text__busIX')
-                        //   .should("be.visible")
-                        //   .click({ force: true });                      
+            //         cy.get('body').then(($body) => {
+            //           //proceed to checkout button
+            //           if ($body.find("button[class='cart-gg__footer__button__place__order'] span").length > 0) {
+            //             //product heading
+            //             cy.get(".sc-htnqrb.dVayQT").should("be.visible");
+            //             cy.contains("proceed to checkout").click();
+            //             cy.get('.Address_button__text__ved_d').click();
+            //             cy.get("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)").click();
+            //             cy.get(".Delivery_button__text__d8uUZ").click();
+            //             // Call the function
+            //             selectCOD();
+            //             function selectCOD() {
+            //               cy.get("input[value='mirumee.payments.dummy']").then(($radio) => {
+            //                 if (!$radio.is(':checked')) {
+            //                   cy.wait(1000);
+            //                   cy.wrap($radio).click({ force: true });
+            //                   selectCOD(); // Call the function recursively until it is selected
+            //                 }
+            //               });
+            //             }
+            //             cy.wait(15000);
+            //             // cy.get('.payment_button__text__busIX')
+            //             //   .should("be.visible")
+            //             //   .click({ force: true });                      
                         
 
-                      } else {
-                        cy.log('product is out of stock');
-                        cy.get("button[class='overlayFarzicom__header__close-icon'] svg").click();
-                      }
-                    });
+            //           } else {
+            //             cy.log('product is out of stock');
+            //             cy.get("button[class='overlayFarzicom__header__close-icon'] svg").click();
+            //           }
+            //         });
 
 
-                  } else if (buttonText.includes("Notify Me")) {
-                    // "Notify Me" button is available, log a message or perform alternate actions
-                    cy.log("Notify Me button is available instead of Add To Cart");
-                    // Optionally, perform other actions or stop the test gracefully
-                  }
-                });
-              }
-            });
+            //       } else if (buttonText.includes("Notify Me")) {
+            //         // "Notify Me" button is available, log a message or perform alternate actions
+            //         cy.log("Notify Me button is available instead of Add To Cart");
+            //         // Optionally, perform other actions or stop the test gracefully
+            //       }
+            //     });
+            //   }
+            // });
           });
         });
       });
