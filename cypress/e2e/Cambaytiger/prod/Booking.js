@@ -98,7 +98,7 @@ describe('Booking flow', () => {
         product_urls.forEach((product_urls) => {
           context(`Testing food ordering at ${product_urls}`, () => {
             cy.visit(product_urls, { timeout: 500000, failOnStatusCode: false });
-            cy.get("div[class='popularSearches__title'] h3").should('be.visible');
+            cy.contains("Popular Searches").click();
             cy.wait(5000);
             cy.get('body').then((body) => {
               // you-may-also-like heading in valid pdp
