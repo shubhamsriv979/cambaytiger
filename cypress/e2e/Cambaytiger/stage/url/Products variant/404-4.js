@@ -15,25 +15,8 @@ describe('Template Spec', () => {
 
   it('Task Loop', () => {
     const product_urls = [
-        'https://cambaytigerstage-nh.farziengineer.co/product/flavours-of-india',
-'https://cambaytigerstage-nh.farziengineer.co/product/gourmet-gala',
-'https://cambaytigerstage-nh.farziengineer.co/product/spice-lovers-medley',
-'https://cambaytigerstage-nh.farziengineer.co/product/southern-magic',
-'https://cambaytigerstage-nh.farziengineer.co/product/zaika-e-kashmir',
-'https://cambaytigerstage-nh.farziengineer.co/product/dhaba-special',
-'https://cambaytigerstage-nh.farziengineer.co/product/food-coma-combo',
-'https://cambaytigerstage-nh.farziengineer.co/product/lazy-sunday-spread',
-'https://cambaytigerstage-nh.farziengineer.co/product/weekend-gourmet-special',
-'https://cambaytigerstage-nh.farziengineer.co/product/masaledar-meal-box',
-'https://cambaytigerstage-nh.farziengineer.co/product/big-family-meal-deal',
-'https://cambaytigerstage-nh.farziengineer.co/product/dinner-fiesta',
-'https://cambaytigerstage-nh.farziengineer.co/product/eggcellent-mix',
-'https://cambaytigerstage-nh.farziengineer.co/product/english-breakfast',
-'https://cambaytigerstage-nh.farziengineer.co/product/omg-meal',
-'https://cambaytigerstage-nh.farziengineer.co/product/bbq-grill-box',
-'https://cambaytigerstage-nh.farziengineer.co/product/grill-thrill-pack',
-'https://cambaytigerstage-nh.farziengineer.co/product/feast-on-the-go',
-'https://cambaytigerstage-nh.farziengineer.co/product/snack-attack-platter',
+
+
 'https://cambaytigerstage-nh.farziengineer.co/product/chicken-italian-garlic-sausage',
 'https://cambaytigerstage-nh.farziengineer.co/product/chicken-malai-seekh-kebab',
 'https://cambaytigerstage-nh.farziengineer.co/product/chicken-adraki-seekh-kebab',

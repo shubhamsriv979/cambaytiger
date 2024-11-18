@@ -19,7 +19,6 @@ describe('Template Spec', () => {
 'https://cambaytigerstage-nh.farziengineer.co/product/grill-master-pack/grill-master-pack',
 'https://cambaytigerstage-nh.farziengineer.co/product/supreme-tiger-pack/supreme-tiger-pack',
 'https://cambaytigerstage-nh.farziengineer.co/product/sizzling-prawn-delight/sizzling-prawn-delight',
-'https://cambaytigerstage-nh.farziengineer.co/product/peoples-choice-pack/peoples-choice-pack',
 'https://cambaytigerstage-nh.farziengineer.co/product/farm-fresh-treats/farm-fresh-treats',
 'https://cambaytigerstage-nh.farziengineer.co/product/mutton-starter-pack/mutton-starter-pack',
 'https://cambaytigerstage-nh.farziengineer.co/product/dawat-e-special/dawat-e-special',

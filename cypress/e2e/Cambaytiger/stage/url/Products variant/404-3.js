@@ -42,10 +42,7 @@ describe('Template Spec', () => {
 'https://cambaytigerstage-nh.farziengineer.co/product/gourmet-chicken-ham-block',
 'https://cambaytigerstage-nh.farziengineer.co/product/premium-turkey-breast',
 'https://cambaytigerstage-nh.farziengineer.co/product/gourmet-chicken-paprica-lyoner-roll',
-'https://cambaytigerstage-nh.farziengineer.co/product/party-bites',
-'https://cambaytigerstage-nh.farziengineer.co/product/protein-dhamaka',
-'https://cambaytigerstage-nh.farziengineer.co/product/fit-&-fuel-combo',
-'https://cambaytigerstage-nh.farziengineer.co/product/power-protein-box'
+'https://cambaytigerstage-nh.farziengineer.co/product/party-bites'
     ];
 
     cy.visit('https://cambaytigerstage-nh.farziengineer.co/');

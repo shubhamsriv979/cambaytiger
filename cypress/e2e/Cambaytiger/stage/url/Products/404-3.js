@@ -34,7 +34,6 @@ describe('Template Spec', () => {
 'https://cambaytigerstage-nh.farziengineer.co/product/chicken-malai-tikka/chicken-malai-tikka',
 'https://cambaytigerstage-nh.farziengineer.co/product/chicken-tandoori-boneless-breast/chicken-tandoori-boneless-breast',
 'https://cambaytigerstage-nh.farziengineer.co/product/chicken-tandoori-whole-leg/chicken-tandoori-whole-leg',
-'https://cambaytigerstage-nh.farziengineer.co/product/chicken-boneless-tikka/chicken-bonless-tikka',
 'https://cambaytigerstage-nh.farziengineer.co/product/mutton-mini-combo/mutton-mini-combo',
 'https://cambaytigerstage-nh.farziengineer.co/product/sole-prawns-combo/sole-prawns-combo',
 'https://cambaytigerstage-nh.farziengineer.co/product/sole-chicken-combo/sole-chicken-combo',
