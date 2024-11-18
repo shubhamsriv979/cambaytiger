@@ -8,20 +8,7 @@ workflows:
   build:
     jobs:
       - cypress/run:
-          cypress-command: npx cypress run --spec "cypress/e2e/Cambaytiger/stage/404-5.js"
-          post-steps:
-            - store_artifacts:
-                path: cypress/reports
-                destination: test-report
-
-  scheduled-build:
-    triggers:
-      - schedule:
-          cron: "57 12 * * 1" # Runs at 6:45 PM IST (adjusted to UTC)
-          
-    jobs:
-      - cypress/run:
-          cypress-command: npx cypress run --spec "cypress/e2e/Cambaytiger/stage/404-5.js"
+          cypress-command: npx cypress run --spec "cypress/e2e/Cambaytiger/stage/404-1.js,cypress/e2e/Cambaytiger/stage/404-2.js,cypress/e2e/Cambaytiger/stage/404-3.js,cypress/e2e/Cambaytiger/stage/404-4.js,cypress/e2e/Cambaytiger/stage/404-5.js,cypress/e2e/Cambaytiger/stage/404-6.js,cypress/e2e/Cambaytiger/stage/404-7.js,cypress/e2e/Cambaytiger/stage/404-8.js,cypress/e2e/Cambaytiger/stage/404-9.js,cypress/e2e/Cambaytiger/stage/404-10.js,"
           post-steps:
             - store_artifacts:
                 path: cypress/reports
