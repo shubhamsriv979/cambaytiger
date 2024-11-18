@@ -17,11 +17,8 @@ workflows:
   scheduled-build:
     triggers:
       - schedule:
-          cron: "45 12 * * 1" # Runs at 6:15 PM IST (adjusted to UTC)
-          filters:
-            branches:
-              only:
-                - main
+          cron: "57 12 * * 1" # Runs at 6:45 PM IST (adjusted to UTC)
+          
     jobs:
       - cypress/run:
           cypress-command: npx cypress run --spec "cypress/e2e/Cambaytiger/stage/404-5.js"
