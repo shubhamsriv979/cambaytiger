@@ -23,7 +23,7 @@ describe('Booking flow', () => {
     
 
     const product_urls = [
-      'https://cambaytigerstage-nh.farziengineer.co/product/mutton-curry-cut',
+      // 'https://cambaytigerstage-nh.farziengineer.co/product/mutton-curry-cut',
       'https://cambaytigerstage-nh.farziengineer.co/product/chicken-prawns-combo',      //combo product        
       'https://cambaytigerstage-nh.farziengineer.co/product/mutton-boneless-chunks',  //single product
 

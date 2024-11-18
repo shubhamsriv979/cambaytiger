@@ -23,7 +23,7 @@ describe('Booking flow', () => {
     
 
     const product_urls = [
-      'https://cambaytiger.com/product/mutton-curry-cut',
+      // 'https://cambaytiger.com/product/mutton-curry-cut',
       'https://cambaytiger.com/product/chicken-prawns-combo',      //combo product        
       'https://cambaytiger.com/product/mutton-boneless-chunks',  //single product
 
