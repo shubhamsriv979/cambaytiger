@@ -13,3 +13,19 @@ workflows:
             - store_artifacts:
                 path: cypress/reports
                 destination: test-report
+
+  scheduled-build:
+    triggers:
+      - schedule:
+          cron: "30 13 * * 1" # Runs at 7:00 PM IST (adjusted to UTC)
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - cypress/run:
+          cypress-command: npx cypress run --spec "cypress/e2e/Cambaytiger/stage/404-5.js"
+          post-steps:
+            - store_artifacts:
+                path: cypress/reports
+                destination: test-report
