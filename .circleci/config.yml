@@ -9,7 +9,7 @@ workflows:
     jobs:
       - cypress/run:
           # cypress-command: npx cypress run --spec "cypress/e2e/Cambaytiger/prod/url/**/*.js"
-          cypress-command: npx cypress run --spec "cypress/e2e/Cambaytiger/stage/Booking.js,cypress/e2e/Cambaytiger/stage/Search.js"
+          cypress-command: npx cypress run --spec "cypress/e2e/Cambaytiger/prod/Booking.js,cypress/e2e/Cambaytiger/prod/Search.js"
           post-steps:
             - store_artifacts:
                 path: cypress/reports
