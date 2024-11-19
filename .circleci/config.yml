@@ -3,17 +3,40 @@ version: 2.1
 orbs:
   cypress: cypress-io/cypress@3.1.2
 
+parameters:
+  environment:
+    type: enum
+    enum: ["stage", "prod"]
+    default: "stage"
+    description: "Choose the environment to run tests on (stage or prod)."
+
+jobs:
+  run-tests:
+    executor: cypress/default
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Run Cypress Tests
+          command: |
+            if [ << parameters.environment >> = "stage" ]; then
+              npx cypress run --spec "cypress/e2e/Cambaytiger/stage/Search.js";
+            else
+              npx cypress run --spec "cypress/e2e/Cambaytiger/prod/Search.js";
+            fi
+      - store_artifacts:
+          path: cypress/reports
+          destination: test-report
+
 workflows:
   version: 2
-  build:
+  run-tests-workflow:
     jobs:
-      - cypress/run:
-          cypress-command: npx cypress run --spec "cypress/e2e/Cambaytiger/stage/url/**/*.js"
-          # cypress-command: npx cypress run --spec "cypress/e2e/Cambaytiger/prod/Booking.js,cypress/e2e/Cambaytiger/prod/Search.js"
-          post-steps:
-            - store_artifacts:
-                path: cypress/reports
-                destination: test-report
+      - run-tests:
+          environment: << pipeline.parameters.environment >>
+
 
   # scheduled-build:
   #   triggers:

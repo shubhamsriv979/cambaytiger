@@ -23,15 +23,15 @@ describe('Booking flow', () => {
     
 
     const product_urls = [
-      // 'https://cambaytiger.com/product/mutton-curry-cut',
-      'https://cambaytiger.com/product/chicken-prawns-combo',      //combo product        
-      'https://cambaytiger.com/product/mutton-boneless-chunks',  //single product
+      // 'https://farzistore-nh.farziengineer.co/product/mutton-curry-cut',
+      'https://farzistore-nh.farziengineer.co/product/chicken-prawns-combo',      //combo product        
+      'https://farzistore-nh.farziengineer.co/product/mutton-boneless-chunks',  //single product
 
     ];
 
-    cy.visit('https://cambaytiger.com/');
-    // cy.wait(20000);
-    // cy.reload();
+    cy.visit('https://farzistore-nh.farziengineer.co/');
+    cy.wait(20000);
+    cy.reload();
 
     // select location 
     cy.wait(10000);
