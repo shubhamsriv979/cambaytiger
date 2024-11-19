@@ -3,6 +3,12 @@ version: 2.1
 orbs:
   cypress: cypress-io/cypress@3.1.2
 
+parameters:
+  environment:
+    type: enum
+    enum: ["stage", "prod"]
+    default: "stage"
+
 jobs:
   run-tests:
     executor: cypress/default
@@ -20,9 +26,9 @@ jobs:
           name: Run Cypress Tests
           command: |
             if [ "<< parameters.environment >>" = "stage" ]; then
-              npx cypress run --spec "cypress/e2e/Cambaytiger/stage/Search.js";
+              npx cypress run --spec "cypress/e2e/Cambaytiger/stage/**/*.js";
             else
-              npx cypress run --spec "cypress/e2e/Cambaytiger/stage/Search.js";
+              npx cypress run --spec "cypress/e2e/Cambaytiger/prod/Booking.js,cypress/e2e/Cambaytiger/prod/Search.js";
             fi
       - store_artifacts:
           path: cypress/reports
@@ -31,6 +37,12 @@ jobs:
 workflows:
   version: 2
   run-tests-workflow:
+    parameters:
+      environment:
+        type: enum
+        enum: ["stage", "prod"]
+        default: "stage"
     jobs:
       - run-tests:
-          environment: stage
+          environment: << workflow.parameters.environment >>
+
