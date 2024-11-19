@@ -27,7 +27,7 @@ module.exports = defineConfig({
     },
   },
 
-  video: true, // Disable video recording
+  video: false, // Disable video recording
 
   reporter: 'cypress-mochawesome-reporter', // Use the Mochawesome reporter
   reporterOptions: {

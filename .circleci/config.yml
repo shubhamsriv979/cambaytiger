@@ -8,10 +8,25 @@ workflows:
   build:
     jobs:
       - cypress/run:
-          cypress-command: npx cypress run --spec "cypress/e2e/Cambaytiger/prod/url/**/*.js"
+          cypress-command: npx cypress run --spec "cypress/e2e/Cambaytiger/stage/url/**/*.js"
           # cypress-command: npx cypress run --spec "cypress/e2e/Cambaytiger/prod/Booking.js,cypress/e2e/Cambaytiger/prod/Search.js"
           post-steps:
             - store_artifacts:
                 path: cypress/reports
                 destination: test-report
 
+  # scheduled-build:
+  #   triggers:
+  #     - schedule:
+  #         cron: "57 12 * * 1" # Runs at 6:27 PM IST (adjusted to UTC)
+  #         filters:
+  #           branches:
+  #             only:
+  #               - main
+  #   jobs:
+  #     - cypress/run:
+  #         cypress-command: npx cypress run --spec "cypress/e2e/Cambaytiger/stage/.js"
+  #         post-steps:
+  #           - store_artifacts:
+  #               path: cypress/reports
+  #               destination: test-report
