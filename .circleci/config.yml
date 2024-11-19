@@ -27,4 +27,17 @@ jobs:
           name: Run Cypress Tests
           command: |
             if [ "<< parameters.environment >>" = "stage" ]; then
-              npx c
+              npx cypress run --spec "cypress/e2e/Cambaytiger/stage/Search.js";
+            else
+              npx cypress run --spec "cypress/e2e/Cambaytiger/prod/Search.js";
+            fi
+      - store_artifacts:
+          path: cypress/reports
+          destination: test-report
+
+workflows:
+  version: 2
+  run-tests-workflow:
+    jobs:
+      - run-tests:
+          environment: << pipeline.parameters.environment >>
