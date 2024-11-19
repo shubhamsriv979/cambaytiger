@@ -8,6 +8,7 @@ parameters:
     type: enum
     enum: ["stage", "prod"]
     default: "stage"
+    description: "Choose the environment to run tests on (stage or prod)."
 
 jobs:
   run-tests:
@@ -26,23 +27,4 @@ jobs:
           name: Run Cypress Tests
           command: |
             if [ "<< parameters.environment >>" = "stage" ]; then
-              npx cypress run --spec "cypress/e2e/Cambaytiger/stage/**/*.js";
-            else
-              npx cypress run --spec "cypress/e2e/Cambaytiger/prod/Booking.js,cypress/e2e/Cambaytiger/prod/Search.js";
-            fi
-      - store_artifacts:
-          path: cypress/reports
-          destination: test-report
-
-workflows:
-  version: 2
-  run-tests-workflow:
-    parameters:
-      environment:
-        type: enum
-        enum: ["stage", "prod"]
-        default: "stage"
-    jobs:
-      - run-tests:
-          environment: << workflow.parameters.environment >>
-
+              npx c
