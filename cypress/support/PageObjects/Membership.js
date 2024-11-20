@@ -78,12 +78,11 @@ class Membership {
                 cy.get("#nav-sidebar > div:nth-child(1) > label:nth-child(2) > div > div > div > span.flex.items-center > span").click();
 
                 // Fill in the card details
-                cy.get("#main-stack-container > div > div > div > div > div.no-scrollbar.flex.h-full.flex-1.flex-col.overflow-auto.bg-surface > div > div > div.flex.flex-col.gap-8 > div:nth-child(2) > div > div > form > label > input")
-                    .type('success@razorpay');
+                cy.get('input[placeholder="Enter your email"]').type('success@razorpay');
+
 
                 // Click the button to proceed
-                cy.get("#main-stack-container > div > div > div > div > div.no-scrollbar.flex.h-full.flex-1.flex-col.overflow-auto.bg-surface > div > div > div.flex.flex-col.gap-8 > div:nth-child(2) > div > div > form > div > div > button")
-                    .click();
+                cy.contains("Verify and Pay") .click();
 
                 // Add a wait to allow actions to complete (adjust as needed)
                 cy.wait(15000);
