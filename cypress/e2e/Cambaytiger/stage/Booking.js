@@ -24,8 +24,10 @@ describe('Booking flow', () => {
 
     const product_urls = [
       // 'https://cambaytigerstage-nh.farziengineer.co/product/mutton-curry-cut',
-      'https://cambaytigerstage-nh.farziengineer.co/product/chicken-prawns-combo',      //combo product        
-      'https://cambaytigerstage-nh.farziengineer.co/product/mutton-boneless-chunks',  //single product
+      // 'https://cambaytigerstage-nh.farziengineer.co/product/chicken-prawns-combo',      //combo product        
+      // 'https://cambaytigerstage-nh.farziengineer.co/product/mutton-boneless-chunks',  //single product
+      'https://cambaytigerstage-nh.farziengineer.co/product/classic-white-eggs',
+      'https://cambaytigerstage-nh.farziengineer.co/product/brown-eggs'
 
     ];
 
@@ -146,7 +148,8 @@ describe('Booking flow', () => {
                         cy.wait(15000);
                         cy.get('.payment_button__text__busIX')
                           .should("be.visible")
-                          .click({ force: true });                      
+                          .click({ force: true });       
+                        cy.wait(15000);                                   
                         
 
                       } else {

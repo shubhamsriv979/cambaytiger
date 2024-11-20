@@ -23,13 +23,13 @@ describe('Booking flow', () => {
     
 
     const product_urls = [
-      // 'https://farzistore-nh.farziengineer.co/product/mutton-curry-cut',
-      'https://farzistore-nh.farziengineer.co/product/chicken-prawns-combo',      //combo product        
-      'https://farzistore-nh.farziengineer.co/product/mutton-boneless-chunks',  //single product
+      // 'https://cambaytiger.com//product/mutton-curry-cut',
+      'https://cambaytiger.com//product/chicken-prawns-combo',      //combo product        
+      'https://cambaytiger.com//product/mutton-boneless-chunks',  //single product
 
     ];
 
-    cy.visit('https://farzistore-nh.farziengineer.co/');
+    cy.visit('https://cambaytiger.com//');
     function waitForElementAndClosePopup() {
       cy.get('body').then((body) => {
         if (body.find("#wzrkImageOnlyDiv").length > 0) {
@@ -156,7 +156,8 @@ describe('Booking flow', () => {
                         cy.wait(15000);
                         cy.get('.payment_button__text__busIX')
                           .should("be.visible")
-                          .click({ force: true });                      
+                          .click({ force: true });  
+                        cy.wait(15000);                    
                         
 
                       } else {

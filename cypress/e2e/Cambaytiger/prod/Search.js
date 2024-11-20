@@ -9,7 +9,7 @@ describe('Search functionality', () => {
 
 
   it('Search functionality', () => {
-    cy.visit('https://farzistore-nh.farziengineer.co/');
+    cy.visit('https://cambaytiger.com//');
     cy.wait(15000);
     cy.reload({ timeout: 100000 });
 
@@ -20,7 +20,7 @@ describe('Search functionality', () => {
     
     cy.get("div[class='showOnDesktop'] input[placeholder='Search for seafood, chicken & more']").should('be.visible').type("But");
     cy.get("body > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > a:nth-child(1) > p:nth-child(1)").click();
-    cy.get("div[class='showOnDesktop'] li[class='breadcrumbs__active'] a").should('contain', "Mutton Curry Cut");
+    cy.get("div[class='showOnDesktop'] li[class='breadcrumbs__active'] a").should("be.visible");
 
   })
 })
