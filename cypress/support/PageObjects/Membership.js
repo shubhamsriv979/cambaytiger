@@ -78,7 +78,7 @@ class Membership {
                 cy.get("#nav-sidebar > div:nth-child(1) > label:nth-child(2) > div > div > div > span.flex.items-center > span").click();
 
                 // Fill in the card details
-                cy.get('input[placeholder="Enter your email"]').type('success@razorpay');
+                // cy.get('input[placeholder="Enter your email"]').type('success@razorpay');
 
 
                 // Click the button to proceed
