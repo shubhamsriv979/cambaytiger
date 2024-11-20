@@ -10,8 +10,23 @@ describe('Search functionality', () => {
 
   it('Search functionality', () => {
     cy.visit('https://cambaytiger.com//');
-    cy.wait(15000);
-    cy.reload({ timeout: 100000 });
+    // Access the iframe and wait for it to load (e.g., advertisement pop-up)
+    cy.get("#wzrkImageOnlyDiv").then((iframedata) => {
+      // Access the contents of the iframe's body
+      iframedata.contents().find('body');
+    });
+    function waitForElementAndClosePopup() {
+      cy.get('body').then((body) => {
+        if (body.find("#wzrkImageOnlyDiv").length > 0) {
+          // Element exists; access the iframe
+          cy.reload();
+          waitForElementAndClosePopup(); // Recursive call
+        }
+      });
+    }
+    
+    // Call the function in your test
+    waitForElementAndClosePopup();
 
     // select location 
     cy.get(':nth-child(1) > #header > .scss_mainNavContainerWrapper__m_O_A > .scss_mainNavContainer__UDVhL > .scss_logoSearchContainer__ca6MR > :nth-child(3) > .scss_GGLocation__cfABD > .scss_GGLocation__topCont__oRucC > :nth-child(5) > .GGLocation__input > input').type("Bangalore");
