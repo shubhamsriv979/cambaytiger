@@ -30,8 +30,18 @@ describe('Booking flow', () => {
     ];
 
     cy.visit('https://cambaytiger.com/');
-    cy.wait(20000);
-    cy.reload();
+    function waitForElementAndClosePopup() {
+      cy.get('body').then((body) => {
+        if (body.find("#wzrkImageOnlyDiv").length > 0) {
+          // Element exists; access the iframe
+          cy.reload();
+          waitForElementAndClosePopup(); // Recursive call
+        }
+      });
+    }
+    
+    // Call the function in your test
+    waitForElementAndClosePopup();
 
     // select location 
     cy.wait(10000);
