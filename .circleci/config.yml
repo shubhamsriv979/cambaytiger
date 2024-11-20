@@ -17,7 +17,7 @@ jobs:
       environment:
         type: enum
         enum: ["stage", "prod"]
-        default: "stage"
+        default: "prod"
     steps:
       - checkout
       - run:
