@@ -11,8 +11,7 @@ class Membership {
     }
 
     // prod 
-    prodSearchLocations()
-    {
+    prodSearchLocations() {
         cy.get(':nth-child(1) > #header > .scss_mainNavContainerWrapper__m_O_A > .scss_mainNavContainer__UDVhL > .scss_logoSearchContainer__ca6MR > :nth-child(3) > .scss_GGLocation__cfABD > .scss_GGLocation__topCont__oRucC > :nth-child(5) > .GGLocation__input > input')
             .type('Mumbai', { delay: 100, force: true });
 
@@ -23,24 +22,23 @@ class Membership {
         cy.get(':nth-child(3) > .scss_GGLocation__cfABD > .scss_GGLocation__topCont__oRucC > .GGLocation__hide').click();
     }
 
-    closeAdvPopup()
-    {
+    closeAdvPopup() {
         cy.get("#wzrkImageOnlyDiv").then((iframedata) => {
             // Access the contents of the iframe's body
             iframedata.contents().find('body');
-          });
-          function waitForElementAndClosePopup() {
+        });
+        function waitForElementAndClosePopup() {
             cy.get('body').then((body) => {
-              if (body.find("#wzrkImageOnlyDiv").length > 0) {
-                // Element exists; access the iframe
-                cy.reload();
-                waitForElementAndClosePopup(); // Recursive call
-              }
+                if (body.find("#wzrkImageOnlyDiv").length > 0) {
+                    // Element exists; access the iframe
+                    cy.reload();
+                    waitForElementAndClosePopup(); // Recursive call
+                }
             });
-          }
-          
-          // Call the function in your test
-          waitForElementAndClosePopup();
+        }
+
+        // Call the function in your test
+        waitForElementAndClosePopup();
     }
 
     login() {
@@ -67,16 +65,31 @@ class Membership {
     }
 
     razorpay() {
-        cy.frameLoaded("[class='razorpay-checkout-frame']");
-        // Step 3: Interact with elements inside the iframe
-        cy.iframe("[class='razorpay-checkout-frame']").within(() => {
-            cy.get("#nav-sidebar > div:nth-child(1) > label:nth-child(2) > div > div > div > span.flex.items-center > span").click();
-            // Fill in card details (if in test mode, real data won't be required)
-            cy.get("#main-stack-container > div > div > div > div > div.no-scrollbar.flex.h-full.flex-1.flex-col.overflow-auto.bg-surface > div > div > div.flex.flex-col.gap-8 > div:nth-child(2) > div > div > form > label > input").type('success@razorpay');
-            cy.get("#main-stack-container > div > div > div > div > div.no-scrollbar.flex.h-full.flex-1.flex-col.overflow-auto.bg-surface > div > div > div.flex.flex-col.gap-8 > div:nth-child(2) > div > div > form > div > div > button").click();
-            cy.wait(15000);
-            
+        // Wait for the iframe to load
+        cy.get("[class='razorpay-checkout-frame']").then($iframe => {
+            const iframeBody = $iframe[0].contentDocument.body;
+
+            // Ensure the iframe's body is loaded
+            cy.wrap(iframeBody).should('not.be.empty');
+
+            // Now, wrap the iframe's body to interact with elements inside
+            cy.wrap(iframeBody).within(() => {
+                // Click on the specific element inside the iframe
+                cy.get("#nav-sidebar > div:nth-child(1) > label:nth-child(2) > div > div > div > span.flex.items-center > span").click();
+
+                // Fill in the card details
+                cy.get("#main-stack-container > div > div > div > div > div.no-scrollbar.flex.h-full.flex-1.flex-col.overflow-auto.bg-surface > div > div > div.flex.flex-col.gap-8 > div:nth-child(2) > div > div > form > label > input")
+                    .type('success@razorpay');
+
+                // Click the button to proceed
+                cy.get("#main-stack-container > div > div > div > div > div.no-scrollbar.flex.h-full.flex-1.flex-col.overflow-auto.bg-surface > div > div > div.flex.flex-col.gap-8 > div:nth-child(2) > div > div > form > div > div > button")
+                    .click();
+
+                // Add a wait to allow actions to complete (adjust as needed)
+                cy.wait(15000);
+            });
         });
+
     }
 
     orderHistory() {
@@ -172,7 +185,7 @@ class Membership {
             .click({ force: true });
         // Get the current URL
         cy.wait(15000);
-            
+
     }
 }
 
