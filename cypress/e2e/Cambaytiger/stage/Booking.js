@@ -15,12 +15,12 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 describe('Booking flow', () => {
 
   it('Booking flow', () => {
-    const locations = [      
-      'delhi airport',      
+    const locations = [
+      'delhi airport',
       'Mumbai',
       'Bangalore'
     ];
-    
+
 
     const product_urls = [
       // 'https://cambaytigerstage-nh.farziengineer.co/product/mutton-curry-cut',
@@ -58,7 +58,7 @@ describe('Booking flow', () => {
 
 
     locations.forEach((location) => {
-      context(`Testing food ordering at ${location}`, () => {      
+      context(`Testing food ordering at ${location}`, () => {
         selectLocationUntilNotMumbai();
         function selectLocationUntilNotMumbai() {
           // Click on the location field to open the location selector
@@ -91,14 +91,14 @@ describe('Booking flow', () => {
               });
             });
         }
-        
+
         product_urls.forEach((product_urls) => {
           context(`Testing food ordering at ${product_urls}`, () => {
-            cy.visit(product_urls, { timeout: 500000, failOnStatusCode: false });            
+            cy.visit(product_urls, { timeout: 500000, failOnStatusCode: false });
             cy.wait(5000);
             cy.get('body').then((body) => {
               // you-may-also-like heading in valid pdp
-              const locator_heading = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] li:nth-child(1) a:nth-child(1)";              
+              const locator_heading = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] li:nth-child(1) a:nth-child(1)";
               // Check if the 404 error or continue button is present
               if (body.find(locator_heading).length === 0) {
                 // Log error message
@@ -149,9 +149,16 @@ describe('Booking flow', () => {
                         cy.wait(15000);
                         cy.get('.payment_button__text__busIX')
                           .should("be.visible")
-                          .click({ force: true });       
-                        cy.wait(15000);                                   
-                        
+                          .click({ force: true });
+                        cy.wait(15000);
+                        // Verify the URL
+                        cy.url().then((currentUrl) => {
+                          expect([
+                            'https://cambaytigerstage-nh.farziengineer.co/',
+                            'https://cambaytigerstage-nh.farziengineer.co/order-placed',
+                          ]).to.include(currentUrl);
+                        });
+
 
                       } else {
                         cy.log('product is out of stock');
@@ -173,18 +180,18 @@ describe('Booking flow', () => {
       });
     });
   })
-      // Log all failed URLs after the test suite is complete
-      after(() => {
-        if (failedUrls.length > 0) {
-          // Log failed URLs regardless of the test outcome
-          cy.task('log', "The following URLs failed:");
-          failedUrls.forEach(url => cy.task('log', url));
-          // throw new Error("One or more URLs failed."); // Explicitly fail the test suite
-          cy.get("Some Urls contains 404 page",{timeout:1000});
-        } else {
-          cy.task('log', "All URLs passed successfully."); // Always log success
-        }
-      });
-      
+  // Log all failed URLs after the test suite is complete
+  after(() => {
+    if (failedUrls.length > 0) {
+      // Log failed URLs regardless of the test outcome
+      cy.task('log', "The following URLs failed:");
+      failedUrls.forEach(url => cy.task('log', url));
+      // throw new Error("One or more URLs failed."); // Explicitly fail the test suite
+      cy.get("Some Urls contains 404 page", { timeout: 1000 });
+    } else {
+      cy.task('log', "All URLs passed successfully."); // Always log success
+    }
+  });
+
 
 })
