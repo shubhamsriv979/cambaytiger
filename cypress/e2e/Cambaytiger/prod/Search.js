@@ -9,7 +9,7 @@ describe('Search functionality', () => {
 
 
   it('Search functionality', () => {
-    cy.visit('https://cambaytiger.com/');
+    cy.visit('https://farzistore-nh.farziengineer.co/');
     cy.wait(15000);
     cy.reload({ timeout: 100000 });
 

@@ -31,8 +31,8 @@ jobs:
               # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/url/Products variant/*.js";
 
             else
-              # npx cypress run --spec "cypress/e2e/Cambaytiger/prod/**/*.js";
-              npx cypress run --spec "cypress/e2e/Cambaytiger/prod/Booking.js";
+              npx cypress run --spec "cypress/e2e/Cambaytiger/prod/**/*.js";
+              
             fi
       - store_artifacts:
           path: cypress/reports
