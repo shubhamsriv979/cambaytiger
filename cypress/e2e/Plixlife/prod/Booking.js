@@ -81,19 +81,11 @@ describe('Booking flow', () => {
     cy.get(':nth-child(7) > .CheckoutV3_row__B8iYl > :nth-child(2) > .Input_inputContainer1___hB1t > .Input_inputContainer1__input__nFgYI').type('Lucknow');
     cy.get('.Select_selectContainer1__select__MYDmO').select('Uttar Pradesh');
     cy.get(':nth-child(9) > .CheckoutV3_row__B8iYl > .CheckoutV3_inputErroDiv__Mnt0N > .Input_inputContainer1___hB1t > .Input_inputContainer1__input__nFgYI').type('test test');
-    // Select COD radio button
-    function selectCOD() {
-      cy.contains('Cash On Delivery').then(() => {
-        cy.contains('Cash On Delivery').should('be.visible').then(($radio) => {
-          if (!$radio.is(':checked')) {
-            cy.wrap($radio).click({ force: true });
-            // Re-fetch the DOM to verify if it's now selected
-            cy.contains('Cash On Delivery').should('be.visible');
-          }
-        });
-      });
-    }
-    selectCOD();
+    cy.wait(10000);
+    cy.contains('Cash On Delivery').click();
+    cy.wait(5000);
+    cy.contains('Cash On Delivery').click();   
+    
     cy.wait(10000);
     // Click on the button
     cy.get('.CheckoutV3_onlyLargeScreen__ckqbj > .Input_inputContainer2__HvuL0 > .Input_inputContainer2__input__bAkR6').click();

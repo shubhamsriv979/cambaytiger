@@ -15,36 +15,36 @@ describe('Template Spec', () => {
 
   it('Task Loop', () => {
     const product_urls = [
-'https://cambaytiger.com//product/fresh-norwegian-salmon-dil-and-garlic/fresh-norwegian-salmon-in-dil-garlic-fillet',
-'https://cambaytiger.com//product/kids-special-pack/kids-special-pack',
-'https://cambaytiger.com//product/grill-master-pack/grill-master-pack',
-'https://cambaytiger.com//product/supreme-tiger-pack/supreme-tiger-pack',
-'https://cambaytiger.com//product/sizzling-prawn-delight/sizzling-prawn-delight',
-'https://cambaytiger.com//product/peoples-choice-pack/peoples-choice-pack',
-'https://cambaytiger.com//product/farm-fresh-treats/farm-fresh-treats',
-'https://cambaytiger.com//product/mutton-starter-pack/mutton-starter-pack',
-'https://cambaytiger.com//product/dawat-e-special/dawat-e-special',
-'https://cambaytiger.com//product/mutton-medley/mutton-medley',
-'https://cambaytiger.com//product/protein-power-pack/protein-power-pack',
-'https://cambaytiger.com//product/tandoori-and-curry-meal/tandoori-curry-meal',
-'https://cambaytiger.com//product/tikka-trio-platter/tikka-trio-platter',
-'https://cambaytiger.com//product/assorted-tandoori-platter/assorted-tandoori-platter',
-'https://cambaytiger.com//product/chicken-carnival-pack/chicken-carnival-pack',
-'https://cambaytiger.com//product/tandoori-fusion/tandoori-fusion',
-'https://cambaytiger.com//product/mixed-chicken-grill/mixed-chicken-grill',
-'https://cambaytiger.com//product/sunday-brunch-special/sunday-brunch-special',
-'https://cambaytiger.com//product/kuk-doo-koo-pack/kuk-doo-koo-pack',
-'https://cambaytiger.com//product/party-starter-pack/party-starter-pack',
-'https://cambaytiger.com//product/protein-rich-meal/protein-rich-meal',
-'https://cambaytiger.com//product/dinner-special/dinner-special',
-'https://cambaytiger.com//product/boneless-delights/boneless-delights',
-'https://cambaytiger.com//product/soulful-dua-pack/soulful-duo-pack',
-'https://cambaytiger.com//product/ultimate-fish-feast/ultimate-fish-feast'
+'https://cambaytiger.com/product/fresh-norwegian-salmon-dil-and-garlic/fresh-norwegian-salmon-in-dil-garlic-fillet',
+'https://cambaytiger.com/product/kids-special-pack/kids-special-pack',
+'https://cambaytiger.com/product/grill-master-pack/grill-master-pack',
+'https://cambaytiger.com/product/supreme-tiger-pack/supreme-tiger-pack',
+'https://cambaytiger.com/product/sizzling-prawn-delight/sizzling-prawn-delight',
+'https://cambaytiger.com/product/peoples-choice-pack/peoples-choice-pack',
+'https://cambaytiger.com/product/farm-fresh-treats/farm-fresh-treats',
+'https://cambaytiger.com/product/mutton-starter-pack/mutton-starter-pack',
+'https://cambaytiger.com/product/dawat-e-special/dawat-e-special',
+'https://cambaytiger.com/product/mutton-medley/mutton-medley',
+'https://cambaytiger.com/product/protein-power-pack/protein-power-pack',
+'https://cambaytiger.com/product/tandoori-and-curry-meal/tandoori-curry-meal',
+'https://cambaytiger.com/product/tikka-trio-platter/tikka-trio-platter',
+'https://cambaytiger.com/product/assorted-tandoori-platter/assorted-tandoori-platter',
+'https://cambaytiger.com/product/chicken-carnival-pack/chicken-carnival-pack',
+'https://cambaytiger.com/product/tandoori-fusion/tandoori-fusion',
+'https://cambaytiger.com/product/mixed-chicken-grill/mixed-chicken-grill',
+'https://cambaytiger.com/product/sunday-brunch-special/sunday-brunch-special',
+'https://cambaytiger.com/product/kuk-doo-koo-pack/kuk-doo-koo-pack',
+'https://cambaytiger.com/product/party-starter-pack/party-starter-pack',
+'https://cambaytiger.com/product/protein-rich-meal/protein-rich-meal',
+'https://cambaytiger.com/product/dinner-special/dinner-special',
+'https://cambaytiger.com/product/boneless-delights/boneless-delights',
+'https://cambaytiger.com/product/soulful-dua-pack/soulful-duo-pack',
+'https://cambaytiger.com/product/ultimate-fish-feast/ultimate-fish-feast'
 
     ];
 
-    cy.visit('https://cambaytiger.com//');
-    //   cy.reload({ timeout: 100000 });
+    cy.visit('https://cambaytiger.com');
+    Membership.closeAdvPopup();
 
     // select location 
     cy.wait(10000);

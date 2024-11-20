@@ -15,35 +15,35 @@ describe('Template Spec', () => {
 
   it('Task Loop', () => {
     const product_urls = [
-'https://cambaytiger.com//product/fresh-tilapia-in-chilli-lime/fresh-tilapia-in-chilli-lime',
-'https://cambaytiger.com//product/fresh-tilapia-in-pahadi/fresh-tilapia-in-pahadi',
-'https://cambaytiger.com//product/fresh-tilapia-in-butter-garlic/fresh-tilapia-in-butter-garlic',
-'https://cambaytiger.com//product/fresh-tilapia-in-tikka/fresh-tilapia-in-tikka',
-'https://cambaytiger.com//product/fresh-tilapia-in-amritsari/fresh-tilapia-in-amritsari',
-'https://cambaytiger.com//product/fresh-sea-tiger-prawns/fresh-sea-tiger-prawns-deveined-cleaned',
-'https://cambaytiger.com//product/fresh-sea-tiger-prawns/fresh-sea-tiger-prawns-deveined-cleaned-tail-on',
-'https://cambaytiger.com//product/fresh-sea-tiger-prawns/fresh-sea-tiger-prawns-whole',
-'https://cambaytiger.com//product/fresh-sea-white-prawns/fresh-sea-white-prawns-deveined-cleaned',
-'https://cambaytiger.com//product/fresh-sea-white-prawns/fresh-sea-white-prawns-deveined-cleaned-tail-on',
-'https://cambaytiger.com//product/fresh-sea-white-prawns/fresh-sea-white-prawns-whole',
-'https://cambaytiger.com//product/farm-fresh-black-tiger-prawns/fresh-black-tiger-prawns-deveined-cleaned',
-'https://cambaytiger.com//product/farm-fresh-black-tiger-prawns/fresh-black-tiger-prawns-deveined-cleaned-tail-on',
-'https://cambaytiger.com//product/farm-fresh-jumbo-prawns/fresh-jumbo-prawns-deveined-cleaned-tail-on',
-'https://cambaytiger.com//product/farm-fresh-jumbo-prawns/fresh-jumbo-prawns-deveined-cleaned',
-'https://cambaytiger.com//product/farm-fresh-large-prawns/fresh-large-prawns-deveined-cleaned',
-'https://cambaytiger.com//product/farm-fresh-large-prawns/fresh-large-prawns-deveined-cleaned-tail-on',
-'https://cambaytiger.com//product/farm-fresh-medium-prawns/fresh-medium-prawns-deveined-cleaned-tail-on',
-'https://cambaytiger.com//product/farm-fresh-medium-prawns/fresh-medium-prawns-deveined-cleaned',
-'https://cambaytiger.com//product/farm-fresh-medium-prawns/fresh-medium-prawns-whole',
-'https://cambaytiger.com//product/fresh-sea-crab/fresh-sea-crab-whole',
-'https://cambaytiger.com//product/fresh-sea-crab/fresh-sea-crab-whole-cleaned',
-'https://cambaytiger.com//product/fresh-mud-crab/fresh-mud-crab-whole',
-'https://cambaytiger.com//product/fresh-mud-crab/fresh-mud-crab-whole-cleaned',
-'https://cambaytiger.com//product/fresh-lobsters/fresh-lobsters-whole-cleaned'
+'https://cambaytiger.com/product/fresh-tilapia-in-chilli-lime/fresh-tilapia-in-chilli-lime',
+'https://cambaytiger.com/product/fresh-tilapia-in-pahadi/fresh-tilapia-in-pahadi',
+'https://cambaytiger.com/product/fresh-tilapia-in-butter-garlic/fresh-tilapia-in-butter-garlic',
+'https://cambaytiger.com/product/fresh-tilapia-in-tikka/fresh-tilapia-in-tikka',
+'https://cambaytiger.com/product/fresh-tilapia-in-amritsari/fresh-tilapia-in-amritsari',
+'https://cambaytiger.com/product/fresh-sea-tiger-prawns/fresh-sea-tiger-prawns-deveined-cleaned',
+'https://cambaytiger.com/product/fresh-sea-tiger-prawns/fresh-sea-tiger-prawns-deveined-cleaned-tail-on',
+'https://cambaytiger.com/product/fresh-sea-tiger-prawns/fresh-sea-tiger-prawns-whole',
+'https://cambaytiger.com/product/fresh-sea-white-prawns/fresh-sea-white-prawns-deveined-cleaned',
+'https://cambaytiger.com/product/fresh-sea-white-prawns/fresh-sea-white-prawns-deveined-cleaned-tail-on',
+'https://cambaytiger.com/product/fresh-sea-white-prawns/fresh-sea-white-prawns-whole',
+'https://cambaytiger.com/product/farm-fresh-black-tiger-prawns/fresh-black-tiger-prawns-deveined-cleaned',
+'https://cambaytiger.com/product/farm-fresh-black-tiger-prawns/fresh-black-tiger-prawns-deveined-cleaned-tail-on',
+'https://cambaytiger.com/product/farm-fresh-jumbo-prawns/fresh-jumbo-prawns-deveined-cleaned-tail-on',
+'https://cambaytiger.com/product/farm-fresh-jumbo-prawns/fresh-jumbo-prawns-deveined-cleaned',
+'https://cambaytiger.com/product/farm-fresh-large-prawns/fresh-large-prawns-deveined-cleaned',
+'https://cambaytiger.com/product/farm-fresh-large-prawns/fresh-large-prawns-deveined-cleaned-tail-on',
+'https://cambaytiger.com/product/farm-fresh-medium-prawns/fresh-medium-prawns-deveined-cleaned-tail-on',
+'https://cambaytiger.com/product/farm-fresh-medium-prawns/fresh-medium-prawns-deveined-cleaned',
+'https://cambaytiger.com/product/farm-fresh-medium-prawns/fresh-medium-prawns-whole',
+'https://cambaytiger.com/product/fresh-sea-crab/fresh-sea-crab-whole',
+'https://cambaytiger.com/product/fresh-sea-crab/fresh-sea-crab-whole-cleaned',
+'https://cambaytiger.com/product/fresh-mud-crab/fresh-mud-crab-whole',
+'https://cambaytiger.com/product/fresh-mud-crab/fresh-mud-crab-whole-cleaned',
+'https://cambaytiger.com/product/fresh-lobsters/fresh-lobsters-whole-cleaned'
     ];
 
-    cy.visit('https://cambaytiger.com//');
-    //   cy.reload({ timeout: 100000 });
+    cy.visit('https://cambaytiger.com');
+    Membership.closeAdvPopup();
 
     // select location 
     cy.wait(10000);

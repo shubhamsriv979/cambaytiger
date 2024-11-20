@@ -15,35 +15,35 @@ describe('Template Spec', () => {
 
   it('Task Loop', () => {
     const product_urls = [
-'https://cambaytiger.com//product/fresh-large-prawns-in-chilli-garlic-deveined-and-tail-on/fresh-large-prawns-in-chilli-garlic-deveined-cleaned-tail-on',
-'https://cambaytiger.com//product/fresh-large-prawns-in-chilli-lime-deveined-and-tail-on/fresh-large-prawns-in-chilli-lime-deveined-cleaned-tail-on',
-'https://cambaytiger.com//product/fresh-large-prawns-in-butter-garlic-deveined-and-tail-on/fresh-large-prawns-in-butter-garlic-deveined-cleaned-tail-on',
-'https://cambaytiger.com//product/fresh-large-prawns-in-pahadi-deveined-and-tail-on/fresh-large-prawns-in-pahadi-deveined-cleaned-tail-on',
-'https://cambaytiger.com//product/fresh-large-prawns-in-tikka-deveined-and-tail-on/fresh-large-prawns-in-tikka-deveined-cleaned-tail-on',
-'https://cambaytiger.com//product/fresh-large-prawns-in-amritrsari-deveined-and-tail-on/fresh-large-prawns-in-amritsari-deveined-cleaned-tail-on',
-'https://cambaytiger.com//product/fresh-oysters/fresh-oysters',
-'https://cambaytiger.com//product/fresh-clams/fresh-clams',
-'https://cambaytiger.com//product/fresh-pomfret-medium-chilli-garlic/fresh-pomfret-medium-in-chilli-garlic',
-'https://cambaytiger.com//product/fresh-pomfret-medium-in-chilli-lime/fresh-pomfret-medium-in-chilli-lime',
-'https://cambaytiger.com//product/fresh-pomfret-medium-in-butter-garlic/fresh-pomfret-medium-in-butter-garlic',
-'https://cambaytiger.com//product/fresh-pomfret-medium-in-pahadi/fresh-pomfret-medium-in-pahadi',
-'https://cambaytiger.com//product/fresh-pomfret-medium-in-amritsari/fresh-pomfret-medium-in-amritsari',
-'https://cambaytiger.com//product/fresh-pomfret-medium-in-tikka/fresh-pomfret-medium-in-tikka',
-'https://cambaytiger.com//product/fresh-tuna/fresh-tuna-fillet',
-'https://cambaytiger.com//product/fresh-sea-bass/fresh-sea-bass-fillet',
-'https://cambaytiger.com//product/fresh-sardine/fresh-sardine-whole-cleaned',
-'https://cambaytiger.com//product/fresh-red-snapper/fresh-red-snapper-fillet',
-'https://cambaytiger.com//product/fresh-lady-fish/fresh-lady-fish-whole-cleaned',
-'https://cambaytiger.com//product/fresh-indian-mackerel/fresh-indian-mackerel-whole-cleaned',
-'https://cambaytiger.com//product/fresh-ghol/fresh-ghol-fillet',
-'https://cambaytiger.com//product/fresh-chinese-pomfret/fresh-chinese-pomfret-whole',
-'https://cambaytiger.com//product/fresh-silver-pomfret-super/fresh-silver-pomfret-super-whole',
-'https://cambaytiger.com//product/fresh-tengra/fresh-tengra-whole-cleaned',
-'https://cambaytiger.com//product/fresh-tilapia-in-chilli-garlic/fresh-tilapia-in-chilli-garlic'
+'https://cambaytiger.com/product/fresh-large-prawns-in-chilli-garlic-deveined-and-tail-on/fresh-large-prawns-in-chilli-garlic-deveined-cleaned-tail-on',
+'https://cambaytiger.com/product/fresh-large-prawns-in-chilli-lime-deveined-and-tail-on/fresh-large-prawns-in-chilli-lime-deveined-cleaned-tail-on',
+'https://cambaytiger.com/product/fresh-large-prawns-in-butter-garlic-deveined-and-tail-on/fresh-large-prawns-in-butter-garlic-deveined-cleaned-tail-on',
+'https://cambaytiger.com/product/fresh-large-prawns-in-pahadi-deveined-and-tail-on/fresh-large-prawns-in-pahadi-deveined-cleaned-tail-on',
+'https://cambaytiger.com/product/fresh-large-prawns-in-tikka-deveined-and-tail-on/fresh-large-prawns-in-tikka-deveined-cleaned-tail-on',
+'https://cambaytiger.com/product/fresh-large-prawns-in-amritrsari-deveined-and-tail-on/fresh-large-prawns-in-amritsari-deveined-cleaned-tail-on',
+'https://cambaytiger.com/product/fresh-oysters/fresh-oysters',
+'https://cambaytiger.com/product/fresh-clams/fresh-clams',
+'https://cambaytiger.com/product/fresh-pomfret-medium-chilli-garlic/fresh-pomfret-medium-in-chilli-garlic',
+'https://cambaytiger.com/product/fresh-pomfret-medium-in-chilli-lime/fresh-pomfret-medium-in-chilli-lime',
+'https://cambaytiger.com/product/fresh-pomfret-medium-in-butter-garlic/fresh-pomfret-medium-in-butter-garlic',
+'https://cambaytiger.com/product/fresh-pomfret-medium-in-pahadi/fresh-pomfret-medium-in-pahadi',
+'https://cambaytiger.com/product/fresh-pomfret-medium-in-amritsari/fresh-pomfret-medium-in-amritsari',
+'https://cambaytiger.com/product/fresh-pomfret-medium-in-tikka/fresh-pomfret-medium-in-tikka',
+'https://cambaytiger.com/product/fresh-tuna/fresh-tuna-fillet',
+'https://cambaytiger.com/product/fresh-sea-bass/fresh-sea-bass-fillet',
+'https://cambaytiger.com/product/fresh-sardine/fresh-sardine-whole-cleaned',
+'https://cambaytiger.com/product/fresh-red-snapper/fresh-red-snapper-fillet',
+'https://cambaytiger.com/product/fresh-lady-fish/fresh-lady-fish-whole-cleaned',
+'https://cambaytiger.com/product/fresh-indian-mackerel/fresh-indian-mackerel-whole-cleaned',
+'https://cambaytiger.com/product/fresh-ghol/fresh-ghol-fillet',
+'https://cambaytiger.com/product/fresh-chinese-pomfret/fresh-chinese-pomfret-whole',
+'https://cambaytiger.com/product/fresh-silver-pomfret-super/fresh-silver-pomfret-super-whole',
+'https://cambaytiger.com/product/fresh-tengra/fresh-tengra-whole-cleaned',
+'https://cambaytiger.com/product/fresh-tilapia-in-chilli-garlic/fresh-tilapia-in-chilli-garlic'
     ];
 
-    cy.visit('https://cambaytiger.com//');
-    //   cy.reload({ timeout: 100000 });
+    cy.visit('https://cambaytiger.com');
+    Membership.closeAdvPopup();
 
     // select location 
     cy.wait(10000);

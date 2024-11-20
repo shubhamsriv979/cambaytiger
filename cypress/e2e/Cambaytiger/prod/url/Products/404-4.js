@@ -15,35 +15,35 @@ describe('Template Spec', () => {
 
   it('Task Loop', () => {
     const product_urls = [
-        'https://cambaytiger.com//product/freshly-frozen-norwegian/freshly-frozen-norwegian-salmon-chunks-skinless',
-'https://cambaytiger.com//product/freshly-frozen-surmai-steaks/freshly-frozen-surmai-steaks',
-'https://cambaytiger.com//product/freshly-frozen-pomfret-whole/freshly-frozen-pomfret-whole',
-'https://cambaytiger.com//product/freshly-frozen-tuna-saku/freshly-frozen-tuna-saku',
-'https://cambaytiger.com//product/freshly-frozen-basa-chunks-400g/freshly-frozen-basa-chunks-400g',
-'https://cambaytiger.com//product/freshly-frozen-basa-chunks-250g/freshly-frozen-basa-chunks-250g',
-'https://cambaytiger.com//product/freshly-frozen-jumbo-prawns-300g/freshly-frozen-jumbo-prawns-300g',
-'https://cambaytiger.com//product/freshly-frozen-small-prawns-300g/freshly-frozen-small-prawns-300g',
-'https://cambaytiger.com//product/freshly-frozen-large-prawns-300g/freshly-frozen-large-prawns-300g',
-'https://cambaytiger.com//product/freshly-frozen-medium-prawns-600g/freshly-frozen-medium-prawns-600g',
-'https://cambaytiger.com//product/freshly-frozen-medium-prawns-300g/freshly-frozen-medium-prawns-300g',
-'https://cambaytiger.com//product/mutton-raan/mutton-raan',
-'https://cambaytiger.com//product/mutton-nalli/mutton-nalli',
-'https://cambaytiger.com//product/mutton-chops/mutton-chops',
-'https://cambaytiger.com//product/mutton-mince-kheema/mutton-mince-kheema',
-'https://cambaytiger.com//product/mutton-boneless-chunks/mutton-boneless-chunks',
-'https://cambaytiger.com//product/mutton-curry-cut/mutton-curry-cut',
-'https://cambaytiger.com//product/chicken-wings/chicken-wings',
-'https://cambaytiger.com//product/chicken-thigh-boneless/chicken-thigh-boneless',
-'https://cambaytiger.com//product/chicken-mince-kheema/chicken-mince-kheema',
-'https://cambaytiger.com//product/chicken-lollypop/chicken-lollypop',
-'https://cambaytiger.com//product/chicken-leg/chicken-leg',
-'https://cambaytiger.com//product/chicken-drumsticks/chicken-drumsticks',
-'https://cambaytiger.com//product/chicken-curry-cut/chicken-curry-cut',
-'https://cambaytiger.com//product/chicken-breast-boneless/chicken-breast-boneless'
+        'https://cambaytiger.com/product/freshly-frozen-norwegian/freshly-frozen-norwegian-salmon-chunks-skinless',
+'https://cambaytiger.com/product/freshly-frozen-surmai-steaks/freshly-frozen-surmai-steaks',
+'https://cambaytiger.com/product/freshly-frozen-pomfret-whole/freshly-frozen-pomfret-whole',
+'https://cambaytiger.com/product/freshly-frozen-tuna-saku/freshly-frozen-tuna-saku',
+'https://cambaytiger.com/product/freshly-frozen-basa-chunks-400g/freshly-frozen-basa-chunks-400g',
+'https://cambaytiger.com/product/freshly-frozen-basa-chunks-250g/freshly-frozen-basa-chunks-250g',
+'https://cambaytiger.com/product/freshly-frozen-jumbo-prawns-300g/freshly-frozen-jumbo-prawns-300g',
+'https://cambaytiger.com/product/freshly-frozen-small-prawns-300g/freshly-frozen-small-prawns-300g',
+'https://cambaytiger.com/product/freshly-frozen-large-prawns-300g/freshly-frozen-large-prawns-300g',
+'https://cambaytiger.com/product/freshly-frozen-medium-prawns-600g/freshly-frozen-medium-prawns-600g',
+'https://cambaytiger.com/product/freshly-frozen-medium-prawns-300g/freshly-frozen-medium-prawns-300g',
+'https://cambaytiger.com/product/mutton-raan/mutton-raan',
+'https://cambaytiger.com/product/mutton-nalli/mutton-nalli',
+'https://cambaytiger.com/product/mutton-chops/mutton-chops',
+'https://cambaytiger.com/product/mutton-mince-kheema/mutton-mince-kheema',
+'https://cambaytiger.com/product/mutton-boneless-chunks/mutton-boneless-chunks',
+'https://cambaytiger.com/product/mutton-curry-cut/mutton-curry-cut',
+'https://cambaytiger.com/product/chicken-wings/chicken-wings',
+'https://cambaytiger.com/product/chicken-thigh-boneless/chicken-thigh-boneless',
+'https://cambaytiger.com/product/chicken-mince-kheema/chicken-mince-kheema',
+'https://cambaytiger.com/product/chicken-lollypop/chicken-lollypop',
+'https://cambaytiger.com/product/chicken-leg/chicken-leg',
+'https://cambaytiger.com/product/chicken-drumsticks/chicken-drumsticks',
+'https://cambaytiger.com/product/chicken-curry-cut/chicken-curry-cut',
+'https://cambaytiger.com/product/chicken-breast-boneless/chicken-breast-boneless'
     ];
 
-    cy.visit('https://cambaytiger.com//');
-    //   cy.reload({ timeout: 100000 });
+    cy.visit('https://cambaytiger.com');
+    Membership.closeAdvPopup();
 
     // select location 
     cy.wait(10000);

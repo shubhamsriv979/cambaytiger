@@ -15,35 +15,35 @@ describe('Template Spec', () => {
 
   it('Task Loop', () => {
     const product_urls = [
-'https://cambaytiger.com//product/fresh-lobsters/fresh-lobsters-whole',
-'https://cambaytiger.com//product/fresh-himalayan-trout/fresh-himalayan-trout-fillet',
-'https://cambaytiger.com//product/fresh-himalayan-trout/fresh-himalayan-trout-steaks',
-'https://cambaytiger.com//product/fresh-norwegian-salmon/fresh-norwegian-salmon-with-skin-fillet',
-'https://cambaytiger.com//product/fresh-norwegian-salmon/fresh-norwegian-salmon-without-skin-fillet',
-'https://cambaytiger.com//product/fresh-norwegian-salmon/fresh-norwegian-salmon-steaks',
-'https://cambaytiger.com//product/fresh-squid/fresh-squid-rings',
-'https://cambaytiger.com//product/fresh-squid/fresh-squid-whole-cleaned',
-'https://cambaytiger.com//product/fresh-shingada/fresh-shingada-fillet',
-'https://cambaytiger.com//product/fresh-shingada/fresh-shingada-steaks',
-'https://cambaytiger.com//product/fresh-shark-fish/fresh-shark-fish-fillet',
-'https://cambaytiger.com//product/fresh-shark-fish/fresh-shark-fish-steaks',
-'https://cambaytiger.com//product/fresh-shark-fish/fresh-shark-fish-whole-pack-of-2-fish',
-'https://cambaytiger.com//product/fresh-hilsa/fresh-hilsa-bengali-cut',
-'https://cambaytiger.com//product/fresh-hilsa/fresh-hilsa-whole',
-'https://cambaytiger.com//product/fresh-bombay-duck/fresh-bombay-duck-whole-cleaned',
-'https://cambaytiger.com//product/fresh-black-pomfret/fresh-black-pomfret-steaks',
-'https://cambaytiger.com//product/fresh-black-pomfret/fresh-black-pomfret-whole',
-'https://cambaytiger.com//product/fresh-anchovies-silver/fresh-anchovies-silver-cleaned',
-'https://cambaytiger.com//product/fresh-anchovies-silver/fresh-anchovies-silver-whole',
-'https://cambaytiger.com//product/fresh-anchovies-gold/fresh-anchovies-gold-cleaned',
-'https://cambaytiger.com//product/fresh-anchovies-gold/fresh-anchovies-gold-whole',
-'https://cambaytiger.com//product/fresh-silver-pomfret-large/fresh-silver-pomfret-large-steaks',
-'https://cambaytiger.com//product/fresh-silver-pomfret-large/fresh-silver-pomfret-large-steaks-with-head-tail',
-'https://cambaytiger.com//product/fresh-silver-pomfret-large/fresh-silver-pomfret-large-whole-cleaned',
+'https://cambaytiger.com/product/fresh-lobsters/fresh-lobsters-whole',
+'https://cambaytiger.com/product/fresh-himalayan-trout/fresh-himalayan-trout-fillet',
+'https://cambaytiger.com/product/fresh-himalayan-trout/fresh-himalayan-trout-steaks',
+'https://cambaytiger.com/product/fresh-norwegian-salmon/fresh-norwegian-salmon-with-skin-fillet',
+'https://cambaytiger.com/product/fresh-norwegian-salmon/fresh-norwegian-salmon-without-skin-fillet',
+'https://cambaytiger.com/product/fresh-norwegian-salmon/fresh-norwegian-salmon-steaks',
+'https://cambaytiger.com/product/fresh-squid/fresh-squid-rings',
+'https://cambaytiger.com/product/fresh-squid/fresh-squid-whole-cleaned',
+'https://cambaytiger.com/product/fresh-shingada/fresh-shingada-fillet',
+'https://cambaytiger.com/product/fresh-shingada/fresh-shingada-steaks',
+'https://cambaytiger.com/product/fresh-shark-fish/fresh-shark-fish-fillet',
+'https://cambaytiger.com/product/fresh-shark-fish/fresh-shark-fish-steaks',
+'https://cambaytiger.com/product/fresh-shark-fish/fresh-shark-fish-whole-pack-of-2-fish',
+'https://cambaytiger.com/product/fresh-hilsa/fresh-hilsa-bengali-cut',
+'https://cambaytiger.com/product/fresh-hilsa/fresh-hilsa-whole',
+'https://cambaytiger.com/product/fresh-bombay-duck/fresh-bombay-duck-whole-cleaned',
+'https://cambaytiger.com/product/fresh-black-pomfret/fresh-black-pomfret-steaks',
+'https://cambaytiger.com/product/fresh-black-pomfret/fresh-black-pomfret-whole',
+'https://cambaytiger.com/product/fresh-anchovies-silver/fresh-anchovies-silver-cleaned',
+'https://cambaytiger.com/product/fresh-anchovies-silver/fresh-anchovies-silver-whole',
+'https://cambaytiger.com/product/fresh-anchovies-gold/fresh-anchovies-gold-cleaned',
+'https://cambaytiger.com/product/fresh-anchovies-gold/fresh-anchovies-gold-whole',
+'https://cambaytiger.com/product/fresh-silver-pomfret-large/fresh-silver-pomfret-large-steaks',
+'https://cambaytiger.com/product/fresh-silver-pomfret-large/fresh-silver-pomfret-large-steaks-with-head-tail',
+'https://cambaytiger.com/product/fresh-silver-pomfret-large/fresh-silver-pomfret-large-whole-cleaned',
     ];
 
-    cy.visit('https://cambaytiger.com//');
-    //   cy.reload({ timeout: 100000 });
+    cy.visit('https://cambaytiger.com');
+    Membership.closeAdvPopup();
 
     // select location 
     cy.wait(10000);

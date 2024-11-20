@@ -15,35 +15,35 @@ describe('Template Spec', () => {
 
   it('Task Loop', () => {
     const product_urls = [
-'https://cambaytiger.com//product/fresh-silver-pomfret-large/fresh-silver-pomfret-large-whole-pack-of-2-fish',
-'https://cambaytiger.com//product/fresh-pomfret-medium/fresh-silver-pomfret-medium-steaks',
-'https://cambaytiger.com//product/fresh-pomfret-medium/fresh-silver-pomfret-medium-steaks-with-head-tail',
-'https://cambaytiger.com//product/fresh-pomfret-medium/fresh-silver-pomfret-medium-whole-cleaned',
-'https://cambaytiger.com//product/fresh-pomfret-medium/fresh-silver-pomfret-medium-whole-pack-of-3-fish',
-'https://cambaytiger.com//product/fresh-seer-fish/fresh-seer-fish-fillet',
-'https://cambaytiger.com//product/fresh-seer-fish/fresh-seer-fish-steaks',
-'https://cambaytiger.com//product/fresh-rawas/fresh-indian-salmon-fillet',
-'https://cambaytiger.com//product/fresh-rawas/fresh-indian-salmon-steaks',
-'https://cambaytiger.com//product/fresh-roopchand/fresh-roopchand-steaks',
-'https://cambaytiger.com//product/fresh-roopchand/fresh-roopchand-whole',
-'https://cambaytiger.com//product/fresh-sole/fresh-sole-fillet',
-'https://cambaytiger.com//product/fresh-sole/fresh-sole-steaks',
-'https://cambaytiger.com//product/fresh-rohu/fresh-rohu-bengali-cut',
-'https://cambaytiger.com//product/fresh-rohu/fresh-rohu-steaks',
-'https://cambaytiger.com//product/fresh-rohu/fresh-rohu-whole',
-'https://cambaytiger.com//product/fresh-ompak-pabda/fresh-ompak-pabda-whole',
-'https://cambaytiger.com//product/fresh-ompak-pabda/fresh-ompak-pabda-whole-cleaned',
-'https://cambaytiger.com//product/fresh-catla/fresh-catla-whole',
-'https://cambaytiger.com//product/fresh-catla/fresh-catla-bengali-cut',
-'https://cambaytiger.com//product/fresh-tilapia/fresh-tilapia-moon-cut-pack-of-2-fish',
-'https://cambaytiger.com//product/fresh-tilapia/fresh-tilapia-whole',
-'https://cambaytiger.com//product/fresh-tilapia/fresh-tilapia-fillet',
-'https://cambaytiger.com//product/fresh-indian-basa/fresh-indian-basa-fillet',
-'https://cambaytiger.com//product/fresh-indian-basa/fresh-indian-basa'
+'https://cambaytiger.com/product/fresh-silver-pomfret-large/fresh-silver-pomfret-large-whole-pack-of-2-fish',
+'https://cambaytiger.com/product/fresh-pomfret-medium/fresh-silver-pomfret-medium-steaks',
+'https://cambaytiger.com/product/fresh-pomfret-medium/fresh-silver-pomfret-medium-steaks-with-head-tail',
+'https://cambaytiger.com/product/fresh-pomfret-medium/fresh-silver-pomfret-medium-whole-cleaned',
+'https://cambaytiger.com/product/fresh-pomfret-medium/fresh-silver-pomfret-medium-whole-pack-of-3-fish',
+'https://cambaytiger.com/product/fresh-seer-fish/fresh-seer-fish-fillet',
+'https://cambaytiger.com/product/fresh-seer-fish/fresh-seer-fish-steaks',
+'https://cambaytiger.com/product/fresh-rawas/fresh-indian-salmon-fillet',
+'https://cambaytiger.com/product/fresh-rawas/fresh-indian-salmon-steaks',
+'https://cambaytiger.com/product/fresh-roopchand/fresh-roopchand-steaks',
+'https://cambaytiger.com/product/fresh-roopchand/fresh-roopchand-whole',
+'https://cambaytiger.com/product/fresh-sole/fresh-sole-fillet',
+'https://cambaytiger.com/product/fresh-sole/fresh-sole-steaks',
+'https://cambaytiger.com/product/fresh-rohu/fresh-rohu-bengali-cut',
+'https://cambaytiger.com/product/fresh-rohu/fresh-rohu-steaks',
+'https://cambaytiger.com/product/fresh-rohu/fresh-rohu-whole',
+'https://cambaytiger.com/product/fresh-ompak-pabda/fresh-ompak-pabda-whole',
+'https://cambaytiger.com/product/fresh-ompak-pabda/fresh-ompak-pabda-whole-cleaned',
+'https://cambaytiger.com/product/fresh-catla/fresh-catla-whole',
+'https://cambaytiger.com/product/fresh-catla/fresh-catla-bengali-cut',
+'https://cambaytiger.com/product/fresh-tilapia/fresh-tilapia-moon-cut-pack-of-2-fish',
+'https://cambaytiger.com/product/fresh-tilapia/fresh-tilapia-whole',
+'https://cambaytiger.com/product/fresh-tilapia/fresh-tilapia-fillet',
+'https://cambaytiger.com/product/fresh-indian-basa/fresh-indian-basa-fillet',
+'https://cambaytiger.com/product/fresh-indian-basa/fresh-indian-basa'
     ];
 
-    cy.visit('https://cambaytiger.com//');
-    //   cy.reload({ timeout: 100000 });
+    cy.visit('https://cambaytiger.com');
+    Membership.closeAdvPopup();
 
     // select location 
     cy.wait(10000);

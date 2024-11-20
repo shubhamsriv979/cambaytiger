@@ -15,35 +15,35 @@ describe('Template Spec', () => {
 
   it('Task Loop', () => {
     const product_urls = [
-'https://cambaytiger.com//product/mutton-chicken-tilapia-tika-combo/mutton-chicken-tilapia-tika-combo',
-'https://cambaytiger.com//product/mutton-chicken-tilapia-combo/mutton-chicken-tilapia-combo',
-'https://cambaytiger.com//product/chicken-lrg-prawns-combo/chicken-lrg-prawns-combo',
-'https://cambaytiger.com//product/chicken-prawns-combo/chicken-prawns-combo',
-'https://cambaytiger.com//product/classic-makhani-curry/classic-makhani-curry',
-'https://cambaytiger.com//product/red-thai-curry/red-thai-curry',
-'https://cambaytiger.com//product/kerala-moilee-curry/kerala-moilee-curry',
-'https://cambaytiger.com//product/chingri-malai-curry/chingri-malai-curry',
-'https://cambaytiger.com//product/kawan-tawa-paratha/kawan-tawa-paratha',
-'https://cambaytiger.com//product/kawan-whole-wheat-paratha/kawan-whole-wheat-paratha',
-'https://cambaytiger.com//product/kawan-onion-paratha/kawan-onion-paratha',
-'https://cambaytiger.com//product/kawan-flakey-paratha/kawan-flakey-paratha',
-'https://cambaytiger.com//product/kawan-malabar-paratha/kawan-malabar-paratha',
-'https://cambaytiger.com//product/chef-currated-chilli-lime-marinade/chef-currated-chilli-lime-marinade',
-'https://cambaytiger.com//product/chef-currated-chilli-garlic-marinade/chef-currated-chilli-garlic-marinade',
-'https://cambaytiger.com//product/chef-currated-pahadi-marinade/chef-currated-pahadi-marinade',
-'https://cambaytiger.com//product/chef-currated-butter-garlic-marinade/chef-currated-butter-garlic-marinade',
-'https://cambaytiger.com//product/chef-currated-tikka-marinade/chef-currated-tikka-marinade',
-'https://cambaytiger.com//product/chef-currated-amritsari-marinade/chef-currated-amritsari-marinade',
-'https://cambaytiger.com//product/country-eggs/country-eggs-pack-of-6-pcs',
-'https://cambaytiger.com//product/brown-eggs/brown-eggs-pack-of-6-pcs',
-'https://cambaytiger.com//product/classic-white-eggs/classic-white-eggs-pack-of-6-pcs',
-'https://cambaytiger.com//product/freshly-frozen-lemon-pepper-basa/freshly-frozen-lemon-pepper-basa',
-'https://cambaytiger.com//product/freshly-frozen-chilli-basil-basa/freshly-frozen-chilli-basil-basa',
-'https://cambaytiger.com//product/freshly-frozen-smoked-salmon/freshly-frozen-smoked-salmon'
+'https://cambaytiger.com/product/mutton-chicken-tilapia-tika-combo/mutton-chicken-tilapia-tika-combo',
+'https://cambaytiger.com/product/mutton-chicken-tilapia-combo/mutton-chicken-tilapia-combo',
+'https://cambaytiger.com/product/chicken-lrg-prawns-combo/chicken-lrg-prawns-combo',
+'https://cambaytiger.com/product/chicken-prawns-combo/chicken-prawns-combo',
+'https://cambaytiger.com/product/classic-makhani-curry/classic-makhani-curry',
+'https://cambaytiger.com/product/red-thai-curry/red-thai-curry',
+'https://cambaytiger.com/product/kerala-moilee-curry/kerala-moilee-curry',
+'https://cambaytiger.com/product/chingri-malai-curry/chingri-malai-curry',
+'https://cambaytiger.com/product/kawan-tawa-paratha/kawan-tawa-paratha',
+'https://cambaytiger.com/product/kawan-whole-wheat-paratha/kawan-whole-wheat-paratha',
+'https://cambaytiger.com/product/kawan-onion-paratha/kawan-onion-paratha',
+'https://cambaytiger.com/product/kawan-flakey-paratha/kawan-flakey-paratha',
+'https://cambaytiger.com/product/kawan-malabar-paratha/kawan-malabar-paratha',
+'https://cambaytiger.com/product/chef-currated-chilli-lime-marinade/chef-currated-chilli-lime-marinade',
+'https://cambaytiger.com/product/chef-currated-chilli-garlic-marinade/chef-currated-chilli-garlic-marinade',
+'https://cambaytiger.com/product/chef-currated-pahadi-marinade/chef-currated-pahadi-marinade',
+'https://cambaytiger.com/product/chef-currated-butter-garlic-marinade/chef-currated-butter-garlic-marinade',
+'https://cambaytiger.com/product/chef-currated-tikka-marinade/chef-currated-tikka-marinade',
+'https://cambaytiger.com/product/chef-currated-amritsari-marinade/chef-currated-amritsari-marinade',
+'https://cambaytiger.com/product/country-eggs/country-eggs-pack-of-6-pcs',
+'https://cambaytiger.com/product/brown-eggs/brown-eggs-pack-of-6-pcs',
+'https://cambaytiger.com/product/classic-white-eggs/classic-white-eggs-pack-of-6-pcs',
+'https://cambaytiger.com/product/freshly-frozen-lemon-pepper-basa/freshly-frozen-lemon-pepper-basa',
+'https://cambaytiger.com/product/freshly-frozen-chilli-basil-basa/freshly-frozen-chilli-basil-basa',
+'https://cambaytiger.com/product/freshly-frozen-smoked-salmon/freshly-frozen-smoked-salmon'
     ];
 
-    cy.visit('https://cambaytiger.com//');
-    //   cy.reload({ timeout: 100000 });
+    cy.visit('https://cambaytiger.com');
+    Membership.closeAdvPopup();
 
     // select location 
     cy.wait(10000);

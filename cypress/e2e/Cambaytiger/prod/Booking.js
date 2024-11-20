@@ -1,3 +1,4 @@
+import Membership from '../../../support/PageObjects/Membership';
 let failedUrls = []; // Array to track failed URLs
 
 Cypress.on('fail', (error, runnable) => {
@@ -15,33 +16,25 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 describe('Booking flow', () => {
 
   it('Booking flow', () => {
-    const locations = [      
-      'delhi airport',      
+    const locations = [
+      'delhi airport',
       'Mumbai',
       'Bangalore'
     ];
-    
+
 
     const product_urls = [
-      // 'https://cambaytiger.com//product/mutton-curry-cut',
-      'https://cambaytiger.com//product/chicken-prawns-combo',      //combo product        
-      'https://cambaytiger.com//product/mutton-boneless-chunks',  //single product
+      // 'https://cambaytiger.com/product/mutton-curry-cut',
+      // 'https://cambaytiger.com/product/chicken-prawns-combo',      //combo product        
+      // 'https://cambaytiger.com/product/mutton-boneless-chunks',  //single product
+      'https://cambaytiger.com/product/classic-white-eggs',
+      'https://cambaytiger.com/product/brown-eggs'
 
     ];
 
-    cy.visit('https://cambaytiger.com//');
-    function waitForElementAndClosePopup() {
-      cy.get('body').then((body) => {
-        if (body.find("#wzrkImageOnlyDiv").length > 0) {
-          // Element exists; access the iframe
-          cy.reload();
-          waitForElementAndClosePopup(); // Recursive call
-        }
-      });
-    }
-    
-    // Call the function in your test
-    waitForElementAndClosePopup();
+    cy.visit('https://cambaytiger.com/');
+    // Access the iframe and wait for it to load (e.g., advertisement pop-up)
+    Membership.closeAdvPopup();
 
     // select location 
     cy.wait(10000);
@@ -66,7 +59,7 @@ describe('Booking flow', () => {
 
 
     locations.forEach((location) => {
-      context(`Testing food ordering at ${location}`, () => {      
+      context(`Testing food ordering at ${location}`, () => {
         selectLocationUntilNotMumbai();
         function selectLocationUntilNotMumbai() {
           // Click on the location field to open the location selector
@@ -99,14 +92,14 @@ describe('Booking flow', () => {
               });
             });
         }
-        
+
         product_urls.forEach((product_urls) => {
           context(`Testing food ordering at ${product_urls}`, () => {
-            cy.visit(product_urls, { timeout: 500000, failOnStatusCode: false });            
+            cy.visit(product_urls, { timeout: 500000, failOnStatusCode: false });
             cy.wait(5000);
             cy.get('body').then((body) => {
               // you-may-also-like heading in valid pdp
-              const locator_heading = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] li:nth-child(1) a:nth-child(1)";              
+              const locator_heading = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] li:nth-child(1) a:nth-child(1)";
               // Check if the 404 error or continue button is present
               if (body.find(locator_heading).length === 0) {
                 // Log error message
@@ -121,6 +114,7 @@ describe('Booking flow', () => {
               // const addToCartSelector = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] div[class='product-page'] main[class='sc-jWNpPo gluggg'] div[class=' product-container '] div[class='product-page__product__info'] div[class='showOnDesktop'] div[class='product-page__product__info--fixed'] div[class='sc-hBbWxd ljHzFv'] div div[class='showOnDesktop'] div[class='undefined__mainText sc-gzOgki fSlvAH']";
               //prod
               const addToCartSelector = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] div[class='product-page'] main[class='sc-jWNpPo gluggg'] div[class=' product-container '] div[class='product-page__product__info'] div[class='showOnDesktop'] div[class='product-page__product__info--fixed'] div[class='sc-hBbWxd ljHzFv'] div div[class='showOnDesktop'] div[class='undefined__mainText sc-gzOgki iuyAzF']";
+              cy.wait(10000);
               if (body.find(addToCartSelector).length > 0) {
                 cy.get(addToCartSelector).then(($el) => {
                   const buttonText = $el.text().trim();
@@ -156,9 +150,16 @@ describe('Booking flow', () => {
                         cy.wait(15000);
                         cy.get('.payment_button__text__busIX')
                           .should("be.visible")
-                          .click({ force: true });  
-                        cy.wait(15000);                    
-                        
+                          .click({ force: true });
+                        cy.wait(15000);
+                        // Verify the URL
+                        cy.url().then((currentUrl) => {
+                          expect([
+                            'https://cambaytiger.com/',
+                            'https://cambaytiger.com/order-placed',
+                          ]).to.include(currentUrl);
+                        });
+
 
                       } else {
                         cy.log('product is out of stock');
@@ -180,18 +181,18 @@ describe('Booking flow', () => {
       });
     });
   })
-      // Log all failed URLs after the test suite is complete
-      after(() => {
-        if (failedUrls.length > 0) {
-          // Log failed URLs regardless of the test outcome
-          cy.task('log', "The following URLs failed:");
-          failedUrls.forEach(url => cy.task('log', url));
-          // throw new Error("One or more URLs failed."); // Explicitly fail the test suite
-          cy.get("Some Urls contains 404 page",{timeout:1000});
-        } else {
-          cy.task('log', "All URLs passed successfully."); // Always log success
-        }
-      });
-      
+  // Log all failed URLs after the test suite is complete
+  after(() => {
+    if (failedUrls.length > 0) {
+      // Log failed URLs regardless of the test outcome
+      cy.task('log', "The following URLs failed:");
+      failedUrls.forEach(url => cy.task('log', url));
+      // throw new Error("One or more URLs failed."); // Explicitly fail the test suite
+      cy.get("Some Urls contains 404 page", { timeout: 1000 });
+    } else {
+      cy.task('log', "All URLs passed successfully."); // Always log success
+    }
+  });
+
 
 })
