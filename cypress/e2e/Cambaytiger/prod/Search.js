@@ -48,20 +48,28 @@ describe('Search functionality', () => {
     cy.wait(10000);    
 
     function clickUntilVisible() {
+      // Use recursion safely
       cy.get('body').then(($body) => {
         // Check if the target element is visible
         cy.wait(10000); 
         if ($body.find("div[class='cart__empty'] span").is(':visible')) {
           cy.log('Target element is now visible.');
+          
+          // Perform the click action
           cy.get(".sc-fsGQkc.bgexUZ").click();
-          cy.wait(10000); // Optional: Prevent rapid clicks
-          clickUntilVisible(); // Recursive call          
+          
+          // Call the function again to check the condition
+          cy.wait(5000); // Add a small delay to prevent rapid execution
+          clickUntilVisible();
+        } else {
+          cy.log('Target element is not visible yet.');
         }
       });
     }
     
-    
+    // Invoke the function
     clickUntilVisible();
+    
     cy.get(".overlayFarzicom__header__close-icon").click();
 
 

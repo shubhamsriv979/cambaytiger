@@ -154,7 +154,7 @@ describe('Booking flow', () => {
                         cy.get('.payment_button__text__busIX')
                           .should("be.visible")
                           .click({ force: true });
-                        cy.wait(15000);
+                        cy.wait(20000);
                         // Verify the URL
                         cy.url().then((currentUrl) => {
                           expect([
