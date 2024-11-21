@@ -57,6 +57,7 @@ class Membership {
         // Proceed to checkout
         cy.get("button[class='cart-gg__footer__button__place__order'] span").click();
         cy.get(".Address_button__text__ved_d").click();
+        cy.wait(10000);
         cy.get("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)").click();
         cy.get(".Delivery_button__text__d8uUZ").click();
         cy.wait(15000);
