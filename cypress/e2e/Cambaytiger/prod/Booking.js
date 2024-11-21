@@ -34,7 +34,7 @@ describe('Booking flow', () => {
 
     cy.visit('https://cambaytiger.com/');
     // Access the iframe and wait for it to load (e.g., advertisement pop-up)
-    Membership.closeAdvPopup();
+    //Membership.closeAdvPopup();
 
     // select location 
     cy.wait(10000);
@@ -43,12 +43,10 @@ describe('Booking flow', () => {
     cy.get('.AdressCont__inside > :nth-child(1) > div').click();
     cy.wait(10000);
 
-    // stage Login
-    // cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div div[class='GG_dropDown_button sc-kZUnxY dAzJsv'] span").click();
-    // cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div button[class='user-register']").click();
-    // prod login
-    cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div div[class='GG_dropDown_button sc-bryTEL fIJmHu'] span",).click();
+    //  Login
+    cy.get(':nth-child(1) > #header > .scss_mainNavContainerWrapper__m_O_A > .scss_mainNavContainer__UDVhL > :nth-child(3) > .GG-main-menu__lower__desktop-right__ul > .GG_dropDown_button > span').click();
     cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div button[class='user-register']").click();
+    
 
     cy.wait(5000);
     cy.get("input[placeholder='Enter Phone number']").click().type("6388789049", { delay: 100, force: true });
@@ -110,9 +108,7 @@ describe('Booking flow', () => {
             });
 
             cy.get('body').then((body) => {
-              //stage
-              // const addToCartSelector = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] div[class='product-page'] main[class='sc-jWNpPo gluggg'] div[class=' product-container '] div[class='product-page__product__info'] div[class='showOnDesktop'] div[class='product-page__product__info--fixed'] div[class='sc-hBbWxd ljHzFv'] div div[class='showOnDesktop'] div[class='undefined__mainText sc-gzOgki fSlvAH']";
-              //prod
+              
               const addToCartSelector = "#__next > div > div.showOnDesktop > div > div > main > div.product-container > div.product-page__product__info > div > div > div.sc-hBbWxd.ljHzFv > div > div.sc-fjhmcy.bxMHcK > div.sc-erNlkL.hdnBOk > div:nth-child(4) > section > div > button";
               cy.wait(10000);
               if (body.find(addToCartSelector).length > 0) {
