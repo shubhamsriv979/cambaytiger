@@ -19,7 +19,7 @@ class Membership {
         cy.wait(5000); // Wait for the next steps to load
         cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div div[class='GG_dropDown_button sc-bryTEL fIJmHu'] span",).click();
         cy.get("body > div:nth-child(1) > div:nth-child(1) > header:nth-child(1) > div:nth-child(1) > nav:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(3) > ul:nth-child(1) > div:nth-child(2) > div:nth-child(2) > a:nth-child(2) > div:nth-child(1) > div:nth-child(2)").click();
-        cy.get(':nth-child(3) > .scss_GGLocation__cfABD > .scss_GGLocation__topCont__oRucC > .GGLocation__hide').click();
+        cy.get('#__next > div > div.showOnDesktop > div > div.Membership_parentMemberContainer__Hbxf8 > div.Membership_memberPlanContainer__A_mY2 > div.Membership_activeMemberColumn__4tiu4 > button').click();
     }
 
     closeAdvPopup() {
