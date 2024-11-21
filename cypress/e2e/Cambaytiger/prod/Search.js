@@ -31,23 +31,24 @@ describe('Search functionality', () => {
     //cart heading text
     cy.get(".overlayFarzicom__header__text").should('be.visible');
     cy.wait(10000);    
-    
+
     function clickUntilVisible() {
-      // Check if the element is visible
-      cy.get("div[class='cart__empty'] span").then(($el) => {
-        if ($el.is(':visible')) {
-          // Element is visible, stop clicking
+      cy.get('body').then(($body) => {
+        // Check if the target element is visible
+        cy.wait(10000); 
+        if ($body.find("div[class='cart__empty'] span").is(':visible')) {
           cy.log('Target element is now visible.');
           cy.get(".overlayFarzicom__header__close-icon").click();
         } else {
           // Element is not visible, click the icon and retry
           cy.get(".sc-fsGQkc.bgexUZ").click();
-          cy.wait(500); // Optional: Add a short delay to prevent too rapid clicking
-          clickUntilVisible(); // Recursive call to check again
+          cy.wait(500); // Optional: Prevent rapid clicks
+          clickUntilVisible(); // Recursive call
         }
       });
     }
-
+    
+    
     clickUntilVisible();
 
 
