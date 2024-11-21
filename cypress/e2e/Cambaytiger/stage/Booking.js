@@ -1,3 +1,4 @@
+import Membership from '../../../support/PageObjects/Membership';
 let failedUrls = []; // Array to track failed URLs
 
 Cypress.on('fail', (error, runnable) => {
@@ -26,14 +27,14 @@ describe('Booking flow', () => {
       // 'https://cambaytigerstage-nh.farziengineer.co/product/mutton-curry-cut',
       // 'https://cambaytigerstage-nh.farziengineer.co/product/chicken-prawns-combo',      //combo product        
       // 'https://cambaytigerstage-nh.farziengineer.co/product/mutton-boneless-chunks',  //single product
-      'https://cambaytiger.com/product/kerala-moilee-curry',
+      'https://cambaytigerstage-nh.farziengineer.co/product/kerala-moilee-curry',
       'https://cambaytigerstage-nh.farziengineer.co/product/brown-eggs'
 
     ];
 
     cy.visit('https://cambaytigerstage-nh.farziengineer.co/');
-    // cy.wait(20000);
-    // cy.reload();
+    // Access the iframe and wait for it to load (e.g., advertisement pop-up)
+    //Membership.closeAdvPopup();
 
     // select location 
     cy.wait(10000);
@@ -42,12 +43,10 @@ describe('Booking flow', () => {
     cy.get('.AdressCont__inside > :nth-child(1) > div').click();
     cy.wait(10000);
 
-    // stage Login
-    cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div div[class='GG_dropDown_button sc-kZUnxY dAzJsv'] span").click();
+    //  Login
+    cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div div[class='GG_dropDown_button sc-jqsdoX iMpAZw'] span").click();
     cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div button[class='user-register']").click();
-    // prod login
-    // cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div div[class='GG_dropDown_button sc-bryTEL fIJmHu'] span",).click();
-    // cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div button[class='user-register']").click();
+    
 
     cy.wait(5000);
     cy.get("input[placeholder='Enter Phone number']").click().type("6388789049", { delay: 100, force: true });
@@ -109,10 +108,8 @@ describe('Booking flow', () => {
             });
 
             cy.get('body').then((body) => {
-              //stage
-              const addToCartSelector = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] div[class='product-page'] main[class='sc-jWNpPo gluggg'] div[class=' product-container '] div[class='product-page__product__info'] div[class='showOnDesktop'] div[class='product-page__product__info--fixed'] div[class='sc-hBbWxd ljHzFv'] div div[class='showOnDesktop'] div[class='undefined__mainText sc-gzOgki fSlvAH']";
-              //prod
-              // const addToCartSelector = "div[class='showOnDesktop'] div[class='showOnDesktop'] div[class='undefined__mainText sc-gzOgki iuyAzF']";
+              
+              const addToCartSelector = "#__next > div > div.showOnDesktop > div > div > main > div.product-container > div.product-page__product__info > div > div > div.sc-hBbWxd.ljHzFv > div > div.sc-fjhmcy.bxMHcK > div.sc-erNlkL.hdnBOk > div:nth-child(4) > section > div > button";
               cy.wait(10000);
               if (body.find(addToCartSelector).length > 0) {
                 cy.get(addToCartSelector).then(($el) => {
@@ -133,7 +130,10 @@ describe('Booking flow', () => {
                         cy.get(".sc-htnqrb.dVayQT").should("be.visible");
                         cy.contains("proceed to checkout").click();
                         cy.get('.Address_button__text__ved_d').click();
-                        cy.get("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)").click();
+                        cy.wait(10000);
+                        cy.get("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)")
+                          .should("be.visible")
+                          .click();
                         cy.get(".Delivery_button__text__d8uUZ").click();
                         // Call the function
                         selectCOD();
@@ -150,7 +150,7 @@ describe('Booking flow', () => {
                         cy.get('.payment_button__text__busIX')
                           .should("be.visible")
                           .click({ force: true });
-                        cy.wait(15000);
+                        cy.wait(20000);
                         // Verify the URL
                         cy.url().then((currentUrl) => {
                           expect([
