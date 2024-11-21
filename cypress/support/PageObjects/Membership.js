@@ -22,7 +22,7 @@ class Membership {
         // cy.get("#header > div.scss_mainNavContainerWrapper__m_O_A > div > div:nth-child(3) > ul > div.GG_dropDown_button.sc-hAZvFp.wBSEq > span").click();
         // cy.get("body > div:nth-child(1) > div:nth-child(1) > header:nth-child(1) > div:nth-child(1) > nav:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(3) > ul:nth-child(1) > div:nth-child(2) > div:nth-child(2) > a:nth-child(2) > div:nth-child(1) > div:nth-child(2)").click();
         // cy.get('#__next > div > div.showOnDesktop > div > div.Membership_parentMemberContainer__Hbxf8 > div.Membership_memberPlanContainer__A_mY2 > div.Membership_activeMemberColumn__4tiu4 > button').click();
-        cy.visit("https://farzistore-nh.farziengineer.co/page/membership");
+        cy.visit("https://cambaytiger.com/page/membership");
     }
 
     closeAdvPopup() {
