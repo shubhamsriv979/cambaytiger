@@ -15,34 +15,34 @@ describe('Template Spec', () => {
 
   it('Task Loop', () => {
     const product_urls = [
-'https://cambaytiger.com/product/hearty-delights/hearty-delights',
-'https://cambaytiger.com/product/seafood-starter-pack/seafood-starter-pack',
-'https://cambaytiger.com/product/seafood-sensation/seafood-sensation',
-'https://cambaytiger.com/product/oceanic-duo-deal/oceanic-duo-deal',
-'https://cambaytiger.com/product/ocean-fresh-party-pack/ocean-fresh-party-pack',
-'https://cambaytiger.com/product/seafood-feast-special/seafood-feast-special',
-'https://cambaytiger.com/product/whole-chicken-with-skin/chicken-whole-with-skin',
-'https://cambaytiger.com/product/fiery-desi-hot-wings/fiery-desi-hot-wings',
-'https://cambaytiger.com/product/honey-sriracha-wings/honey-sriracha-wings',
-'https://cambaytiger.com/product/achari-fish-tikka/achari-fish-tikka',
-'https://cambaytiger.com/product/chicken-basil-tikka/chicken-basil-tikka',
-'https://cambaytiger.com/product/chicken-tangdi-kebab/chicken-tangdi-kebab',
-'https://cambaytiger.com/product/chicken-kalimiri-tikka/chicken-kalimiri-tikka',
-'https://cambaytiger.com/product/chicken-malai-tikka/chicken-malai-tikka',
-'https://cambaytiger.com/product/chicken-tandoori-boneless-breast/chicken-tandoori-boneless-breast',
-'https://cambaytiger.com/product/chicken-tandoori-whole-leg/chicken-tandoori-whole-leg',
-'https://cambaytiger.com/product/chicken-boneless-tikka/chicken-boneless-tikka',
-'https://cambaytiger.com/product/mutton-mini-combo/mutton-mini-combo',
-'https://cambaytiger.com/product/sole-prawns-combo/sole-prawns-combo',
-'https://cambaytiger.com/product/sole-chicken-combo/sole-chicken-combo',
-'https://cambaytiger.com/product/norwegian-salmon-combo/norwegian-salmon-combo',
-'https://cambaytiger.com/product/pomfret-combo/pomfret-combo',
-'https://cambaytiger.com/product/rawas-mini-combo/rawas-mini-combo',
-'https://cambaytiger.com/product/surmai-mini-combo/surmai-mini-combo',
-'https://cambaytiger.com/product/mutton-chicken-combo/mutton-chicken-combo'
+'https://farzistore-nh.farziengineer.co/product/hearty-delights/hearty-delights',
+'https://farzistore-nh.farziengineer.co/product/seafood-starter-pack/seafood-starter-pack',
+'https://farzistore-nh.farziengineer.co/product/seafood-sensation/seafood-sensation',
+'https://farzistore-nh.farziengineer.co/product/oceanic-duo-deal/oceanic-duo-deal',
+'https://farzistore-nh.farziengineer.co/product/ocean-fresh-party-pack/ocean-fresh-party-pack',
+'https://farzistore-nh.farziengineer.co/product/seafood-feast-special/seafood-feast-special',
+'https://farzistore-nh.farziengineer.co/product/whole-chicken-with-skin/chicken-whole-with-skin',
+'https://farzistore-nh.farziengineer.co/product/fiery-desi-hot-wings/fiery-desi-hot-wings',
+'https://farzistore-nh.farziengineer.co/product/honey-sriracha-wings/honey-sriracha-wings',
+'https://farzistore-nh.farziengineer.co/product/achari-fish-tikka/achari-fish-tikka',
+'https://farzistore-nh.farziengineer.co/product/chicken-basil-tikka/chicken-basil-tikka',
+'https://farzistore-nh.farziengineer.co/product/chicken-tangdi-kebab/chicken-tangdi-kebab',
+'https://farzistore-nh.farziengineer.co/product/chicken-kalimiri-tikka/chicken-kalimiri-tikka',
+'https://farzistore-nh.farziengineer.co/product/chicken-malai-tikka/chicken-malai-tikka',
+'https://farzistore-nh.farziengineer.co/product/chicken-tandoori-boneless-breast/chicken-tandoori-boneless-breast',
+'https://farzistore-nh.farziengineer.co/product/chicken-tandoori-whole-leg/chicken-tandoori-whole-leg',
+'https://farzistore-nh.farziengineer.co/product/chicken-boneless-tikka/chicken-boneless-tikka',
+'https://farzistore-nh.farziengineer.co/product/mutton-mini-combo/mutton-mini-combo',
+'https://farzistore-nh.farziengineer.co/product/sole-prawns-combo/sole-prawns-combo',
+'https://farzistore-nh.farziengineer.co/product/sole-chicken-combo/sole-chicken-combo',
+'https://farzistore-nh.farziengineer.co/product/norwegian-salmon-combo/norwegian-salmon-combo',
+'https://farzistore-nh.farziengineer.co/product/pomfret-combo/pomfret-combo',
+'https://farzistore-nh.farziengineer.co/product/rawas-mini-combo/rawas-mini-combo',
+'https://farzistore-nh.farziengineer.co/product/surmai-mini-combo/surmai-mini-combo',
+'https://farzistore-nh.farziengineer.co/product/mutton-chicken-combo/mutton-chicken-combo'
     ];
 
-    cy.visit('https://cambaytiger.com/');
+    cy.visit('https://farzistore-nh.farziengineer.co/');
     Membership.closeAdvPopup();
 
     // select location 

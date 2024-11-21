@@ -15,34 +15,34 @@ describe('Template Spec', () => {
 
   it('Task Loop', () => {
     const product_urls = [
-        'https://cambaytiger.com/product/freshly-frozen-norwegian/freshly-frozen-norwegian-salmon-chunks-skinless',
-'https://cambaytiger.com/product/freshly-frozen-surmai-steaks/freshly-frozen-surmai-steaks',
-'https://cambaytiger.com/product/freshly-frozen-pomfret-whole/freshly-frozen-pomfret-whole',
-'https://cambaytiger.com/product/freshly-frozen-tuna-saku/freshly-frozen-tuna-saku',
-'https://cambaytiger.com/product/freshly-frozen-basa-chunks-400g/freshly-frozen-basa-chunks-400g',
-'https://cambaytiger.com/product/freshly-frozen-basa-chunks-250g/freshly-frozen-basa-chunks-250g',
-'https://cambaytiger.com/product/freshly-frozen-jumbo-prawns-300g/freshly-frozen-jumbo-prawns-300g',
-'https://cambaytiger.com/product/freshly-frozen-small-prawns-300g/freshly-frozen-small-prawns-300g',
-'https://cambaytiger.com/product/freshly-frozen-large-prawns-300g/freshly-frozen-large-prawns-300g',
-'https://cambaytiger.com/product/freshly-frozen-medium-prawns-600g/freshly-frozen-medium-prawns-600g',
-'https://cambaytiger.com/product/freshly-frozen-medium-prawns-300g/freshly-frozen-medium-prawns-300g',
-'https://cambaytiger.com/product/mutton-raan/mutton-raan',
-'https://cambaytiger.com/product/mutton-nalli/mutton-nalli',
-'https://cambaytiger.com/product/mutton-chops/mutton-chops',
-'https://cambaytiger.com/product/mutton-mince-kheema/mutton-mince-kheema',
-'https://cambaytiger.com/product/mutton-boneless-chunks/mutton-boneless-chunks',
-'https://cambaytiger.com/product/mutton-curry-cut/mutton-curry-cut',
-'https://cambaytiger.com/product/chicken-wings/chicken-wings',
-'https://cambaytiger.com/product/chicken-thigh-boneless/chicken-thigh-boneless',
-'https://cambaytiger.com/product/chicken-mince-kheema/chicken-mince-kheema',
-'https://cambaytiger.com/product/chicken-lollypop/chicken-lollypop',
-'https://cambaytiger.com/product/chicken-leg/chicken-leg',
-'https://cambaytiger.com/product/chicken-drumsticks/chicken-drumsticks',
-'https://cambaytiger.com/product/chicken-curry-cut/chicken-curry-cut',
-'https://cambaytiger.com/product/chicken-breast-boneless/chicken-breast-boneless'
+        'https://farzistore-nh.farziengineer.co/product/freshly-frozen-norwegian/freshly-frozen-norwegian-salmon-chunks-skinless',
+'https://farzistore-nh.farziengineer.co/product/freshly-frozen-surmai-steaks/freshly-frozen-surmai-steaks',
+'https://farzistore-nh.farziengineer.co/product/freshly-frozen-pomfret-whole/freshly-frozen-pomfret-whole',
+'https://farzistore-nh.farziengineer.co/product/freshly-frozen-tuna-saku/freshly-frozen-tuna-saku',
+'https://farzistore-nh.farziengineer.co/product/freshly-frozen-basa-chunks-400g/freshly-frozen-basa-chunks-400g',
+'https://farzistore-nh.farziengineer.co/product/freshly-frozen-basa-chunks-250g/freshly-frozen-basa-chunks-250g',
+'https://farzistore-nh.farziengineer.co/product/freshly-frozen-jumbo-prawns-300g/freshly-frozen-jumbo-prawns-300g',
+'https://farzistore-nh.farziengineer.co/product/freshly-frozen-small-prawns-300g/freshly-frozen-small-prawns-300g',
+'https://farzistore-nh.farziengineer.co/product/freshly-frozen-large-prawns-300g/freshly-frozen-large-prawns-300g',
+'https://farzistore-nh.farziengineer.co/product/freshly-frozen-medium-prawns-600g/freshly-frozen-medium-prawns-600g',
+'https://farzistore-nh.farziengineer.co/product/freshly-frozen-medium-prawns-300g/freshly-frozen-medium-prawns-300g',
+'https://farzistore-nh.farziengineer.co/product/mutton-raan/mutton-raan',
+'https://farzistore-nh.farziengineer.co/product/mutton-nalli/mutton-nalli',
+'https://farzistore-nh.farziengineer.co/product/mutton-chops/mutton-chops',
+'https://farzistore-nh.farziengineer.co/product/mutton-mince-kheema/mutton-mince-kheema',
+'https://farzistore-nh.farziengineer.co/product/mutton-boneless-chunks/mutton-boneless-chunks',
+'https://farzistore-nh.farziengineer.co/product/mutton-curry-cut/mutton-curry-cut',
+'https://farzistore-nh.farziengineer.co/product/chicken-wings/chicken-wings',
+'https://farzistore-nh.farziengineer.co/product/chicken-thigh-boneless/chicken-thigh-boneless',
+'https://farzistore-nh.farziengineer.co/product/chicken-mince-kheema/chicken-mince-kheema',
+'https://farzistore-nh.farziengineer.co/product/chicken-lollypop/chicken-lollypop',
+'https://farzistore-nh.farziengineer.co/product/chicken-leg/chicken-leg',
+'https://farzistore-nh.farziengineer.co/product/chicken-drumsticks/chicken-drumsticks',
+'https://farzistore-nh.farziengineer.co/product/chicken-curry-cut/chicken-curry-cut',
+'https://farzistore-nh.farziengineer.co/product/chicken-breast-boneless/chicken-breast-boneless'
     ];
 
-    cy.visit('https://cambaytiger.com');
+    cy.visit('https://farzistore-nh.farziengineer.co');
     Membership.closeAdvPopup();
 
     // select location 

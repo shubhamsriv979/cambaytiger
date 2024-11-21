@@ -12,7 +12,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 describe('Membership functionality', () => {
 
   it('Bronze Membership functionality', () => {
-    cy.visit('https://cambaytiger.com/');
+    cy.visit('https://farzistore-nh.farziengineer.co/');
     Membership.closeAdvPopup();
 
     // select location & open cambay club page
@@ -34,7 +34,7 @@ describe('Membership functionality', () => {
   })
 
   it('Silver Membership functionality', () => {
-    cy.visit('https://cambaytiger.com/');
+    cy.visit('https://farzistore-nh.farziengineer.co/');
     cy.wait(20000);
     cy.reload();
 
@@ -57,7 +57,7 @@ describe('Membership functionality', () => {
   })
 
   it('Gold Membership functionality', () => {
-    cy.visit('https://cambaytiger.com/');
+    cy.visit('https://farzistore-nh.farziengineer.co/');
     cy.wait(20000);
     cy.reload();
 
