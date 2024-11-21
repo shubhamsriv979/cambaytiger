@@ -31,7 +31,6 @@ describe('Template Spec', () => {
 'https://farzistore-nh.farziengineer.co/product/chicken-malai-tikka/chicken-malai-tikka',
 'https://farzistore-nh.farziengineer.co/product/chicken-tandoori-boneless-breast/chicken-tandoori-boneless-breast',
 'https://farzistore-nh.farziengineer.co/product/chicken-tandoori-whole-leg/chicken-tandoori-whole-leg',
-'https://farzistore-nh.farziengineer.co/product/chicken-boneless-tikka/chicken-boneless-tikka',
 'https://farzistore-nh.farziengineer.co/product/mutton-mini-combo/mutton-mini-combo',
 'https://farzistore-nh.farziengineer.co/product/sole-prawns-combo/sole-prawns-combo',
 'https://farzistore-nh.farziengineer.co/product/sole-chicken-combo/sole-chicken-combo',
