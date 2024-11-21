@@ -1,9 +1,10 @@
 class Membership {
     // stage
     searchForLocation() {
+        cy.wait(10000);
         cy.get(':nth-child(1) > #header > .scss_mainNavContainerWrapper__m_O_A > .scss_mainNavContainer__UDVhL > .scss_logoSearchContainer__ca6MR > :nth-child(3) > .scss_GGLocation__cfABD > .scss_GGLocation__topCont__oRucC > :nth-child(5) > .GGLocation__input > input')
             .type('kurla', { delay: 100, force: true });
-
+        cy.wait(5000);
         cy.get('.AdressCont__inside > :nth-child(1) > div').click();
         cy.wait(5000); // Wait for the next steps to load
         cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div div[class='GG_dropDown_button sc-kZUnxY dAzJsv'] span").click();
@@ -12,9 +13,10 @@ class Membership {
 
     // prod 
     prodSearchLocations() {
+        cy.wait(10000);
         cy.get(':nth-child(1) > #header > .scss_mainNavContainerWrapper__m_O_A > .scss_mainNavContainer__UDVhL > .scss_logoSearchContainer__ca6MR > :nth-child(3) > .scss_GGLocation__cfABD > .scss_GGLocation__topCont__oRucC > :nth-child(5) > .GGLocation__input > input')
             .type('Mumbai', { delay: 100, force: true });
-
+        cy.wait(5000);
         cy.get('.AdressCont__inside > :nth-child(1) > div').click();
         cy.wait(5000); // Wait for the next steps to load
         cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div div[class='GG_dropDown_button sc-bryTEL fIJmHu'] span",).click();
