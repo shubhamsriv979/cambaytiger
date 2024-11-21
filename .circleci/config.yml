@@ -31,7 +31,7 @@ jobs:
               npx cypress run --spec "cypress/e2e/Cambaytiger/prod/Booking.js";
 
             else
-              # npx cypress run --spec "cypress/e2e/Cambaytiger/prod/**/*.js";
+              npx cypress run --spec "cypress/e2e/Cambaytiger/prod/**/*.js";
               
               
             fi
