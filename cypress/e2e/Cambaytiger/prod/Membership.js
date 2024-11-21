@@ -37,8 +37,7 @@ describe('Membership functionality', () => {
 
   it('Silver Membership functionality', () => {
     cy.visit('https://cambaytiger.com/');
-    cy.wait(20000);
-    cy.reload();
+    Membership.closeAdvPopup();
 
     // select location & open cambay club page
     Membership.prodSearchLocations();
@@ -60,8 +59,7 @@ describe('Membership functionality', () => {
 
   it('Gold Membership functionality', () => {
     cy.visit('https://cambaytiger.com/');
-    cy.wait(20000);
-    cy.reload();
+    Membership.closeAdvPopup();
 
     // select location & open cambay club page
     Membership.prodSearchLocations();
