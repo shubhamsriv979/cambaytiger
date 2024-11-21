@@ -1,3 +1,5 @@
+import var1 from '../../../../../support/PageObjects/404';
+import Membership from '../../../../../support/PageObjects/Membership';
 let failedUrls = []; // Array to track failed URLs
 Cypress.on('fail', (error, runnable) => {
   // Add any custom behavior during failure, e.g., logging the error
