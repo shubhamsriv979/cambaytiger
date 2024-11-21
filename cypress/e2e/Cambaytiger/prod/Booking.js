@@ -27,7 +27,7 @@ describe('Booking flow', () => {
       // 'https://farzistore-nh.farziengineer.co/product/mutton-curry-cut',
       // 'https://farzistore-nh.farziengineer.co/product/chicken-prawns-combo',      //combo product        
       // 'https://farzistore-nh.farziengineer.co/product/mutton-boneless-chunks',  //single product
-      'https://farzistore-nh.farziengineer.co/product/classic-white-eggs',
+      'https://farzistore-nh.farziengineer.co/product/kerala-moilee-curry',
       'https://farzistore-nh.farziengineer.co/product/brown-eggs'
 
     ];
@@ -113,7 +113,7 @@ describe('Booking flow', () => {
               //stage
               // const addToCartSelector = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] div[class='product-page'] main[class='sc-jWNpPo gluggg'] div[class=' product-container '] div[class='product-page__product__info'] div[class='showOnDesktop'] div[class='product-page__product__info--fixed'] div[class='sc-hBbWxd ljHzFv'] div div[class='showOnDesktop'] div[class='undefined__mainText sc-gzOgki fSlvAH']";
               //prod
-              const addToCartSelector = "div[class='showOnDesktop'] div[class='showOnDesktop'] div[class='undefined__mainText sc-gzOgki iuyAzF']";
+              const addToCartSelector = "#__next > div > div.showOnDesktop > div > div > main > div.product-container > div.product-page__product__info > div > div > div.sc-hBbWxd.ljHzFv > div > div.sc-fjhmcy.bxMHcK > div.sc-erNlkL.hdnBOk > div:nth-child(4) > section > div > button";
               cy.wait(10000);
               if (body.find(addToCartSelector).length > 0) {
                 cy.get(addToCartSelector).then(($el) => {
