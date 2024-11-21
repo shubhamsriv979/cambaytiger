@@ -27,6 +27,21 @@ describe('Search functionality', () => {
     // cy.get("body > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > a:nth-child(1) > p:nth-child(1)").click();
     // cy.get("div[class='showOnDesktop'] li[class='breadcrumbs__active'] a").should("be.visible");
 
+
+    // stage Login
+    // cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div div[class='GG_dropDown_button sc-kZUnxY dAzJsv'] span").click();
+    // cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div button[class='user-register']").click();
+    // prod login
+    cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div div[class='GG_dropDown_button sc-bryTEL fIJmHu'] span",).click();
+    cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div button[class='user-register']").click();
+
+    cy.wait(5000);
+    cy.get("input[placeholder='Enter Phone number']").click().type("6388789049", { delay: 100, force: true });
+    cy.get('.scss_loginRegCont__m2Dae > button').click();
+    cy.get("#otp-0").type("123456",);
+    cy.get('.scss_loginRegCont__m2Dae > button').click();
+    cy.wait(5000);
+
     cy.contains("Cart").eq(0).click();
     //cart heading text
     cy.get(".overlayFarzicom__header__text").should('be.visible');
@@ -38,18 +53,16 @@ describe('Search functionality', () => {
         cy.wait(10000); 
         if ($body.find("div[class='cart__empty'] span").is(':visible')) {
           cy.log('Target element is now visible.');
-          cy.get(".overlayFarzicom__header__close-icon").click();
-        } else {
-          // Element is not visible, click the icon and retry
           cy.get(".sc-fsGQkc.bgexUZ").click();
-          cy.wait(500); // Optional: Prevent rapid clicks
-          clickUntilVisible(); // Recursive call
+          cy.wait(10000); // Optional: Prevent rapid clicks
+          clickUntilVisible(); // Recursive call          
         }
       });
     }
     
     
     clickUntilVisible();
+    cy.get(".overlayFarzicom__header__close-icon").click();
 
 
   })
