@@ -134,7 +134,10 @@ describe('Booking flow', () => {
                         cy.get(".sc-htnqrb.dVayQT").should("be.visible");
                         cy.contains("proceed to checkout").click();
                         cy.get('.Address_button__text__ved_d').click();
-                        cy.get("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)").click();
+                        cy.wait(10000);
+                        cy.get("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)")
+                          .should("be.visible")
+                          .click();
                         cy.get(".Delivery_button__text__d8uUZ").click();
                         // Call the function
                         selectCOD();
