@@ -17,15 +17,39 @@ describe('Search functionality', () => {
     // select location 
     cy.wait(10000);
     cy.get(':nth-child(1) > #header > .scss_mainNavContainerWrapper__m_O_A > .scss_mainNavContainer__UDVhL > .scss_logoSearchContainer__ca6MR > :nth-child(3) > .scss_GGLocation__cfABD > .scss_GGLocation__topCont__oRucC > :nth-child(5) > .GGLocation__input > input')
-    .click()
-    .type("Bangalore", { delay: 100, force: true });
+      .click()
+      .type("Bangalore", { delay: 100, force: true });
     cy.wait(10000);
     cy.get('.AdressCont__inside > :nth-child(1) > div').click();
     cy.wait(10000);
+
+    // cy.get("div[class='showOnDesktop'] input[placeholder='Search for seafood, chicken & more']").should('be.visible').type("But");
+    // cy.get("body > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > a:nth-child(1) > p:nth-child(1)").click();
+    // cy.get("div[class='showOnDesktop'] li[class='breadcrumbs__active'] a").should("be.visible");
+
+    cy.contains("Cart").eq(0).click();
+    //cart heading text
+    cy.get(".overlayFarzicom__header__text").should('be.visible');
+    cy.wait(10000);    
     
-    cy.get("div[class='showOnDesktop'] input[placeholder='Search for seafood, chicken & more']").should('be.visible').type("But");
-    cy.get("body > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > a:nth-child(1) > p:nth-child(1)").click();
-    cy.get("div[class='showOnDesktop'] li[class='breadcrumbs__active'] a").should("be.visible");
+    function clickUntilVisible() {
+      // Check if the element is visible
+      cy.get("div[class='cart__empty'] span").then(($el) => {
+        if ($el.is(':visible')) {
+          // Element is visible, stop clicking
+          cy.log('Target element is now visible.');
+          cy.get(".overlayFarzicom__header__close-icon").click();
+        } else {
+          // Element is not visible, click the icon and retry
+          cy.get(".sc-fsGQkc.bgexUZ").click();
+          cy.wait(500); // Optional: Add a short delay to prevent too rapid clicking
+          clickUntilVisible(); // Recursive call to check again
+        }
+      });
+    }
+
+    clickUntilVisible();
+
 
   })
 })
