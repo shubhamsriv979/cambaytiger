@@ -10,7 +10,7 @@ describe('Search functionality', () => {
 
 
   it('Search functionality', () => {
-    cy.visit('https://cambaytiger.com/');
+    cy.visit('https://cambaytigerstage-nh.farziengineer.co/');
     // Access the iframe and wait for it to load (e.g., advertisement pop-up)
     Membership.closeAdvPopup();
 
