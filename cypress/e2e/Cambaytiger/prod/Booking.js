@@ -53,7 +53,7 @@ describe('Booking flow', () => {
     cy.get('.scss_loginRegCont__m2Dae > button').click();
     cy.get("#otp-0").type("123456",);
     cy.get('.scss_loginRegCont__m2Dae > button').click();
-    cy.wait(5000);
+    cy.wait(30000);
 
 
     locations.forEach((location) => {
