@@ -130,7 +130,7 @@ describe('Booking flow', () => {
                         cy.get(".sc-htnqrb.dVayQT").should("be.visible");
                         cy.contains("proceed to checkout").click();
                         cy.get('.Address_button__text__ved_d').click();
-                        cy.wait(10000);
+                        cy.wait(20000);
                         cy.get("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)")
                           .should("be.visible")
                           .click();
