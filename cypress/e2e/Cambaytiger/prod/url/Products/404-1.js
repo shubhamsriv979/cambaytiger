@@ -18,6 +18,7 @@ describe('Template Spec', () => {
   it('Task Loop', () => {
     const product_urls = [
 'https://cambaytiger.com/product/party-bites/party-bites',
+'https://cambaytiger.com/product/chicken-boneless-tikka/chicken-boneless-tikka',
 'https://cambaytiger.com/product/chicken-italian-garlic-sausage/chicken-italian-garlic-sausage',
 'https://cambaytiger.com/product/chicken-malai-seekh-kebab/chicken-malai-seekh-kebab',
 'https://cambaytiger.com/product/chicken-adraki-seekh-kebab/chicken-adraki-seekh-kebab',
