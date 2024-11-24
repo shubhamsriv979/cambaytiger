@@ -58,7 +58,7 @@ describe('Search functionality', () => {
           cy.get(".sc-fsGQkc.bgexUZ").click({ multiple: true });
           cy.log('Item is deleted');         
           // Call the function again to check the condition
-          cy.wait(500); // Add a small delay to prevent rapid execution
+          cy.wait(5000); // Add a small delay to prevent rapid execution
           clickUntilVisible();
         }
         else {
