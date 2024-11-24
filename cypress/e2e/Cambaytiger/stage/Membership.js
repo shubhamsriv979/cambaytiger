@@ -10,13 +10,13 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 });
 
 
-context('Membership functionality', () => {
+describe('Membership functionality', () => {
 
-  // const location1 = [
-  //   'Mumbai',
-  //   'delhi airport',
-  //   'Bangalore'
-  // ];
+  const location1 = [
+    'Mumbai',
+    'delhi airport',
+    'Bangalore'
+  ];
 
   // it('Bronze Membership functionality', () => {
   //   cy.visit('https://cambaytigerstage-nh.farziengineer.co/');
@@ -139,29 +139,26 @@ context('Membership functionality', () => {
     // //Clear Cart
     // Home.cartClear();
 
-    const locations = ['delhi airport', 'Mumbai', 'Bangalore'];
     const cartQuantitySelector = ".GG-main-menu__cart__quantity__gg";
+    const addToCart = "div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] span[class='sc-htpNat hamzJc']";
+
+    Cypress._.forEach(location1, (location) => {
+        context(`Testing food ordering at ${location}`, () => {
+            // Select Silver
+            cy.get(addToCart).click();
+            cy.wait(5000);
     
-    context('Membership functionality', () => {
-        locations.forEach((location) => {
-            it(`Testing food ordering at ${location}`, () => {
-                // Select Silver
-                cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] span[class='sc-htpNat hamzJc']").click();
-    
-                // Check cart quantity
-                cy.get(cartQuantitySelector).invoke('text').then((text) => {
-                    const cartQuantity = parseInt(text.trim());
-                    if (cartQuantity !== 0) {
-                        cy.log(`Cart quantity is ${cartQuantity} at ${location}. Stopping tests.`);
-                        // Optionally fail or stop further tests
-                        return;
-                    }
-                });
+            // Check cart quantity
+            cy.get(cartQuantitySelector).invoke('text').then((text) => {
+                const cartQuantity = parseInt(text.trim());
+                console.log(cartQuantity);
+                if (cartQuantity !== 0) {
+                    // Break the loop
+                    return false; // Lodash handles breaking internally
+                }
             });
         });
     });
-    
-  
     
     // //Checkout
     // Membership.checkout();
