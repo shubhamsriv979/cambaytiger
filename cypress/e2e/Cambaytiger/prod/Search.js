@@ -31,7 +31,7 @@ describe('Search functionality', () => {
     //  Login
     cy.get(':nth-child(1) > #header > .scss_mainNavContainerWrapper__m_O_A > .scss_mainNavContainer__UDVhL > :nth-child(3) > .GG-main-menu__lower__desktop-right__ul > .GG_dropDown_button > span').click();
     cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div button[class='user-register']").click();
-    
+
 
     cy.wait(5000);
     cy.get("input[placeholder='Enter Phone number']").click().type("6388789049", { delay: 100, force: true });
@@ -41,25 +41,33 @@ describe('Search functionality', () => {
     cy.wait(5000);
     cy.get(".our-categories__heading").should('be.visible');
 
+
+    const cartQuantitySelector = ".GG-main-menu__cart__quantity__gg";
+    const cartHeaderSelector = ".overlayFarzicom__header__text";
+    const deleteButtonSelector = ".sc-fsGQkc.bgexUZ";
+
     if (
-      $body.find("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div span[class='GG-main-menu__cart__quantity__gg']")
-          .is(':visible') && 
-      $body.find("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div span[class='GG-main-menu__cart__quantity__gg']")
-          .text().trim() !== '0'
+      $body.find(cartQuantitySelector).is(':visible') &&
+      $body.find(cartQuantitySelector).text().trim() !== '0'
     ) {
+      cy.log('Cart is not empty, proceeding to delete items.');
+
+      // Click on the Cart button
       cy.contains("Cart").eq(0).click();
-          //cart heading text
-          cy.get(".overlayFarzicom__header__text").should('be.visible');      
-          
-          // Perform the click action
-          cy.get(".sc-fsGQkc.bgexUZ").click({ multiple: true });
-          cy.log('Item is deleted');         
+
+      // Validate Cart heading
+      cy.get(cartHeaderSelector).should('exist').and('be.visible');
+
+      // Perform the delete action
+      cy.get(deleteButtonSelector).should('exist').click({ multiple: true });
+      cy.log('All items were deleted successfully.');
     } else {
-      cy.log('Cart is empty');
+      cy.log('Cart is empty, no action performed.');
     }
-    
-    
-    
+
+
+
+
 
     // function clickUntilVisible() {
     //   // Use recursion safely
@@ -72,7 +80,7 @@ describe('Search functionality', () => {
     //       cy.contains("Cart").eq(0).click();
     //       //cart heading text
     //       cy.get(".overlayFarzicom__header__text").should('be.visible');      
-          
+
     //       // Perform the click action
     //       cy.get(".sc-fsGQkc.bgexUZ").click({ multiple: true });
     //       cy.log('Item is deleted');         
@@ -86,10 +94,10 @@ describe('Search functionality', () => {
     //     }
     //   });
     // }
-    
+
     // // Invoke the function
     // clickUntilVisible();
-    
+
     cy.get(".overlayFarzicom__header__close-icon").click();
 
 
