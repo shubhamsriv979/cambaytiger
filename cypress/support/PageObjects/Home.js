@@ -16,6 +16,7 @@ class Home {
     cy.get("input[placeholder='Enter Phone number']").click().type("6388789049", { delay: 100, force: true });
     cy.get('.scss_loginRegCont__m2Dae > button').click();
     cy.get("#otp-0").type("123456",);
+    cy.wait(5000);
     cy.get('.scss_loginRegCont__m2Dae > button').click();
     cy.wait(5000);
   }

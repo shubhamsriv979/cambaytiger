@@ -21,12 +21,11 @@ describe('Membership functionality', () => {
     //  Login
     Home.login();
 
+    //Clear Cart
+    Home.cartClear();
     
     // select location & open cambay club page
     Membership.openMembershipPage();
-
-    //Clear Cart
-    Home.cartClear();
 
     //Select Bronze
     cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] div:nth-child(3) span:nth-child(2)").click();
