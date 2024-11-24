@@ -1,8 +1,8 @@
 class Membership {
     // stage
-    openMembershipPage() {        
+    openMembershipPage() {
         cy.get(":nth-child(1) > #header > .scss_mainNavContainerWrapper__m_O_A > .scss_mainNavContainer__UDVhL > :nth-child(3) > .GG-main-menu__lower__desktop-right__ul > .GG_dropDown_button > span").click();
-        cy.get("body > div:nth-child(1) > div:nth-child(1) > header:nth-child(1) > div:nth-child(1) > nav:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(3) > ul:nth-child(1) > div:nth-child(2) > div:nth-child(2) > a:nth-child(2) > div:nth-child(1) > div:nth-child(2)").click();
+        cy.contains("Join cambay club").click();
     }
 
     // prod 
@@ -38,29 +38,28 @@ class Membership {
         // waitForElementAndClosePopup();
     }
 
-    login() {
-        cy.get("button[class='cart-gg__footer__button__place__order showOnDesktop'] span").click();
-        cy.wait(3000);
-        cy.get('.login_ConsultInput__3FfsY', { timeout: 100000 }).click({ timeout: 100000 }).type("6388789049", { delay: 100, force: true, timeout: 100000 });
-        cy.get("button[type='submit']").click();
-        cy.wait(3000);
-        cy.get('.login_Column__kjBEO > :nth-child(1)').type("123456",);
-        cy.get("button[type='submit']").click();
-    }
 
     checkout() {
         // Proceed to checkout
-        cy.get("button[class='cart-gg__footer__button__place__order'] span").click();
+        cy.contains("Cart").eq(0).click();
+        //cart heading text
+        cy.get(".overlayFarzicom__header__text").should('be.visible');
+        cy.wait(10000);
+
+        //product heading
+        cy.get(".sc-htnqrb.dVayQT").should("be.visible");
+        cy.contains("proceed to checkout").click();
         cy.get(".Address_button__text__ved_d").click();
         cy.wait(10000);
         cy.get("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)")
-        .should("be.visible")
-        .click();
+            .should("be.visible")
+            .click();
         cy.get(".Delivery_button__text__d8uUZ").click();
         cy.wait(15000);
         cy.get('.payment_button__text__busIX')
             .should("be.visible")
             .click({ force: true });
+        cy.wait(30000);
 
     }
 
@@ -82,7 +81,7 @@ class Membership {
 
 
                 // Click the button to proceed
-                cy.contains("Verify and Pay") .click();
+                cy.contains("Verify and Pay").click();
 
                 // Add a wait to allow actions to complete (adjust as needed)
                 cy.wait(15000);
