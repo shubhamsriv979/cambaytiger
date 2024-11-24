@@ -1,4 +1,5 @@
 import Membership from '../../../support/PageObjects/Membership';
+import Home from '../../../support/PageObjects/Home';
 let failedUrls = []; // Array to track failed URLs
 
 Cypress.on('fail', (error, runnable) => {
@@ -95,6 +96,8 @@ describe('Booking flow', () => {
           context(`Testing food ordering at ${product_urls}`, () => {
             cy.visit(product_urls, { timeout: 500000, failOnStatusCode: false });
             cy.wait(5000);
+            //Clear Cart
+            Home.cartClear();
             cy.get('body').then((body) => {
               // you-may-also-like heading in valid pdp
               const locator_heading = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] li:nth-child(1) a:nth-child(1)";

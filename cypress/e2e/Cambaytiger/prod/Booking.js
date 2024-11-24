@@ -1,4 +1,5 @@
 import Membership from '../../../support/PageObjects/Membership';
+import Home from '../../../support/PageObjects/Home';
 let failedUrls = []; // Array to track failed URLs
 
 Cypress.on('fail', (error, runnable) => {
@@ -46,7 +47,7 @@ describe('Booking flow', () => {
     //  Login
     cy.get(':nth-child(1) > #header > .scss_mainNavContainerWrapper__m_O_A > .scss_mainNavContainer__UDVhL > :nth-child(3) > .GG-main-menu__lower__desktop-right__ul > .GG_dropDown_button > span').click();
     cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div button[class='user-register']").click();
-    
+
 
     cy.wait(5000);
     cy.get("input[placeholder='Enter Phone number']").click().type("6388789049", { delay: 100, force: true });
@@ -95,6 +96,8 @@ describe('Booking flow', () => {
           context(`Testing food ordering at ${product_urls}`, () => {
             cy.visit(product_urls, { timeout: 500000, failOnStatusCode: false });
             cy.wait(5000);
+            //Clear Cart
+            Home.cartClear();
             cy.get('body').then((body) => {
               // you-may-also-like heading in valid pdp
               const locator_heading = "div[class='showOnDesktop'] div[class='scss_appContainer__yvhBB'] li:nth-child(1) a:nth-child(1)";
@@ -108,7 +111,7 @@ describe('Booking flow', () => {
             });
 
             cy.get('body').then((body) => {
-              
+
               const addToCartSelector = "#__next > div > div.showOnDesktop > div > div > main > div.product-container > div.product-page__product__info > div > div > div.sc-hBbWxd.ljHzFv > div > div.sc-fjhmcy.bxMHcK > div.sc-erNlkL.hdnBOk > div:nth-child(4) > section > div > button";
               cy.wait(10000);
               if (body.find(addToCartSelector).length > 0) {
