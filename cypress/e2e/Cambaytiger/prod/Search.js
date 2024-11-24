@@ -61,6 +61,7 @@ describe('Search functionality', () => {
     
         // Perform the delete action
         cy.get(deleteButtonSelector).should('exist').click({ multiple: true });
+        cy.get(".overlayFarzicom__header__close-icon").click();
         cy.log('All items were deleted successfully.');
       } else {
         cy.log('Cart is empty, no action performed.');
@@ -99,7 +100,7 @@ describe('Search functionality', () => {
     // // Invoke the function
     // clickUntilVisible();
 
-    cy.get(".overlayFarzicom__header__close-icon").click();
+    
 
 
   })
