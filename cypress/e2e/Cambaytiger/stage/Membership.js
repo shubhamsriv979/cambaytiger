@@ -129,15 +129,15 @@ describe('Membership functionality', () => {
     // Select location 
     Home.selectPrimaryLocation();
 
-    //  Login
-    // Home.login();
+     Login
+    Home.login();
     
     // select location & open cambay club page
     Membership.openMembershipPage();
 
     
-    // //Clear Cart
-    // Home.cartClear();
+    //Clear Cart
+    Home.cartClear();
 
     const cartQuantitySelector = ".GG-main-menu__cart__quantity__gg";
     const addToCart = "div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] span[class='sc-htpNat hamzJc']";
@@ -194,35 +194,35 @@ describe('Membership functionality', () => {
         });
     });
     
-    // //Checkout
-    // Membership.checkout();
+    //Checkout
+    Membership.checkout();
 
-    // //Razorpay
-    // Membership.razorpay();
+    //Razorpay
+    Membership.razorpay();
 
-    // //Order History
-    // Membership.orderHistory();
+    //Order History
+    Membership.orderHistory();
 
-    // //Admin membership fulfil
-    // Membership.adminFulfil();
+    //Admin membership fulfil
+    Membership.adminFulfil();
 
-    // //Visit membership page
-    // cy.visit('https://cambaytigerstage-nh.farziengineer.co/page/membership');
+    //Visit membership page
+    cy.visit('https://cambaytigerstage-nh.farziengineer.co/page/membership');
 
-    // //Verify the membership
-    // cy.get("div[class='showOnDesktop'] div[class='Membership_planType__ZeJCO']").should("have.text", "Silver");
-    // cy.get("div[class='showOnDesktop'] div[class='Membership_duration__Wz9aN']").should("have.text", "Plan Duration : 3 month ");
+    //Verify the membership
+    cy.get("div[class='showOnDesktop'] div[class='Membership_planType__ZeJCO']").should("have.text", "Silver");
+    cy.get("div[class='showOnDesktop'] div[class='Membership_duration__Wz9aN']").should("have.text", "Plan Duration : 3 month ");
 
-    // //Order Place
-    // Membership.orderPlace();
+    //Order Place
+    Membership.orderPlace();
 
-    // //Verify deliverycharges
-    // Membership.verifyDeliveryCharges();
+    //Verify deliverycharges
+    Membership.verifyDeliveryCharges();
     
-    // // Product checkout
-    // Membership.productcheckout();
+    // Product checkout
+    Membership.productcheckout();
 
-    // // Remove membership from admin
-    // Membership.removeMembership();
+    // Remove membership from admin
+    Membership.removeMembership();
   })
 })

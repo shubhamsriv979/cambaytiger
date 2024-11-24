@@ -46,7 +46,38 @@ describe('Booking flow', () => {
 
     locations.forEach((location) => {
       context(`Testing food ordering at ${location}`, () => {
-        Home.updateLocationLoop();
+        selectLocationUntilNotMumbai();
+        function selectLocationUntilNotMumbai() {
+          // Click on the location field to open the location selector
+          cy.wait(5000);
+          cy.get(':nth-child(1) > #header > .scss_mainNavContainerWrapper__m_O_A > .scss_mainNavContainer__UDVhL > .scss_logoSearchContainer__ca6MR > [data-test="menuCartOverlayLink"] > .GG-main-menu__icon__LocationStateCity > p')
+            .click();
+
+          // Set location to "Other Location"
+          cy.wait(1000);
+          cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div[class='scss_logoSearchContainer__ca6MR'] div div[class='scss_GGLocation__cfABD'] div[class='scss_GGLocation__topCont__oRucC'] div input[placeholder='Please enter delivery location...']")
+            // .should('have.class', 'active')
+            .click()
+            .type(location, { delay: 100, force: true })
+            .then(() => {
+
+              // Assert to check if the selected location is not "Mumbai"
+              cy.wait(15000);
+              cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div[class='scss_logoSearchContainer__ca6MR'] div div[class='scss_GGLocation__cfABD'] div[class='scss_GGLocation__topCont__oRucC'] div input[placeholder='Please enter delivery location...']").then(($elelocation) => {
+                if ($elelocation.val().includes(location)) {
+                  // If location is still "Mumbai," re-run the function to select again
+                  cy.wait(1000);
+                  cy.get('.AdressCont__inside > :nth-child(1) > div').click();
+                  cy.wait(15000);
+                } else {
+                  // Location is not "Mumbai," test can proceed                    
+                  cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div[class='scss_logoSearchContainer__ca6MR'] div p[class='GGLocation__hide']").click();
+                  cy.log($elelocation)
+                  selectLocationUntilNotMumbai();
+                }
+              });
+            });
+        }
 
         product_urls.forEach((product_urls) => {
           context(`Testing food ordering at ${product_urls}`, () => {
