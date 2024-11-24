@@ -1,4 +1,5 @@
 import Membership from '../../../support/PageObjects/Membership';
+import Home from '../../../support/PageObjects/Home';
 
 import 'cypress-iframe'
 Cypress.on('uncaught:exception', (err, runnable) => {
