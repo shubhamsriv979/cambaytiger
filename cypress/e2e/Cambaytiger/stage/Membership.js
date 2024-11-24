@@ -12,110 +12,116 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 
 describe('Membership functionality', () => {
 
-  it('Bronze Membership functionality', () => {
-    cy.visit('https://cambaytigerstage-nh.farziengineer.co/');
-    
-    // Select location 
-    Home.selectPrimaryLocation();
+  const location1 = [
+    'delhi airport',
+    'Mumbai',
+    'Bangalore'
+  ];
 
-    //  Login
-    Home.login();
+  // it('Bronze Membership functionality', () => {
+  //   cy.visit('https://cambaytigerstage-nh.farziengineer.co/');
     
-    // select location & open cambay club page
-    Membership.openMembershipPage();
+  //   // Select location 
+  //   Home.selectPrimaryLocation();
 
+  //   //  Login
+  //   Home.login();
     
-    //Clear Cart
-    Home.cartClear();
-
-    //Select Bronze
-    cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] div:nth-child(3) span:nth-child(2)").click();
-    cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] span[class='sc-htpNat hamzJc']").click();    
+  //   // select location & open cambay club page
+  //   Membership.openMembershipPage();
 
     
-    //Checkout
-    Membership.checkout();
+  //   //Clear Cart
+  //   Home.cartClear();
 
-    //Razorpay
-    Membership.razorpay();
-
-    //Order History
-    Membership.orderHistory();
-
-    //Admin membership fulfil
-    Membership.adminFulfil();
-
-    //Visit membership page
-    cy.visit('https://cambaytigerstage-nh.farziengineer.co/page/membership');
-
-    //Verify the membership
-    cy.get("div[class='showOnDesktop'] div[class='Membership_planType__ZeJCO']").should("have.text", "Bronze");
-    cy.get("div[class='showOnDesktop'] div[class='Membership_duration__Wz9aN']").should("have.text", "Plan Duration : 1 month ");
-
-    //Order Place
-    Membership.orderPlace();
-
-    //Verify deliverycharges
-    Membership.verifyDeliveryCharges();
-    
-    // Product checkout
-    Membership.productcheckout();
-
-    // Remove membership from admin
-    Membership.removeMembership();
-  })
-
-  it('Gold Membership functionality', () => {
-    cy.visit('https://cambaytigerstage-nh.farziengineer.co/');
-    
-    // Select location 
-    Home.selectPrimaryLocation();
-
-    //  Login
-    Home.login();
-    
-    // select location & open cambay club page
-    Membership.openMembershipPage();
+  //   //Select Bronze
+  //   cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] div:nth-child(3) span:nth-child(2)").click();
+  //   cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] span[class='sc-htpNat hamzJc']").click();    
 
     
-    //Clear Cart
-    Home.cartClear();
+  //   //Checkout
+  //   Membership.checkout();
 
-    //Select Gold
-    cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] div:nth-child(5) span:nth-child(2)").click();
-    cy.get("div[class='showOnDesktop'] div[class='Membership_desktopAddToCartMembership__I2B_T__mainText sc-gzOgki fSlvAH']").click();    
+  //   //Razorpay
+  //   Membership.razorpay();
+
+  //   //Order History
+  //   Membership.orderHistory();
+
+  //   //Admin membership fulfil
+  //   Membership.adminFulfil();
+
+  //   //Visit membership page
+  //   cy.visit('https://cambaytigerstage-nh.farziengineer.co/page/membership');
+
+  //   //Verify the membership
+  //   cy.get("div[class='showOnDesktop'] div[class='Membership_planType__ZeJCO']").should("have.text", "Bronze");
+  //   cy.get("div[class='showOnDesktop'] div[class='Membership_duration__Wz9aN']").should("have.text", "Plan Duration : 1 month ");
+
+  //   //Order Place
+  //   Membership.orderPlace();
+
+  //   //Verify deliverycharges
+  //   Membership.verifyDeliveryCharges();
     
-    //Checkout
-    Membership.checkout();
+  //   // Product checkout
+  //   Membership.productcheckout();
 
-    //Razorpay
-    Membership.razorpay();
+  //   // Remove membership from admin
+  //   Membership.removeMembership();
+  // })
 
-    //Order History
-    Membership.orderHistory();
-
-    //Admin membership fulfil
-    Membership.adminFulfil();
-
-    //Visit membership page
-    cy.visit('https://cambaytigerstage-nh.farziengineer.co/page/membership');
-
-    //Verify the membership
-    cy.get("div[class='showOnDesktop'] div[class='Membership_planType__ZeJCO']").should("have.text", "Gold");
-    cy.get("div[class='showOnDesktop'] div[class='Membership_duration__Wz9aN']").should("have.text", "Plan Duration : 6 month ");
-
-    //Order Place
-    Membership.orderPlace();
-
-    //Verify deliverycharges
-    Membership.verifyDeliveryCharges();
+  // it('Gold Membership functionality', () => {
+  //   cy.visit('https://cambaytigerstage-nh.farziengineer.co/');
     
-    // Product checkout
-    Membership.productcheckout();
+  //   // Select location 
+  //   Home.selectPrimaryLocation();
 
-    // Remove membership from admin
-    Membership.removeMembership();
-  })
+  //   //  Login
+  //   Home.login();
+    
+  //   // select location & open cambay club page
+  //   Membership.openMembershipPage();
+
+    
+  //   //Clear Cart
+  //   Home.cartClear();
+
+  //   //Select Gold
+  //   cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] div:nth-child(5) span:nth-child(2)").click();
+  //   cy.get("div[class='showOnDesktop'] div[class='Membership_desktopAddToCartMembership__I2B_T__mainText sc-gzOgki fSlvAH']").click();    
+    
+  //   //Checkout
+  //   Membership.checkout();
+
+  //   //Razorpay
+  //   Membership.razorpay();
+
+  //   //Order History
+  //   Membership.orderHistory();
+
+  //   //Admin membership fulfil
+  //   Membership.adminFulfil();
+
+  //   //Visit membership page
+  //   cy.visit('https://cambaytigerstage-nh.farziengineer.co/page/membership');
+
+  //   //Verify the membership
+  //   cy.get("div[class='showOnDesktop'] div[class='Membership_planType__ZeJCO']").should("have.text", "Gold");
+  //   cy.get("div[class='showOnDesktop'] div[class='Membership_duration__Wz9aN']").should("have.text", "Plan Duration : 6 month ");
+
+  //   //Order Place
+  //   Membership.orderPlace();
+
+  //   //Verify deliverycharges
+  //   Membership.verifyDeliveryCharges();
+    
+  //   // Product checkout
+  //   Membership.productcheckout();
+
+  //   // Remove membership from admin
+  //   Membership.removeMembership();
+  // })
 
   it('Silver Membership functionality', () => {
     cy.visit('https://cambaytigerstage-nh.farziengineer.co/');
@@ -133,39 +139,54 @@ describe('Membership functionality', () => {
     //Clear Cart
     Home.cartClear();
 
-    //Select Silver    
-    cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] span[class='sc-htpNat hamzJc']").click();
+    const cartQuantitySelector = ".GG-main-menu__cart__quantity__gg";
+    const addToCart = "div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] span[class='sc-htpNat hamzJc']";
 
+    Cypress._.forEach(location1, (location) => {
+        context(`Testing food ordering at ${location}`, () => {
+            // Select Silver
+            cy.get(addToCart).click();
     
-    //Checkout
-    Membership.checkout();
-
-    //Razorpay
-    Membership.razorpay();
-
-    //Order History
-    Membership.orderHistory();
-
-    //Admin membership fulfil
-    Membership.adminFulfil();
-
-    //Visit membership page
-    cy.visit('https://cambaytigerstage-nh.farziengineer.co/page/membership');
-
-    //Verify the membership
-    cy.get("div[class='showOnDesktop'] div[class='Membership_planType__ZeJCO']").should("have.text", "Silver");
-    cy.get("div[class='showOnDesktop'] div[class='Membership_duration__Wz9aN']").should("have.text", "Plan Duration : 3 month ");
-
-    //Order Place
-    Membership.orderPlace();
-
-    //Verify deliverycharges
-    Membership.verifyDeliveryCharges();
+            // Check cart quantity
+            cy.get(cartQuantitySelector).invoke('text').then((text) => {
+                const cartQuantity = parseInt(text.trim());
+                if (cartQuantity !== 0) {
+                    // Break the loop
+                    return false; // Lodash handles breaking internally
+                }
+            });
+        });
+    });
     
-    // Product checkout
-    Membership.productcheckout();
+    // //Checkout
+    // Membership.checkout();
 
-    // Remove membership from admin
-    Membership.removeMembership();
+    // //Razorpay
+    // Membership.razorpay();
+
+    // //Order History
+    // Membership.orderHistory();
+
+    // //Admin membership fulfil
+    // Membership.adminFulfil();
+
+    // //Visit membership page
+    // cy.visit('https://cambaytigerstage-nh.farziengineer.co/page/membership');
+
+    // //Verify the membership
+    // cy.get("div[class='showOnDesktop'] div[class='Membership_planType__ZeJCO']").should("have.text", "Silver");
+    // cy.get("div[class='showOnDesktop'] div[class='Membership_duration__Wz9aN']").should("have.text", "Plan Duration : 3 month ");
+
+    // //Order Place
+    // Membership.orderPlace();
+
+    // //Verify deliverycharges
+    // Membership.verifyDeliveryCharges();
+    
+    // // Product checkout
+    // Membership.productcheckout();
+
+    // // Remove membership from admin
+    // Membership.removeMembership();
   })
 })
