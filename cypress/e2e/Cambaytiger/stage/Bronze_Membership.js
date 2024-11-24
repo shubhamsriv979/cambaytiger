@@ -1,4 +1,5 @@
 import Membership from '../../../support/PageObjects/Membership';
+import Home from '../../../support/PageObjects/Home';
 
 import 'cypress-iframe'
 Cypress.on('uncaught:exception', (err, runnable) => {
@@ -13,11 +14,16 @@ describe('Membership functionality', () => {
 
   it('Membership functionality', () => {
     cy.visit('https://cambaytigerstage-nh.farziengineer.co/');
-    // cy.wait(20000);
-    // cy.reload();
+    
+    // Select location 
+    Home.selectPrimaryLocation();
 
+    //  Login
+    Home.login();
+
+    
     // select location & open cambay club page
-    Membership.searchForLocation();
+    Membership.openMembershipPage();
 
     //Select Bronze
     cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] div:nth-child(3) span:nth-child(2)").click();
