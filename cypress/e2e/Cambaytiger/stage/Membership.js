@@ -13,8 +13,8 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 describe('Membership functionality', () => {
 
   const location1 = [
-    'delhi airport',
     'Mumbai',
+    'delhi airport',
     'Bangalore'
   ];
 
