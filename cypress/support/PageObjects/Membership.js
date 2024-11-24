@@ -59,7 +59,7 @@ class Membership {
         cy.get('.payment_button__text__busIX')
             .should("be.visible")
             .click({ force: true });
-        cy.wait(30000);
+        
 
     }
 
@@ -83,8 +83,8 @@ class Membership {
                 // Click the button to proceed
                 cy.contains("Verify and Pay").click();
 
-                // Add a wait to allow actions to complete (adjust as needed)
-                cy.wait(15000);
+                // Add a wait to allow actions to complete 
+                cy.wait(30000);
             });
         });
 
