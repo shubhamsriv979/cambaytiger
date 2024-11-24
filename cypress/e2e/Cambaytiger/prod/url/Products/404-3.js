@@ -21,7 +21,7 @@ describe('Template Spec', () => {
 'https://cambaytiger.com/product/mutton-chicken-tilapia-combo/mutton-chicken-tilapia-combo',
 'https://cambaytiger.com/product/chicken-lrg-prawns-combo/chicken-lrg-prawns-combo',
 'https://cambaytiger.com/product/chicken-prawns-combo/chicken-prawns-combo',
-'https://cambaytiger.com/product/classic-makhani-curry/classic-makhani-curry',
+'https://cambaytiger.com/product/red-thai-curry/red-thai-curry',
 'https://cambaytiger.com/product/red-thai-curry/red-thai-curry',
 'https://cambaytiger.com/product/kerala-moilee-curry/kerala-moilee-curry',
 'https://cambaytiger.com/product/chingri-malai-curry/chingri-malai-curry',

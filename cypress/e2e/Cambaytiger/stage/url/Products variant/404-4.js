@@ -25,7 +25,7 @@ describe('Template Spec', () => {
 'https://cambaytigerstage-nh.farziengineer.co/product/chicken-pepper-salami',
 'https://cambaytigerstage-nh.farziengineer.co/product/chicken-smoked-frankfurter',
 'https://cambaytigerstage-nh.farziengineer.co/product/cheesy-chicken-salami',
-'https://cambaytigerstage-nh.farziengineer.co/product/free-classic-makhani-curry',
+'https://cambaytigerstage-nh.farziengineer.co/product/free-red-thai-curry',
 'https://cambaytigerstage-nh.farziengineer.co/product/fresh-king-tiger-prawns',
 'https://cambaytigerstage-nh.farziengineer.co/product/fresh-small-prawns',
 'https://cambaytigerstage-nh.farziengineer.co/product/chef-currated-lemon-pepper-marinade'
