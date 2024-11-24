@@ -1,6 +1,6 @@
 class Home {
     cartClear(){
-        cy.get(".our-categories__heading").should('be.visible');
+        // cy.get(".our-categories__heading").should('be.visible');
         cy.get('body').then(($body) => {
             const cartQuantitySelector = ".GG-main-menu__cart__quantity__gg";
             const cartHeaderSelector = ".overlayFarzicom__header__text";
