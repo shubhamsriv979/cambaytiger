@@ -10,7 +10,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 });
 
 
-describe('Membership functionality', () => {
+context('Membership functionality', () => {
 
   // const location1 = [
   //   'Mumbai',
@@ -139,34 +139,28 @@ describe('Membership functionality', () => {
     // //Clear Cart
     // Home.cartClear();
 
-    const location1 = [
-      'delhi airport',
-      'Mumbai',
-      'Bangalore'
-  ];
-  
-  const cartQuantitySelector = ".GG-main-menu__cart__quantity__gg";
-  
-  for (let i = 0; i < location1.length; i++) {
-      const location = location1[i];
-      
-      context(`Testing food ordering at ${location}`, () => {
-          it('should check cart quantity and stop if not 0', () => {
-              // Select Silver
-              cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] span[class='sc-htpNat hamzJc']").click();
-  
-              // Check cart quantity
-              cy.get(cartQuantitySelector).invoke('text').then((text) => {
-                  const cartQuantity = parseInt(text.trim());
-                  if (cartQuantity !== 0) {
-                      // Exit the loop by throwing an error or setting a flag
-                      cy.log(`Stopping at ${location} due to cart quantity: ${cartQuantity}`);
-                      return; // Exit current test context
-                  }
-              });
-          });
-      });
-  }
+    const locations = ['delhi airport', 'Mumbai', 'Bangalore'];
+    const cartQuantitySelector = ".GG-main-menu__cart__quantity__gg";
+    
+    context('Membership functionality', () => {
+        locations.forEach((location) => {
+            it(`Testing food ordering at ${location}`, () => {
+                // Select Silver
+                cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] span[class='sc-htpNat hamzJc']").click();
+    
+                // Check cart quantity
+                cy.get(cartQuantitySelector).invoke('text').then((text) => {
+                    const cartQuantity = parseInt(text.trim());
+                    if (cartQuantity !== 0) {
+                        cy.log(`Cart quantity is ${cartQuantity} at ${location}. Stopping tests.`);
+                        // Optionally fail or stop further tests
+                        return;
+                    }
+                });
+            });
+        });
+    });
+    
   
     
     // //Checkout
