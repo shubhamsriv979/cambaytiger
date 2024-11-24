@@ -144,6 +144,7 @@ describe('Membership functionality', () => {
 
     Cypress._.forEach(location1, (location) => {
         context(`Testing food ordering at ${location}`, () => {
+          Home.updateLocationLoop();
             // Select Silver
             cy.get(addToCart).click();
             cy.wait(5000);
@@ -151,7 +152,7 @@ describe('Membership functionality', () => {
             // Check cart quantity
             cy.get(cartQuantitySelector).invoke('text').then((text) => {
                 const cartQuantity = parseInt(text.trim());
-                console.log(cartQuantity);
+                
                 if (cartQuantity !== 0) {
                     // Break the loop
                     return false; // Lodash handles breaking internally
