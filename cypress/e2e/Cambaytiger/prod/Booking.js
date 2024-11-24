@@ -37,24 +37,11 @@ describe('Booking flow', () => {
     // Access the iframe and wait for it to load (e.g., advertisement pop-up)
     //Membership.closeAdvPopup();
 
-    // select location 
-    cy.wait(10000);
-    cy.get(':nth-child(1) > #header > .scss_mainNavContainerWrapper__m_O_A > .scss_mainNavContainer__UDVhL > .scss_logoSearchContainer__ca6MR > :nth-child(3) > .scss_GGLocation__cfABD > .scss_GGLocation__topCont__oRucC > :nth-child(5) > .GGLocation__input > input').type("Bangalore", { delay: 100, force: true });
-    cy.wait(10000);
-    cy.get('.AdressCont__inside > :nth-child(1) > div').click();
-    cy.wait(10000);
+    // Select location 
+    Home.selectPrimaryLocation();
 
     //  Login
-    cy.get(':nth-child(1) > #header > .scss_mainNavContainerWrapper__m_O_A > .scss_mainNavContainer__UDVhL > :nth-child(3) > .GG-main-menu__lower__desktop-right__ul > .GG_dropDown_button > span').click();
-    cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div button[class='user-register']").click();
-
-
-    cy.wait(5000);
-    cy.get("input[placeholder='Enter Phone number']").click().type("6388789049", { delay: 100, force: true });
-    cy.get('.scss_loginRegCont__m2Dae > button').click();
-    cy.get("#otp-0").type("123456",);
-    cy.get('.scss_loginRegCont__m2Dae > button').click();
-    cy.wait(30000);
+    Home.login();
 
 
     locations.forEach((location) => {
@@ -111,7 +98,7 @@ describe('Booking flow', () => {
             });
 
             cy.get('body').then((body) => {
-
+              
               const addToCartSelector = "#__next > div > div.showOnDesktop > div > div > main > div.product-container > div.product-page__product__info > div > div > div.sc-hBbWxd.ljHzFv > div > div.sc-fjhmcy.bxMHcK > div.sc-erNlkL.hdnBOk > div:nth-child(4) > section > div > button";
               cy.wait(10000);
               if (body.find(addToCartSelector).length > 0) {
@@ -133,7 +120,7 @@ describe('Booking flow', () => {
                         cy.get(".sc-htnqrb.dVayQT").should("be.visible");
                         cy.contains("proceed to checkout").click();
                         cy.get('.Address_button__text__ved_d').click();
-                        cy.wait(30000);
+                        cy.wait(20000);
                         cy.get("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)")
                           .should("be.visible")
                           .click();

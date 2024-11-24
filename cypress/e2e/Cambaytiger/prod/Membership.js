@@ -238,7 +238,7 @@ describe('Membership functionality', () => {
              }
    
                // Select Silver
-               cy.get(addToCart).click();
+               cy.get(addToCart1).click();
                cy.wait(5000);
        
                // Check cart quantity
