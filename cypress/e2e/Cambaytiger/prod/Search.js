@@ -56,7 +56,7 @@ describe('Search functionality', () => {
         else if ($body.find(".sc-fsGQkc.bgexUZ").is(':visible')) {         
           
           // Perform the click action
-          cy.get(".sc-fsGQkc.bgexUZ").click();
+          cy.get(".sc-fsGQkc.bgexUZ").click({ multiple: true });
           cy.log('Item is deleted');         
           // Call the function again to check the condition
           cy.wait(5000); // Add a small delay to prevent rapid execution
