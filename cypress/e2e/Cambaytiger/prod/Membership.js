@@ -10,72 +10,255 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 
 
 describe('Membership functionality', () => {
+  const location1 = [
+    'Mumbai',
+    'delhi airport',
+    'Bangalore'
+  ];
+  const cartQuantitySelector = ".GG-main-menu__cart__quantity__gg";
+  const addToCart1 = "div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] span[class='sc-htpNat hamzJc']";
+  const addToCart2 = "div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] span[class='sc-htpNat hamzJc']";
 
   it('Bronze Membership functionality', () => {
     cy.visit('https://cambaytiger.com/');
-    Membership.closeAdvPopup();
+    // Membership.closeAdvPopup();
 
+    // Select location 
+    Home.selectPrimaryLocation();
+
+    //  Login
+    Home.login();
+    
     // select location & open cambay club page
-    Membership.prodSearchLocations();
+    Membership.openMembershipPage();
+
+    
+    //Clear Cart
+    Home.cartClear();
 
     //Select Bronze
     cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] div:nth-child(3) span:nth-child(2)").click();
-    cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] span[class='sc-htpNat hamzJc']").click();
-    cy.get(".scss_cart__LPPJw").click();
+        
+    Cypress._.forEach(location1, (location) => {
+        context(`Testing food ordering at ${location}`, () => {
+          // Home.updateLocationLoop();
+          selectLocationUntilNotMumbai();
+          function selectLocationUntilNotMumbai() {
+            // Click on the location field to open the location selector
+            cy.wait(5000);
+            cy.get(':nth-child(1) > #header > .scss_mainNavContainerWrapper__m_O_A > .scss_mainNavContainer__UDVhL > .scss_logoSearchContainer__ca6MR > [data-test="menuCartOverlayLink"] > .GG-main-menu__icon__LocationStateCity > p')
+              .click();
+  
+            // Set location to "Other Location"
+            cy.wait(1000);
+            cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div[class='scss_logoSearchContainer__ca6MR'] div div[class='scss_GGLocation__cfABD'] div[class='scss_GGLocation__topCont__oRucC'] div input[placeholder='Please enter delivery location...']")
+              // .should('have.class', 'active')
+              .click()
+              .type(location, { delay: 100, force: true })
+              .then(() => {
+  
+                // Assert to check if the selected location is not "Mumbai"
+                cy.wait(15000);
+                cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div[class='scss_logoSearchContainer__ca6MR'] div div[class='scss_GGLocation__cfABD'] div[class='scss_GGLocation__topCont__oRucC'] div input[placeholder='Please enter delivery location...']").then(($elelocation) => {
+                  if ($elelocation.val().includes(location)) {
+                    // If location is still "Mumbai," re-run the function to select again
+                    cy.wait(1000);
+                    cy.get('.AdressCont__inside > :nth-child(1) > div').click();
+                    cy.wait(15000);
+                  } else {
+                    // Location is not "Mumbai," test can proceed                    
+                    cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div[class='scss_logoSearchContainer__ca6MR'] div p[class='GGLocation__hide']").click();
+                    cy.log($elelocation)
+                    selectLocationUntilNotMumbai();
+                  }
+                });
+              });
+          }
 
-    //Login
-    Membership.login();
+            // Select Silver
+            cy.get(addToCart1).click();
+            cy.wait(5000);
+    
+            // Check cart quantity
+            cy.get(cartQuantitySelector).invoke('text').then((text) => {
+                const cartQuantity = parseInt(text.trim());
+                
+                if (cartQuantity !== 0) {
+                    // Break the loop
+                    return false; // Lodash handles breaking internally
+                }
+            });
+        });
+    });
+    
 
+    
     //Checkout
     Membership.checkout();
-    
+
     //Razorpay
-    Membership.razorpay();  
-    // cy.contains("Cart").eq(0).click();
-    // cy.get("path[d='M13.5 2.93423H10.9062L9.84375 1.19165C9.59375 0.787118 9.03125 0.444824 8.5625 0.444824H5.40625C4.9375 0.444824 4.375 0.787118 4.125 1.19165L3.0625 2.93423H0.5C0.21875 2.93423 0 3.18317 0 3.43211V3.92999C0 4.21005 0.21875 4.42788 0.5 4.42788H1L1.65625 14.9767C1.6875 15.7547 2.375 16.377 3.15625 16.377H10.8125C11.5938 16.377 12.2812 15.7547 12.3125 14.9767L13 4.42788H13.5C13.75 4.42788 14 4.21005 14 3.92999V3.43211C14 3.18317 13.75 2.93423 13.5 2.93423ZM5.40625 1.93847H8.5625L9.15625 2.93423H4.8125L5.40625 1.93847ZM10.8125 14.8834H3.15625L2.5 4.42788H11.4688L10.8125 14.8834Z']").click();
+    Membership.razorpay();
+    
+  })
+
+  
+  it('Gold Membership functionality', () => {
+    cy.visit('https://cambaytiger.com/');
+    // Membership.closeAdvPopup();
+
+    // Select location 
+    Home.selectPrimaryLocation();
+
+    //  Login
+    Home.login();
+    
+    // select location & open cambay club page
+    Membership.openMembershipPage();
+
+    
+    //Clear Cart
+    Home.cartClear();
+
+    //Select Gold
+    cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] div:nth-child(5) span:nth-child(2)").click();
+    
+    Cypress._.forEach(location1, (location) => {
+      context(`Testing food ordering at ${location}`, () => {
+        // Home.updateLocationLoop();
+        selectLocationUntilNotMumbai();
+        function selectLocationUntilNotMumbai() {
+          // Click on the location field to open the location selector
+          cy.wait(5000);
+          cy.get(':nth-child(1) > #header > .scss_mainNavContainerWrapper__m_O_A > .scss_mainNavContainer__UDVhL > .scss_logoSearchContainer__ca6MR > [data-test="menuCartOverlayLink"] > .GG-main-menu__icon__LocationStateCity > p')
+            .click();
+
+          // Set location to "Other Location"
+          cy.wait(1000);
+          cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div[class='scss_logoSearchContainer__ca6MR'] div div[class='scss_GGLocation__cfABD'] div[class='scss_GGLocation__topCont__oRucC'] div input[placeholder='Please enter delivery location...']")
+            // .should('have.class', 'active')
+            .click()
+            .type(location, { delay: 100, force: true })
+            .then(() => {
+
+              // Assert to check if the selected location is not "Mumbai"
+              cy.wait(15000);
+              cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div[class='scss_logoSearchContainer__ca6MR'] div div[class='scss_GGLocation__cfABD'] div[class='scss_GGLocation__topCont__oRucC'] div input[placeholder='Please enter delivery location...']").then(($elelocation) => {
+                if ($elelocation.val().includes(location)) {
+                  // If location is still "Mumbai," re-run the function to select again
+                  cy.wait(1000);
+                  cy.get('.AdressCont__inside > :nth-child(1) > div').click();
+                  cy.wait(15000);
+                } else {
+                  // Location is not "Mumbai," test can proceed                    
+                  cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div[class='scss_logoSearchContainer__ca6MR'] div p[class='GGLocation__hide']").click();
+                  cy.log($elelocation)
+                  selectLocationUntilNotMumbai();
+                }
+              });
+            });
+        }
+
+          // Select Silver
+          cy.get(addToCart2).click();
+          cy.wait(5000);
+  
+          // Check cart quantity
+          cy.get(cartQuantitySelector).invoke('text').then((text) => {
+              const cartQuantity = parseInt(text.trim());
+              
+              if (cartQuantity !== 0) {
+                  // Break the loop
+                  return false; // Lodash handles breaking internally
+              }
+          });
+      });
+  });
+  
+    
+    //Checkout
+    Membership.checkout();
+
+    //Razorpay
+    Membership.razorpay();
   })
 
   it('Silver Membership functionality', () => {
     cy.visit('https://cambaytiger.com/');
-    Membership.closeAdvPopup();
+    // Membership.closeAdvPopup();
 
-    // select location & open cambay club page
-    Membership.prodSearchLocations();
+        // Select location 
+        Home.selectPrimaryLocation();
 
-    //Select Silver
-    // cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] div:nth-child(3) span:nth-child(2)").click();
-    cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] span[class='sc-htpNat hamzJc']").click();
-    cy.get(".scss_cart__LPPJw").click();
+        // Login
+       Home.login();
+       
+       // select location & open cambay club page
+       Membership.openMembershipPage();
+   
+       
+       //Clear Cart
+       Home.cartClear();
+   
+       
+       Cypress._.forEach(location1, (location) => {
+           context(`Testing food ordering at ${location}`, () => {
+             // Home.updateLocationLoop();
+             selectLocationUntilNotMumbai();
+             function selectLocationUntilNotMumbai() {
+               // Click on the location field to open the location selector
+               cy.wait(5000);
+               cy.get(':nth-child(1) > #header > .scss_mainNavContainerWrapper__m_O_A > .scss_mainNavContainer__UDVhL > .scss_logoSearchContainer__ca6MR > [data-test="menuCartOverlayLink"] > .GG-main-menu__icon__LocationStateCity > p')
+                 .click();
+     
+               // Set location to "Other Location"
+               cy.wait(1000);
+               cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div[class='scss_logoSearchContainer__ca6MR'] div div[class='scss_GGLocation__cfABD'] div[class='scss_GGLocation__topCont__oRucC'] div input[placeholder='Please enter delivery location...']")
+                 // .should('have.class', 'active')
+                 .click()
+                 .type(location, { delay: 100, force: true })
+                 .then(() => {
+     
+                   // Assert to check if the selected location is not "Mumbai"
+                   cy.wait(15000);
+                   cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div[class='scss_logoSearchContainer__ca6MR'] div div[class='scss_GGLocation__cfABD'] div[class='scss_GGLocation__topCont__oRucC'] div input[placeholder='Please enter delivery location...']").then(($elelocation) => {
+                     if ($elelocation.val().includes(location)) {
+                       // If location is still "Mumbai," re-run the function to select again
+                       cy.wait(1000);
+                       cy.get('.AdressCont__inside > :nth-child(1) > div').click();
+                       cy.wait(15000);
+                     } else {
+                       // Location is not "Mumbai," test can proceed                    
+                       cy.get("div[class='showOnDesktop'] nav[id='header'] div[class='scss_mainNavContainerWrapper__m_O_A'] div[class='scss_mainNavContainer__UDVhL'] div[class='scss_logoSearchContainer__ca6MR'] div p[class='GGLocation__hide']").click();
+                       cy.log($elelocation)
+                       selectLocationUntilNotMumbai();
+                     }
+                   });
+                 });
+             }
+   
+               // Select Silver
+               cy.get(addToCart).click();
+               cy.wait(5000);
+       
+               // Check cart quantity
+               cy.get(cartQuantitySelector).invoke('text').then((text) => {
+                   const cartQuantity = parseInt(text.trim());
+                   
+                   if (cartQuantity !== 0) {
+                       // Break the loop
+                       return false; // Lodash handles breaking internally
+                   }
+               });
+           });
+       });
+       
+       //Checkout
+       Membership.checkout();
+   
+       //Razorpay
+       Membership.razorpay();
+   
 
-    //Login
-    Membership.login();
-
-    //Checkout
-    Membership.checkout();
-    
-    //Razorpay
-    Membership.razorpay();    
-  })
-
-  it('Gold Membership functionality', () => {
-    cy.visit('https://cambaytiger.com/');
-    Membership.closeAdvPopup();
-
-    // select location & open cambay club page
-    Membership.prodSearchLocations();
-
-    //Select Gold
-    cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] div:nth-child(5) span:nth-child(2)").click();
-    cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] span[class='sc-htpNat hamzJc']").click();    
-    cy.get(".scss_cart__LPPJw").click();
-
-    //Login
-    Membership.login();
-
-    //Checkout
-    Membership.checkout();
-    
-    //Razorpay
-    Membership.razorpay();    
+     
   })
 })

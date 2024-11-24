@@ -247,8 +247,6 @@ describe('Membership functionality', () => {
     Home.cartClear();
 
     
-    const addToCart = "div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] span[class='sc-htpNat hamzJc']";
-
     Cypress._.forEach(location1, (location) => {
         context(`Testing food ordering at ${location}`, () => {
           // Home.updateLocationLoop();
