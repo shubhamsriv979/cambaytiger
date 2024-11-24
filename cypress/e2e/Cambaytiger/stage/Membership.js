@@ -129,7 +129,7 @@ describe('Membership functionality', () => {
     // Select location 
     Home.selectPrimaryLocation();
 
-     Login
+     // Login
     Home.login();
     
     // select location & open cambay club page
