@@ -22,7 +22,7 @@ describe('Membership functionality', () => {
     //Select Silver
     // cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] div:nth-child(3) span:nth-child(2)").click();
     cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] span[class='sc-htpNat hamzJc']").click();
-    cy.get(".scss_cart__LPPJw").click();
+    
 
     //Login
     Membership.login();
