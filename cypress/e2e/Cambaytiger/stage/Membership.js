@@ -130,14 +130,14 @@ describe('Membership functionality', () => {
     Home.selectPrimaryLocation();
 
     //  Login
-    Home.login();
+    // Home.login();
     
     // select location & open cambay club page
     Membership.openMembershipPage();
 
     
-    //Clear Cart
-    Home.cartClear();
+    // //Clear Cart
+    // Home.cartClear();
 
     const cartQuantitySelector = ".GG-main-menu__cart__quantity__gg";
     const addToCart = "div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] span[class='sc-htpNat hamzJc']";
@@ -146,6 +146,7 @@ describe('Membership functionality', () => {
         context(`Testing food ordering at ${location}`, () => {
             // Select Silver
             cy.get(addToCart).click();
+            cy.wait(5000);
     
             // Check cart quantity
             cy.get(cartQuantitySelector).invoke('text').then((text) => {

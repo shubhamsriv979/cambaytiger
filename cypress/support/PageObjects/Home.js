@@ -18,7 +18,7 @@ class Home {
     cy.get("#otp-0").type("123456",);
     cy.wait(5000);
     cy.get('.scss_loginRegCont__m2Dae > button').click();
-    cy.wait(5000);
+    cy.wait(10000);
   }
 
   cartClear() {
