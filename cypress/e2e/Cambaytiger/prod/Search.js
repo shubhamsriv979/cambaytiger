@@ -10,7 +10,7 @@ describe('Search functionality', () => {
 
 
   it('Search functionality', () => {
-    cy.visit('https://cambaytiger.com/');
+    cy.visit('https://cambaytigerstage-nh.farziengineer.co/');
     // Access the iframe and wait for it to load (e.g., advertisement pop-up)
     Membership.closeAdvPopup();
 
@@ -43,13 +43,12 @@ describe('Search functionality', () => {
     cy.contains("Cart").eq(0).click();
     //cart heading text
     cy.get(".overlayFarzicom__header__text").should('be.visible');
-    cy.wait(10000);    
+    
 
     function clickUntilVisible() {
       // Use recursion safely
       cy.get('body').then(($body) => {
-        // Check if the target element is visible
-        cy.wait(10000); 
+        // Check if the target element is visible        
         if ($body.find("div[class='cart__empty'] span").is(':visible')) {
           cy.log('Cart is empty');          
         }
@@ -59,7 +58,7 @@ describe('Search functionality', () => {
           cy.get(".sc-fsGQkc.bgexUZ").click({ multiple: true });
           cy.log('Item is deleted');         
           // Call the function again to check the condition
-          cy.wait(5000); // Add a small delay to prevent rapid execution
+          cy.wait(500); // Add a small delay to prevent rapid execution
           clickUntilVisible();
         }
         else {
