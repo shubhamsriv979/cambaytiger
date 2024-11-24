@@ -139,32 +139,35 @@ describe('Membership functionality', () => {
     // //Clear Cart
     // Home.cartClear();
 
-    const locations = ['Delhi', 'Mumbai', 'Bangalore'];
-
-const cartQuantitySelector = ".GG-main-menu__cart__quantity__gg";
-let stopIteration = false; // Flag to stop further tests
-
-locations.forEach((location) => {
-    if (stopIteration) return;
-
-    context(`Testing food ordering at ${location}`, () => {
-        it(`Tests for location: ${location}`, () => {
-            // Select Silver membership
-            cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] span[class='sc-htpNat hamzJc']")
-                .click();
-
-            // Check cart quantity
-            cy.get(cartQuantitySelector)
-                .invoke('text')
-                .then((text) => {
-                    const cartQuantity = parseInt(text.trim());
-                    if (cartQuantity !== 0) {
-                        stopIteration = true; // Set flag to stop further iterations
-                    }
-                });
-        });
-    });
-});
+    const location1 = [
+      'delhi airport',
+      'Mumbai',
+      'Bangalore'
+  ];
+  
+  const cartQuantitySelector = ".GG-main-menu__cart__quantity__gg";
+  
+  for (let i = 0; i < location1.length; i++) {
+      const location = location1[i];
+      
+      context(`Testing food ordering at ${location}`, () => {
+          it('should check cart quantity and stop if not 0', () => {
+              // Select Silver
+              cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] span[class='sc-htpNat hamzJc']").click();
+  
+              // Check cart quantity
+              cy.get(cartQuantitySelector).invoke('text').then((text) => {
+                  const cartQuantity = parseInt(text.trim());
+                  if (cartQuantity !== 0) {
+                      // Exit the loop by throwing an error or setting a flag
+                      cy.log(`Stopping at ${location} due to cart quantity: ${cartQuantity}`);
+                      return; // Exit current test context
+                  }
+              });
+          });
+      });
+  }
+  
     
     // //Checkout
     // Membership.checkout();
