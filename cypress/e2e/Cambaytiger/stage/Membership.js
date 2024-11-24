@@ -12,11 +12,11 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 
 describe('Membership functionality', () => {
 
-  const location1 = [
-    'Mumbai',
-    'delhi airport',
-    'Bangalore'
-  ];
+  // const location1 = [
+  //   'Mumbai',
+  //   'delhi airport',
+  //   'Bangalore'
+  // ];
 
   // it('Bronze Membership functionality', () => {
   //   cy.visit('https://cambaytigerstage-nh.farziengineer.co/');
@@ -139,17 +139,19 @@ describe('Membership functionality', () => {
     // //Clear Cart
     // Home.cartClear();
 
-    const cartQuantitySelector = ".GG-main-menu__cart__quantity__gg";
+    const locations = ['Delhi', 'Mumbai', 'Bangalore'];
 
-let stopIteration = false; // Flag to control iteration
+const cartQuantitySelector = ".GG-main-menu__cart__quantity__gg";
+let stopIteration = false; // Flag to stop further tests
 
-for (const location of location1) {
-    if (stopIteration) break; // Stop iteration if the flag is set
+locations.forEach((location) => {
+    if (stopIteration) return;
 
     context(`Testing food ordering at ${location}`, () => {
         it(`Tests for location: ${location}`, () => {
-            // Select Silver
-            cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] span[class='sc-htpNat hamzJc']").click();
+            // Select Silver membership
+            cy.get("div[class='showOnDesktop'] div[class='Membership_parentMemberContainer__Hbxf8'] span[class='sc-htpNat hamzJc']")
+                .click();
 
             // Check cart quantity
             cy.get(cartQuantitySelector)
@@ -157,12 +159,12 @@ for (const location of location1) {
                 .then((text) => {
                     const cartQuantity = parseInt(text.trim());
                     if (cartQuantity !== 0) {
-                        stopIteration = true; // Set the flag to stop iteration
+                        stopIteration = true; // Set flag to stop further iterations
                     }
                 });
         });
     });
-}
+});
     
     // //Checkout
     // Membership.checkout();
