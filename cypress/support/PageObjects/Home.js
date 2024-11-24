@@ -1,5 +1,5 @@
 class Home {
-    clearCart(){
+    cartClear(){
         cy.get(".our-categories__heading").should('be.visible');
         cy.get('body').then(($body) => {
             const cartQuantitySelector = ".GG-main-menu__cart__quantity__gg";
@@ -28,3 +28,5 @@ class Home {
           });
     }
 }
+
+export default new Home();

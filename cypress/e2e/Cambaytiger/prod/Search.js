@@ -42,8 +42,7 @@ describe('Search functionality', () => {
     cy.wait(5000);
     
     //Clear Cart
-    Home.clearCart();
-
+    Home.cartClear();
 
     
     
