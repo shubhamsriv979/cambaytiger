@@ -4,11 +4,16 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   // failing the test due to the uncaught exception
   return false;
 });
+cy.intercept('GET', '**/redirection-endpoint', {
+  statusCode: 200,
+  body: {}, // Empty response to prevent redirection logic
+}).as('blockRedirect');
+
 
 describe('Search functionality check', () => {
 
   it('Search functionality check', () => {
-    cy.visit('https://www.plixlife.com?region=IN');
+    cy.visit('https://www.plixlife.com/');
 
     // // Access the iframe and wait for it to load
     // cy.get("#wiz-iframe-intent").then((iframedata) => {
