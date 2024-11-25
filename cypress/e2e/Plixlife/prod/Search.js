@@ -5,11 +5,9 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 });
 
 beforeEach(() => {
-  // Intercept the redirection endpoint to prevent the redirection logic
-  cy.intercept('GET', '**/redirection-endpoint', {
-    statusCode: 200,
-    body: {}, // Empty response
-  }).as('blockRedirect');
+  cy.intercept('GET', '**', (req) => {
+    req.headers['X-Forwarded-For'] = '203.0.113.0'; // Example: Indian IP
+  }).as('mockLocation');
 });
 
 
