@@ -10,11 +10,11 @@ describe('Search functionality check', () => {
   it('Search functionality check', () => {
     cy.visit('https://www.plixlife.com/');
 
-    // Access the iframe and wait for it to load
-    cy.get("#wiz-iframe-intent").then((iframedata) => {
-      // Access the iframe's document
-      iframedata.contents().find('body')      
-    })
+    // // Access the iframe and wait for it to load
+    // cy.get("#wiz-iframe-intent").then((iframedata) => {
+    //   // Access the iframe's document
+    //   iframedata.contents().find('body')      
+    // })
     cy.reload();
 
     // Search the product
