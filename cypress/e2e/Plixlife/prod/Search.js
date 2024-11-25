@@ -5,19 +5,21 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 });
 
 beforeEach(() => {
-  cy.intercept('GET', '**', (req) => {
-    req.headers['X-Forwarded-For'] = '203.0.113.0'; // Example: Indian IP
-  }).as('mockLocation');
+  cy.intercept('GET', '**/redirection-endpoint', {
+    statusCode: 200,
+    body: {}, // Empty response to prevent redirection logic
+  }).as('blockRedirect');
 });
 
 
 describe('Search functionality check', () => {
 
   it('Search functionality check', () => {
-    cy.setCookie('region', 'IN'); // Set the cookie for the Indian region
-
-
     cy.visit('https://www.plixlife.com/');
+    onBeforeLoad: (win) => {
+      cy.stub(win, 'location').as('locationStub');
+    },
+
 
     // // Access the iframe and wait for it to load
     // cy.get("#wiz-iframe-intent").then((iframedata) => {
