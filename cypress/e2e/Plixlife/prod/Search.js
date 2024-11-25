@@ -4,17 +4,20 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   return false;
 });
 
-beforeEach(() => {
-  cy.intercept('GET', '**', (req) => {
-    req.headers['X-Forwarded-For'] = '192.168.106.135'; // Example: Indian IP
-  }).as('mockLocation');
-});
+// beforeEach(() => {
+  
+// });
 
 
 describe('Search functionality check', () => {
 
   it('Search functionality check', () => {
-    cy.visit('https://www.plixlife.com/');
+    cy.visit('https://www.plixlife.com/'), {
+      onBeforeLoad: (win) => {
+        Object.defineProperty(win.navigator, 'language', { value: 'en-IN' });
+        win.localStorage.setItem('region', 'IN');
+      },
+    };
     
 
 
