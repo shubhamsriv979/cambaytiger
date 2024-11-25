@@ -5,10 +5,9 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 });
 
 beforeEach(() => {
-  cy.intercept('GET', '**/redirection-endpoint', {
-    statusCode: 200,
-    body: {}, // Empty response to prevent redirection logic
-  }).as('blockRedirect');
+  cy.intercept('GET', '**', (req) => {
+    req.headers['X-Forwarded-For'] = '192.168.106.135'; // Example: Indian IP
+  }).as('mockLocation');
 });
 
 
@@ -16,9 +15,7 @@ describe('Search functionality check', () => {
 
   it('Search functionality check', () => {
     cy.visit('https://www.plixlife.com/');
-    onBeforeLoad: (win) => {
-      cy.stub(win, 'location').as('locationStub');
-    },
+    
 
 
     // // Access the iframe and wait for it to load
