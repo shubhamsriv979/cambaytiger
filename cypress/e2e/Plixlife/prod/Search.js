@@ -4,20 +4,17 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   return false;
 });
 
-// beforeEach(() => {
-  
-// });
+beforeEach(() => {
+  cy.intercept('https://example.com/api/geo', {
+    body: { region: 'IN' }, // Mock the geo response as Indian
+  }).as('mockGeo');
+});
 
 
 describe('Search functionality check', () => {
 
   it('Search functionality check', () => {
-    cy.visit('https://www.plixlife.com/'), {
-      onBeforeLoad: (win) => {
-        Object.defineProperty(win.navigator, 'language', { value: 'en-IN' });
-        win.localStorage.setItem('region', 'IN');
-      },
-    };
+    cy.visit('https://www.plixlife.com/');
     
 
 
