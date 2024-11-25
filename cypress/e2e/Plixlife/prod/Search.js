@@ -8,14 +8,14 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 describe('Search functionality check', () => {
 
   it('Search functionality check', () => {
-    cy.visit('https://www.plixlife.com/');
+    cy.visit('https://www.plixlife.com?region=IN');
 
     // // Access the iframe and wait for it to load
     // cy.get("#wiz-iframe-intent").then((iframedata) => {
     //   // Access the iframe's document
     //   iframedata.contents().find('body')      
     // })
-    cy.reload();
+    // cy.reload();
 
     // Search the product
     cy.get("li[class='plixlife-main-menu__searchInput'] div div[class='SearchSuggestionBar_wrapper__1Uc5K']").type("ACV");
