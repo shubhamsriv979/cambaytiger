@@ -1,13 +1,16 @@
 import 'cypress-iframe'
 Cypress.on('uncaught:exception', (err, runnable) => {
-  // returning false here prevents Cypress from
-  // failing the test due to the uncaught exception
+  // Prevent Cypress from failing the test on uncaught exceptions
   return false;
 });
-cy.intercept('GET', '**/redirection-endpoint', {
-  statusCode: 200,
-  body: {}, // Empty response to prevent redirection logic
-}).as('blockRedirect');
+
+beforeEach(() => {
+  // Intercept the redirection endpoint to prevent the redirection logic
+  cy.intercept('GET', '**/redirection-endpoint', {
+    statusCode: 200,
+    body: {}, // Empty response
+  }).as('blockRedirect');
+});
 
 
 describe('Search functionality check', () => {
