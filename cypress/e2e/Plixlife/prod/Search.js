@@ -27,7 +27,7 @@ describe('Search functionality check', () => {
     //   iframedata.contents().find('body')      
     // })
     // cy.reload();
-
+cy.wait(20000);
     // Search the product
     cy.get("li[class='plixlife-main-menu__searchInput'] div div[class='SearchSuggestionBar_wrapper__1Uc5K']").type("ACV");
     // Click on the product
