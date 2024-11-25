@@ -13,6 +13,9 @@ cy.intercept('GET', '**/redirection-endpoint', {
 describe('Search functionality check', () => {
 
   it('Search functionality check', () => {
+    cy.setCookie('region', 'IN'); // Set the cookie for the Indian region
+
+
     cy.visit('https://www.plixlife.com/');
 
     // // Access the iframe and wait for it to load
