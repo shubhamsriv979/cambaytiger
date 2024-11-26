@@ -6,7 +6,7 @@ class Home {
     .type("Mumbai", { delay: 100, force: true });
     cy.wait(10000);
     cy.get('.AdressCont__inside > :nth-child(1) > div').click();
-    cy.wait(10000);
+    cy.wait(30000);
   }
 
   
@@ -19,7 +19,7 @@ class Home {
     cy.get("#otp-0").type("123456",);
     cy.wait(5000);
     cy.get('.scss_loginRegCont__m2Dae > button').click();
-    cy.wait(20000);
+    cy.wait(30000);
   }
 
   cartClear() {
