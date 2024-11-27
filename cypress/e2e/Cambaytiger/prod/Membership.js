@@ -105,7 +105,7 @@ describe('Membership functionality', () => {
   
   it('Gold Membership functionality', () => {
     cy.visit('https://cambaytiger.com/');
-    // Membership.closeAdvPopup();
+    Membership.closeAdvPopup();
 
     // Select location 
     Home.selectPrimaryLocation();
