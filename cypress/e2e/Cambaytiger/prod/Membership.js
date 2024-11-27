@@ -22,7 +22,7 @@ describe('Membership functionality', () => {
 
   it('Bronze Membership functionality', () => {
     cy.visit('https://cambaytiger.com/');
-    // Membership.closeAdvPopup();
+    Membership.closeAdvPopup();
 
     // Select location 
     Home.selectPrimaryLocation();
@@ -185,7 +185,7 @@ describe('Membership functionality', () => {
 
   it('Silver Membership functionality', () => {
     cy.visit('https://cambaytiger.com/');
-    // Membership.closeAdvPopup();
+    Membership.closeAdvPopup();
 
         // Select location 
         Home.selectPrimaryLocation();
