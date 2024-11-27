@@ -28,7 +28,7 @@ jobs:
           command: |
             if [ "<< parameters.environment >>" = "stage" ]; then
               # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/*.js,cypress/e2e/Cambaytiger/stage/url/Products/*.js";
-              npx cypress run --spec "cypress/e2e/Cambaytiger/stage/prod/Products/*.js";
+              npx cypress run --spec "cypress/e2e/Cambaytiger/prod/Products/*.js";
 
             else
               npx cypress run --spec "cypress/e2e/Cambaytiger/prod/*.js";
