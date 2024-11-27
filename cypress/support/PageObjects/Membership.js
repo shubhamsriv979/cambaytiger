@@ -20,6 +20,7 @@ class Membership {
     }
 
     closeAdvPopup() {
+        cy.wait(10000);
         cy.get("#wzrkImageOnlyDiv").then((iframedata) => {
             // Access the contents of the iframe's body
             iframedata.contents().find('body');
@@ -33,7 +34,7 @@ class Membership {
                 }
             });
         }
-
+        cy.reload();
         // // Call the function in your test
         // waitForElementAndClosePopup();
     }
