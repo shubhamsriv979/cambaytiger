@@ -5,58 +5,58 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     return false;
 });
 
-describe('Test', () => {
+describe('Test Mobile', () => {
 
-    it('Test', () => {
+    it('Test Mobile', () => {
         cy.viewport(375, 667);
         cy.visit('https://laundreee.in/');
 
-        // // Home >> 1000+ Tumbledry Laundry & Dry Clean Stores Across:
-        // // Click on adilabad
-        // cy.get('.city-wise-navigation > :nth-child(1) > a').click();
-        // cy.get('.city-wise-navigation > :nth-child(1) > a').click();
-        // // Verify page opened
-        // cy.get('.section-two > .container > :nth-child(1) > .col-md-12 > .sub-bannerhead').should("be.visible");
-        // cy.go(-1);
+        // Home >> 1000+ Tumbledry Laundry & Dry Clean Stores Across:
+        // Click on adilabad
+        cy.get('.city-wise-navigation > :nth-child(1) > a').click();
+        cy.get('.city-wise-navigation > :nth-child(1) > a').click();
+        // Verify page opened
+        cy.get('.section-two > .container > :nth-child(1) > .col-md-12 > .sub-bannerhead').should("be.visible");
+        cy.go(-1);
 
-        // // Home >> Tumbledry Laundry Franchises Available In:
-        // // Click on Goa
-        // cy.get('.elementor-element-9b25e4a > .elementor-widget-container > :nth-child(1) > a').click();    
-        // // Verify page opened
-        // cy.get('.elementor-element-c5b1a05 > .elementor-container > .elementor-column > .elementor-widget-wrap > .elementor-element > .elementor-widget-container > .elementor-heading-title').should("be.visible");
-        // cy.go(-1);
+        // Home >> Tumbledry Laundry Franchises Available In:
+        // Click on Goa
+        cy.get('.elementor-element-9b25e4a > .elementor-widget-container > :nth-child(1) > a').click();    
+        // Verify page opened
+        cy.get('.elementor-element-c5b1a05 > .elementor-container > .elementor-column > .elementor-widget-wrap > .elementor-element > .elementor-widget-container > .elementor-heading-title').should("be.visible");
+        cy.go(-1);
 
-        // // Verify home page is opened
-        // // Verify "OUR EXPERT SERVICES" heading is available or not
-        // cy.get("div[class='elementor-element elementor-element-33e4e84 elementor-widget elementor-widget-heading'] h2[class='elementor-heading-title elementor-size-small']")
-        // .should("contain","OUR EXPERT SERVICES");
+        // Verify home page is opened
+        // Verify "OUR EXPERT SERVICES" heading is available or not
+        cy.get("div[class='elementor-element elementor-element-33e4e84 elementor-widget elementor-widget-heading'] h2[class='elementor-heading-title elementor-size-small']")
+        .should("contain","OUR EXPERT SERVICES");
 
-        // // Click on about us link on footer section
-        // cy.contains("About Us").eq(0).click();
-        // cy.contains("About Us").eq(0).click();
-        // // Verify about us page opened & "About Us" heading is available in the page
-        // cy.get("div[class='elementor-widget-container'] h1").should("contain","About Us");
+        // Click on about us link on footer section
+        cy.contains("About Us").eq(0).click();
+        cy.contains("About Us").eq(0).click();
+        // Verify about us page opened & "About Us" heading is available in the page
+        cy.get("div[class='elementor-widget-container'] h1").should("contain","About Us");
 
-        // // Click on FAQ link on footer section
-        // cy.get("ul[id='menu-1-54631f1'] li[class='menu-item menu-item-type-custom menu-item-object-custom menu-item-25'] a[class='elementor-item']").click();
-        // // Verify FAQ page opened & "Frequently" heading is available in the page
-        // cy.get("h1[class='elementor-heading-title elementor-size-default']").should("contain","Frequently");
+        // Click on FAQ link on footer section
+        cy.get("ul[id='menu-1-54631f1'] li[class='menu-item menu-item-type-custom menu-item-object-custom menu-item-25'] a[class='elementor-item']").click();
+        // Verify FAQ page opened & "Frequently" heading is available in the page
+        cy.get("h1[class='elementor-heading-title elementor-size-default']").should("contain","Frequently");
 
-        // // Click on Terms link on footer section
-        // cy.get("ul[id='menu-1-54631f1'] li[class='menu-item menu-item-type-custom menu-item-object-custom menu-item-24'] a[class='elementor-item']").click();
-        // // Verify Terms page opened & "Terms" heading is available in the page
-        // cy.get("h1[class='elementor-heading-title elementor-size-default']").should("contain","Terms & Conditions");
+        // Click on Terms link on footer section
+        cy.get("ul[id='menu-1-54631f1'] li[class='menu-item menu-item-type-custom menu-item-object-custom menu-item-24'] a[class='elementor-item']").click();
+        // Verify Terms page opened & "Terms" heading is available in the page
+        cy.get("h1[class='elementor-heading-title elementor-size-default']").should("contain","Terms & Conditions");
 
-        // // Click on Blog link on footer section
-        // cy.get("ul[id='menu-1-54631f1'] li[class='menu-item menu-item-type-post_type menu-item-object-page menu-item-27684'] a[class='elementor-item']").click();
-        // // Verify Blog page opened & "Laundry" heading is available in the page
-        // cy.get("h1[class='elementor-heading-title elementor-size-default']").should("contain","Laundry & Dry Clean");
+        // Click on Blog link on footer section
+        cy.get("ul[id='menu-1-54631f1'] li[class='menu-item menu-item-type-post_type menu-item-object-page menu-item-27684'] a[class='elementor-item']").click();
+        // Verify Blog page opened & "Laundry" heading is available in the page
+        cy.get("h1[class='elementor-heading-title elementor-size-default']").should("contain","Laundry & Dry Clean");
 
-        // // Click on Contact link on footer section
-        // cy.get("ul[id='menu-1-54631f1'] li[class='menu-item menu-item-type-custom menu-item-object-custom menu-item-23'] a[class='elementor-item']").click();
-        // // Verify Contact page opened & "We'd love to hear from you" heading is available in the page
-        // cy.get("h1[class='elementor-heading-title elementor-size-default']").should("contain","We'd love to hear from you");
-        // cy.go(-1);
+        // Click on Contact link on footer section
+        cy.get("ul[id='menu-1-54631f1'] li[class='menu-item menu-item-type-custom menu-item-object-custom menu-item-23'] a[class='elementor-item']").click();
+        // Verify Contact page opened & "We'd love to hear from you" heading is available in the page
+        cy.get("h1[class='elementor-heading-title elementor-size-default']").should("contain","We'd love to hear from you");
+        cy.go(-1);
 
         // // // Social link on footer
         // // // Facebook
@@ -81,62 +81,62 @@ describe('Test', () => {
 
 
 
-        // // Header Elements
-        // //Services
-        // // Click on  Laundry Service link
-        // cy.get("#menu-item-65644 > a").click({force:true});
-        // cy.get("#menu-item-65644 > a").click({force:true});
-        // // Verify the heading displays
-        // cy.get("div[class='elementor-element elementor-element-577ed00 elementor-widget elementor-widget-heading'] h2[class='elementor-heading-title elementor-size-default']")
-        // .should("contain", "Full Range Of Laundry Services");
+        // Header Elements
+        //Services
+        // Click on  Laundry Service link
+        cy.get("#menu-item-65644 > a").click({force:true});
+        cy.get("#menu-item-65644 > a").click({force:true});
+        // Verify the heading displays
+        cy.get("div[class='elementor-element elementor-element-577ed00 elementor-widget elementor-widget-heading'] h2[class='elementor-heading-title elementor-size-default']")
+        .should("contain", "Full Range Of Laundry Services");
 
 
-        // // Click on  "Dry Cleaning Service" link    
-        // cy.get("#menu-item-65645 > a").click({force:true});
-        // cy.get("#menu-item-65645 > a").click({force:true});
-        // // Verify the heading displays
-        // cy.get("div[class='elementor-element elementor-element-c6d1e07 elementor-widget elementor-widget-heading'] h2[class='elementor-heading-title elementor-size-default']")
-        // .should("contain","Impeccable Dry Clean Quality, Every Time");
+        // Click on  "Dry Cleaning Service" link    
+        cy.get("#menu-item-65645 > a").click({force:true});
+        cy.get("#menu-item-65645 > a").click({force:true});
+        // Verify the heading displays
+        cy.get("div[class='elementor-element elementor-element-c6d1e07 elementor-widget elementor-widget-heading'] h2[class='elementor-heading-title elementor-size-default']")
+        .should("contain","Impeccable Dry Clean Quality, Every Time");
 
 
-        // // Click on  "Shoe Cleaning Service" link
-        // cy.get("#menu-item-65646 > a").click({force:true});
-        // cy.get("#menu-item-65646 > a").click({force:true});    
-        // // Verify the heading displays
-        // cy.get("div[class='elementor-element elementor-element-1e553e4 elementor-widget elementor-widget-heading'] h2[class='elementor-heading-title elementor-size-default']")
-        // .should("contain","Complete Shoe Care: Cleaning, Repair & Protection");
+        // Click on  "Shoe Cleaning Service" link
+        cy.get("#menu-item-65646 > a").click({force:true});
+        cy.get("#menu-item-65646 > a").click({force:true});    
+        // Verify the heading displays
+        cy.get("div[class='elementor-element elementor-element-1e553e4 elementor-widget elementor-widget-heading'] h2[class='elementor-heading-title elementor-size-default']")
+        .should("contain","Complete Shoe Care: Cleaning, Repair & Protection");
 
 
-        // // Click on  "Carpet Dry Cleaning Service" link
-        // cy.get("#menu-item-66554 > a").click({force:true});
-        // cy.get("#menu-item-66554 > a").click({force:true});    
-        // // Verify the heading displays
-        // cy.get("div[class='elementor-element elementor-element-60611e2 elementor-widget elementor-widget-heading'] h2[class='elementor-heading-title elementor-size-default']")
-        // .should("contain","Carpet Cleaning, With Impeccable Quality!");
+        // Click on  "Carpet Dry Cleaning Service" link
+        cy.get("#menu-item-66554 > a").click({force:true});
+        cy.get("#menu-item-66554 > a").click({force:true});    
+        // Verify the heading displays
+        cy.get("div[class='elementor-element elementor-element-60611e2 elementor-widget elementor-widget-heading'] h2[class='elementor-heading-title elementor-size-default']")
+        .should("contain","Carpet Cleaning, With Impeccable Quality!");
 
 
-        // // Click on  "Curtain Dry Cleaning Service" link
-        // cy.get("#menu-item-66591 > a").click({force:true});
-        // cy.get("#menu-item-66591 > a").click({force:true});   
-        // // Verify the heading displays
-        // cy.get("div[class='elementor-element elementor-element-a204828 elementor-widget elementor-widget-text-editor'] div[class='elementor-widget-container']")
-        // .should("contain","CURTAIN DRY CLEANING, WITH IMPECCABLE QUALITY!");
+        // Click on  "Curtain Dry Cleaning Service" link
+        cy.get("#menu-item-66591 > a").click({force:true});
+        cy.get("#menu-item-66591 > a").click({force:true});   
+        // Verify the heading displays
+        cy.get("div[class='elementor-element elementor-element-a204828 elementor-widget elementor-widget-text-editor'] div[class='elementor-widget-container']")
+        .should("contain","CURTAIN DRY CLEANING, WITH IMPECCABLE QUALITY!");
 
 
-        // // Click on  "Leather Dry Cleaning Service" link
-        // cy.get("#menu-item-66592 > a").click({force:true});
-        // cy.get("#menu-item-66592 > a").click({force:true});   
-        // // Verify the heading displays
-        // cy.get(".sub-bannerhead.text-center.orange")
-        // .should("contain","Leather Dry Cleaning with Impeccable Quality");
+        // Click on  "Leather Dry Cleaning Service" link
+        cy.get("#menu-item-66592 > a").click({force:true});
+        cy.get("#menu-item-66592 > a").click({force:true});   
+        // Verify the heading displays
+        cy.get(".sub-bannerhead.text-center.orange")
+        .should("contain","Leather Dry Cleaning with Impeccable Quality");
 
 
-        // // Click on  "Steam Ironing Service" link
-        // cy.get("#menu-item-78195 > a").click({force:true});
-        // cy.get("#menu-item-78195 > a").click({force:true});   
-        // // Verify the heading displays
-        // cy.get(".sub-bannerhead.text-center.orange")
-        // .should("contain","IMPECCABLE STEAM IRONING QUALITY");
+        // Click on  "Steam Ironing Service" link
+        cy.get("#menu-item-78195 > a").click({force:true});
+        cy.get("#menu-item-78195 > a").click({force:true});   
+        // Verify the heading displays
+        cy.get(".sub-bannerhead.text-center.orange")
+        .should("contain","IMPECCABLE STEAM IRONING QUALITY");
 
         // Pricing
         // Click on Pricing menu item
