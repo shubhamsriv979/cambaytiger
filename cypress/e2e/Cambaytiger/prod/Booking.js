@@ -124,6 +124,7 @@ describe('Booking flow', () => {
                         cy.get("div[class='Delivery_slotTimeCont__ZNBHh'] div:nth-child(1)")
                           .should("be.visible")
                           .click();
+                        cy.wait(20000);
                         cy.get(".Delivery_button__text__d8uUZ").click();
                         // Call the function
                         selectCOD();
