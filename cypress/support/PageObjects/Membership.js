@@ -21,22 +21,22 @@ class Membership {
 
     closeAdvPopup() {
         cy.wait(10000);
-        // cy.get("#wzrkImageOnlyDiv").then((iframedata) => {
-        //     // Access the contents of the iframe's body
-        //     iframedata.contents().find('body');
-        // });
-        // function waitForElementAndClosePopup() {
-        //     cy.get('body').then((body) => {
-        //         if (body.find("#wzrkImageOnlyDiv").length > 0) {
-        //             // Element exists; access the iframe
-        //             cy.reload();
-        //             waitForElementAndClosePopup(); // Recursive call
-        //         }
-        //     });
-        // }
+        cy.get("#wzrkImageOnlyDiv").then((iframedata) => {
+            // Access the contents of the iframe's body
+            iframedata.contents().find('body');
+        });
+        function waitForElementAndClosePopup() {
+            cy.get('body').then((body) => {
+                if (body.find("#wzrkImageOnlyDiv").length > 0) {
+                    // Element exists; access the iframe
+                    cy.reload();
+                    waitForElementAndClosePopup(); // Recursive call
+                }
+            });
+        }
         cy.reload();
-        // // // Call the function in your test
-        // // waitForElementAndClosePopup();
+        // // Call the function in your test
+        waitForElementAndClosePopup();
     }
 
 
