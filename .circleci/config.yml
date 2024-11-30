@@ -19,7 +19,6 @@ jobs:
         enum: ["stage", "prod"]
         default: "stage"
     resource_class: large  # Allocate more resources for long-running tests    
-    no_output_timeout: 30m  # Set timeout for no output to 30 minutes
     steps:
       - checkout
       - run:
