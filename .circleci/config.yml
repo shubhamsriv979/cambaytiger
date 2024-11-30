@@ -18,7 +18,7 @@ jobs:
         type: enum
         enum: ["stage", "prod"]
         default: "stage"
-    resource_class: 2xlarge  # You can also try `xlarge` if needed
+    resource_class: xlarge  # You can also try `xlarge` if needed
     steps:
       - checkout
       - run:
