@@ -41,5 +41,3 @@ workflows:
     jobs:
       - run-tests:
           environment: << pipeline.parameters.environment >>
-    # Timeout for the workflow
-    timeout: 20m
