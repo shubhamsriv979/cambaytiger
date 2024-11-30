@@ -18,6 +18,8 @@ jobs:
         type: enum
         enum: ["stage", "prod"]
         default: "stage"
+    timeout: 20m  # Increased timeout to 20 minutes
+
     steps:
       - checkout
       - run:
