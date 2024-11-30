@@ -18,8 +18,6 @@ jobs:
         type: enum
         enum: ["stage", "prod"]
         default: "stage"
-    timeout: 20m  # Increased timeout to 20 minutes
-
     steps:
       - checkout
       - run:
@@ -29,13 +27,9 @@ jobs:
           name: Run Cypress Tests
           command: |
             if [ "<< parameters.environment >>" = "stage" ]; then
-              # npx cypress run --spec "cypress/e2e/Cambaytiger/stage/*.js,cypress/e2e/Cambaytiger/stage/url/Products/*.js";
-              npx cypress run --spec "cypress/e2e/Tumbledry/Store_detail.js";
-
+              npx cypress run --spec "cypress/e2e/Tumbledry/Store_detail.js"
             else
-              npx cypress run --spec "cypress/e2e/Cambaytiger/prod/*.js";
-              
-              
+              npx cypress run --spec "cypress/e2e/Cambaytiger/prod/*.js"
             fi
       - store_artifacts:
           path: cypress/reports
@@ -47,3 +41,5 @@ workflows:
     jobs:
       - run-tests:
           environment: << pipeline.parameters.environment >>
+    # Timeout for the workflow
+    timeout: 20m
