@@ -42,5 +42,4 @@ workflows:
     jobs:
       - run-tests:
           environment: << pipeline.parameters.environment >>
-    max_job_duration: 60m  # Allow the entire workflow to run for 1 hour
-
+          
