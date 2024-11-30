@@ -24,6 +24,7 @@ jobs:
       - run:
           name: Install dependencies
           command: npm install
+          no_output_timeout: 30m  # Ensures the step doesn’t timeout due to inactivity
       - run:
           name: Run Cypress Tests
           command: |
@@ -32,6 +33,7 @@ jobs:
             else
               npx cypress run --spec "cypress/e2e/Cambaytiger/prod/*.js"
             fi
+          no_output_timeout: 30m  # Ensures the Cypress test execution doesn’t timeout due to inactivity
       - store_artifacts:
           path: cypress/reports
           destination: test-report
@@ -42,4 +44,3 @@ workflows:
     jobs:
       - run-tests:
           environment: << pipeline.parameters.environment >>
-    
