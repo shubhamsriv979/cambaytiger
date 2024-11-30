@@ -7,6 +7,8 @@ module.exports = defineConfig({
   pageLoadTimeout: 500000, // Page load timeout
   chromeWebSecurity: false, // Disable Chrome web security for cross-origin iframes
   experimentalMemoryManagement: true, // Enable experimental memory management feature
+  numTestsKeptInMemory: 1, // Only keep results for the last 5 tests in memory
+
 
 
 
