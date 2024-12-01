@@ -37,7 +37,7 @@ describe('Store details page', () => {
             cy.get(locationContainer).click();
             const totalOptions = options.length; // Get the total number of options            
             // for (let i = 0; i < totalOptions; i++) {
-            for (let i = 0; i < 40; i++) {
+            for (let i = 0; i < 50; i++) {
                 cy.get(locationContainer).click(); // Open the dropdown
                 cy.get(locationOptions).eq(i).click(); // Select the option at index `i`
                 // Iteration on store listing page for stores
