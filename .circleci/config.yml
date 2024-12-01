@@ -18,25 +18,26 @@ jobs:
         type: enum
         enum: ["stage", "prod"]
         default: "stage"
-    resource_class: large  # Allocate more resources for long-running tests    
+    resource_class: large
+    parallelism: 2  # Number of parallel containers
     steps:
       - checkout
       - run:
           name: Install dependencies
           command: npm install
-          no_output_timeout: 180m  # Ensures the step doesn’t timeout due to inactivity
       - run:
-          name: Run Cypress Tests
+          name: Run Cypress Tests in Parallel
           command: |
-            if [ "<< parameters.environment >>" = "stage" ]; then
-              npx cypress run --spec "cypress/e2e/Tumbledry/Store_detail.js"
-            else
-              npx cypress run --spec "cypress/e2e/Cambaytiger/prod/*.js"
-            fi
-          no_output_timeout: 180m  # Ensures the Cypress test execution doesn’t timeout due to inactivity
+            case $CIRCLE_NODE_INDEX in
+              0) npx cypress run --spec "cypress/e2e/Tumbledry/Test.js";;
+              1) npx cypress run --spec "cypress/e2e/Tumbledry/Test-mobile.js";;
+              *) echo "No test file assigned to this container";;
+            esac
       - store_artifacts:
           path: cypress/reports
           destination: test-report
+      - store_test_results:
+          path: cypress/reports
 
 workflows:
   version: 2
